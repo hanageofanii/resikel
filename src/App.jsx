@@ -7,15 +7,15 @@ export default function App() {
               </div>
               <nav>
                   <ul className="flex space-x-4">
-                      <li><a href="#" className="text-green-600 hover:text-green-800">Home</a></li>
-                      <li><a href="#" className="text-green-600 hover:text-green-800">About Us</a></li>
-                      <li><a href="#" className="text-green-600 hover:text-green-800">Education</a></li>
-                      <li><a href="#" className="text-green-600 hover:text-green-800">Rewards</a></li>
+                      <li><a href="#" className="text-black-600 hover:text-green-800">Home</a></li>
+                      <li><a href="#" className="text-black-600 hover:text-green-800">About Us</a></li>
+                      <li><a href="#" className="text-black-600 hover:text-green-800">Education</a></li>
+                      <li><a href="#" className="text-black-600 hover:text-green-800">Rewards</a></li>
                   </ul>
               </nav>
               <div className="flex items-center space-x-2">
                   <i className="fas fa-user text-green-600"></i>
-                  <span className="text-green-600">Login</span>
+                  <span className="text-black-600">Login</span>
               </div>
           </header>
           <main>
@@ -31,9 +31,9 @@ export default function App() {
               </section>
                 <section className="bg-white text-center py-16">
                     <div className="max-w-2xl mx-auto">
-                        <img src="https://placehold.co/400x300" alt="Person recycling waste" className="mx-auto" />
+                        <img src="./2.jpg" alt="image" className="mx-auto rounded-lg" />
                         <p className="mt-4 text-gray-700">
-                            Pernah bertanya-tanya ke mana sampah kita berakhir? Di RESEKI, kami berkomitmen untuk mengurangi sampah dengan menyediakan platform yang memudahkan kamu untuk mendaur ulang. Temukan cara-cara kreatif untuk mengurangi sampah dan dapatkan reward menarik!
+                            Pernah bertanya-tanya ke mana sampah kita berakhir? Di RESIKEL, kami berkomitmen untuk mengurangi sampah dengan menyediakan platform yang memudahkan kamu untuk mendaur ulang. Temukan cara-cara kreatif untuk mengurangi sampah dan dapatkan reward menarik!
                         </p>
                         <button className="mt-4 bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600">Explore More</button>
                     </div>
@@ -61,20 +61,36 @@ export default function App() {
                           <h3 className="mt-2 text-lg font-bold text-green-600">Pendidikan Lingkungan</h3>
                           <p className="text-gray-700">Pelajari lebih lanjut tentang pentingnya menjaga lingkungan.</p>
                       </div>
+                      <div className="bg-white p-4 rounded shadow">
+                          <i className="fas fa-lightbulb text-green-600 text-3xl"></i>
+                          <h3 className="mt-2 text-lg font-bold text-green-600">Penduli Bumi</h3>
+                          <p className="text-gray-700">Membantu melindungi alam dan menciptakan masa depan hijau yang lebih baik.</p>
+                      </div>
+                      <div className="bg-white p-4 rounded shadow">
+                          <i className="fas fa-lightbulb text-green-600 text-3xl"></i>
+                          <h3 className="mt-2 text-lg font-bold text-green-600">Hidup Harmonis dengan Alam</h3>
+                          <p className="text-gray-700">Hidup berdampingan dengan alam tanpa merusak.</p>
+                      </div>
                   </div>
               </section>
-              <section className="bg-green-200 text-center py-16">
+              <section className="bg-white-200 text-center py-16 flex justify-center">
+                <div className="bg-green-100 rounded-lg shadow-lg p-8 max-w-md">
                   <h2 className="text-2xl font-bold text-green-600">Siap untuk Belajar Lebih Dalam?</h2>
                   <p className="mt-4 text-gray-700">
-                      Mulailah dengan mengikuti program edukasi kami yang dirancang untuk memberikan pengetahuan mendalam tentang pengelolaan sampah dan daur ulang.
+                    Mulailah dengan mengikuti program edukasi kami yang dirancang untuk memberikan pengetahuan mendalam tentang pengelolaan sampah dan daur ulang.
                   </p>
-                  <button className="mt-4 bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600">Explore More</button>
-              </section>
+                  <button className="mt-4 bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600">
+                    Explore More
+                  </button>
+                </div>
+          </section>
           </main>
           <footer className="bg-green-100 text-center py-8">
               <div className="max-w-4xl mx-auto">
                   <div className="flex justify-between items-center flex-col md:flex-row">
-                      <div className="text-green-600">Logo</div>
+                      <div className="flex items-center">
+                        <img src= "./logo.png" alt="Logo Resikel" className="w-20 h-20 mr-3" />
+                      </div>
                       <div className="text-gray-700">
                           <p>Kontak</p>
                           <p>Alamat</p>
