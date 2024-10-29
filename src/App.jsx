@@ -2,7 +2,9 @@ export default function App() {
   return (
       <div>
           <header className="bg-green-100 p-4 flex justify-between items-center">
-              <div className="text-2xl font-bold text-green-600">RESIKEL</div>
+              <div className="flex items-center">
+                <img src= "./logo.png" alt="Logo Resikel" className="w-11 h-11 mr-3" />
+              </div>
               <nav>
                   <ul className="flex space-x-4">
                       <li><a href="#" className="text-green-600 hover:text-green-800">Home</a></li>
