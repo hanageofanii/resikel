@@ -1,24 +1,31 @@
 const About = () => {
-    return (
-        <div className="max-w-4xl mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold mb-4">About Us</h1>
-            <p className="text-gray-700 mb-4">
-                Welcome to our captivating journey! At Resikel, we embark on a mission to transcend conventional practices 
-                by intertwining sustainability with innovation. Our verdant vision seeks to create a tapestry of 
-                eco-friendly solutions that beckon communities to delve into a more harmonious relationship with nature.
-            </p>
-            <p className="text-gray-700 mb-4">
-                We are not merely a service; we are a crucible of ideas that orchestrates the intricate dance of 
-                collaboration and creativity. Our team is dedicated to crafting a kaleidoscopic array of projects 
-                that illuminate the path towards a brighter, greener future.
-            </p>
-            <p className="text-gray-700">
-                Join us as we navigate the labyrinth of challenges and opportunities, reimagining how we approach 
-                sustainability in our everyday lives. Together, we can build a mosaic of impactful changes that certainly 
-                makes a difference.
-            </p>
+  return (
+    <main>
+      <section className="bg-green-100 py-16 px-8 lg:px-24 flex items-center">
+        <div className="flex-1 max-w-sm mx-auto">
+          <img
+            src="./src/assets/images/3.png"
+            alt="image"
+            className="mx-auto w-full h-auto"
+          />
         </div>
-    );
+        <div className="flex-1 text-left max-w-lg mx-auto space-y-4">
+          <h1 className="text-3xl font-bold text-center text-green-600">
+            About Us
+          </h1>
+          <p className="text-xl text-justify text-green-600">
+            Resikel adalah aplikasi yang dikembangkan oleh Yayasan Pelita Hijau
+            Nusantara untuk membantu masyarakat Batam dalam mengelola sampah
+            dengan cara yang lebih praktis dan berkelanjutan. Melalui Resikel,
+            kami ingin mengajak masyarakat berpartisipasi aktif dalam menjaga
+            kebersihan lingkungan, dengan menyediakan alat dan informasi yang
+            memudahkan proses pemilahan, pengumpulan, serta pemanfaatan kembali
+            sampah.
+          </p>
+        </div>
+      </section>
+    </main>
+  );
 };
 
 export default About;
