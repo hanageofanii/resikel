@@ -15,7 +15,7 @@ const Navbar = () => {
         <nav>
           <ul className="flex space-x-6">
             <li>
-              <a href="/Home" className="text-black-600 hover:text-green-800">
+              <a href="/" className="text-black-600 hover:text-green-800">
                 Home
               </a>
             </li>

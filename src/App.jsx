@@ -3,6 +3,9 @@ import Navbar from "./component/Navbar.jsx";
 import Homepage from "./pages/homepage.jsx";
 import Footer from "./component/footer.jsx";
 import About from "./pages/About.jsx";
+// import NotFound from "./pages/NotFound.jsx";
+// import Education from "./pages/Education.jsx";
+// import Rewards from "./pages/Rewards.jsx";
 
 function App() {
   return (
@@ -11,8 +14,10 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/Home" element={<Homepage />} />
           <Route path="/about" element={<About />} />
+          {/* <Route path="/*" element={<NotFound />} />
+          <Route path="/Education" element={<Education />} />
+          <Route path="/Rewards" element={<Rewards />} /> */}
         </Routes>
         <Footer />
       </div>
