@@ -25,20 +25,13 @@ const About = () => {
         </div>
       </section>
 
-      <section className="py-10 bg-gray-100">
+      <section className="bg-gray-100 py-16 px-8 lg:px-24 flex items-center">
         <div className="container mx-auto">
           {/* Visi Kami */}
           <div className="flex flex-col md:flex-row justify-between items-center mb-10">
-            <div className="md:w-1/2 flex justify-center">
-              <img
-                src="https://placehold.co/200x200"
-                alt="Illustration of mission"
-                className="mx-auto"
-              />
-            </div>
-            <div className="md:w-1/2 pl-4">
-              <h3 className="text-2xl font-bold mb-4 text-center md:text-left">
-                Misi Kami
+            <div className="md:w-1/2 pl-4 ms-2">
+              <h3 className="text-2xl font-bold mb-4 text-center">
+                Visi Kami
               </h3>
               <ol className="list-decimal list-inside text-gray-700">
                 <li className="mb-2">
@@ -54,18 +47,25 @@ const About = () => {
                 </li>
               </ol>
             </div>
+            <div className="md:w-1/2 flex justify-center">
+              <img
+                src="./src/assets/images/3.png"
+                alt="Illustration of mission"
+                className="mx-auto w-1/2"
+              />
+            </div>
           </div>
           {/* Misi Kami */}
           <div className="flex flex-col md:flex-row justify-between items-center mb-10">
             <div className="md:w-1/2 flex justify-center">
               <img
-                src="https://placehold.co/200x200"
+                src="./src/assets/images/3.png"
                 alt="Illustration of mission"
-                className="mx-auto"
+                className="mx-auto w-1/2"
               />
             </div>
-            <div className="md:w-1/2 pl-4">
-              <h3 className="text-2xl font-bold mb-4 text-center md:text-left">
+            <div className="md:w-1/2 pl-4 me-2">
+              <h3 className="text-2xl font-bold mb-4 text-center">
                 Misi Kami
               </h3>
               <ol className="list-decimal list-inside text-gray-700">
@@ -116,7 +116,7 @@ const About = () => {
                 key={index}
                 className="border rounded-lg p-4 shadow-lg bg-white">
                 <img
-                  src="https://placehold.co/100x100"
+                  src="./src/assets/images/monyet.jpeg"
                   alt={`Photo of team member ${index + 1}`}
                   className="mx-auto rounded-full mb-2 border-4 border-green-200"
                 />
