@@ -116,7 +116,7 @@ const About = () => {
                 key={index}
                 className="border rounded-lg p-4 shadow-lg bg-white">
                 <img
-                  src="./src/assets/images/monyet.jpeg"
+                  src="./src/assets/images/mbappe.jpg"
                   alt={`Photo of team member ${index + 1}`}
                   className="mx-auto rounded-full mb-2 border-4 border-green-200"
                 />
