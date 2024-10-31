@@ -40,14 +40,6 @@ const Navbar = () => {
                 Rewards
               </a>
             </li>
-            <li>
-              <a
-                href="/Contact"
-                className="text-black-600 hover:text-green-800"
-              >
-                Contact
-              </a>
-            </li>
           </ul>
         </nav>
 
