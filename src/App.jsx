@@ -4,7 +4,6 @@ import Homepage from "./pages/homepage.jsx";
 import Footer from "./component/footer.jsx";
 import About from "./pages/About.jsx";
 import Rewards from "./pages/Rewards.jsx";
-
 function App() {
   return (
     <Router>
