@@ -6,4 +6,9 @@
   html {
     font-family: "Poppins", sans-serif;
   }
+
+  .question {
+    font-size: 50px;
+    font-weight: bolder;
+  }
 }

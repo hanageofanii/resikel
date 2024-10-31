@@ -27,15 +27,25 @@ const Navbar = () => {
             <li>
               <a
                 href="/Education"
-                className="text-black-600 hover:text-green-800">
+                className="text-black-600 hover:text-green-800"
+              >
                 Education
               </a>
             </li>
             <li>
               <a
                 href="/Rewards"
-                className="text-black-600 hover:text-green-800">
+                className="text-black-600 hover:text-green-800"
+              >
                 Rewards
+              </a>
+            </li>
+            <li>
+              <a
+                href="/Contact"
+                className="text-black-600 hover:text-green-800"
+              >
+                Contact
               </a>
             </li>
           </ul>
