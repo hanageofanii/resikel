@@ -1,7 +1,7 @@
 const Rewards = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center">
-      <header className="w-full bg-green-300 py-4 text-center">
+      <header className="w-full bg-green-400 py-4 text-center">
         <h1 className="text-2xl font-bold">Yuk Kurangi Sampah!</h1>
       </header>
       <main className="w-full max-w-4xl bg-white mt-6 p-6 rounded-lg shadow-md">

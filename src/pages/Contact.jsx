@@ -21,12 +21,12 @@ const Contact = () => {
             <div className="collapse-content">
               <p className="font-light text-gray-600">
                 Some quick example text to build on the card title and make up
-                the bulk of the card's content. make up the bulk of the card's
-                content. card title and make up the bulk of the card's content.
+                the bulk of the card content. make up the bulk of the card
+                content. card title and make up the bulk of the card content.
                 Some quick example text to build on the card title and make up
-                the bulk of the card's content. Make up the bulk of the card's
+                the bulk of the card content. Make up the bulk of the card
                 content. Some quick example text to build on the. make up the
-                bulk of the card's content.Some quick example text to build on
+                bulk of the card content.Some quick example text to build on
               </p>
             </div>
           </div>
@@ -103,8 +103,7 @@ const Contact = () => {
             <div className="text-center">
               <button
                 type="submit"
-                className="bg-orange-300 text-white py-2 px-16 rounded-full"
-              >
+                className="bg-orange-300 text-white py-2 px-16 rounded-full">
                 Submit
               </button>
             </div>

@@ -17,8 +17,7 @@ const Footer = () => {
             </a>
             <a
               href="/Education"
-              className="text-black-600 hover:text-green-800"
-            >
+              className="text-black-600 hover:text-green-800">
               Education
             </a>
             <a href="/Rewards" className="text-black-600 hover:text-green-800">
@@ -28,7 +27,7 @@ const Footer = () => {
               FAQ
             </a>
           </div>
-          <div className="text-gray-700 text-justify md:text-left">
+          <div className="text-black-700 text-justify md:text-left">
             <p className="text-lg font-bold text-justify mb-2">Hubungi Kami</p>
             <p>
               <a href="mailto:resikel@gmail.com">resikel@gmail.com</a>
@@ -41,11 +40,14 @@ const Footer = () => {
               Contact
             </a>
           </div>
-          <div className="flex space-x-4 mt-4 md:mt-0">
-            <i className="fab fa-facebook text-green-600"></i>
-            <i className="fab fa-twitter text-green-600"></i>
-            <i className="fab fa-instagram text-green-600"></i>
-            <i className="fab fa-linkedin text-green-600"></i>
+          <div className="flex flex-col items-center mt-6 md:mt-0">
+            <p className="text-lg font-bold mb-2">Sosial Media Kami</p>
+            <div className="flex space-x-4">
+              <i className="fab fa-facebook text-green-600"></i>
+              <i className="fab fa-twitter text-green-600"></i>
+              <i className="fab fa-instagram text-green-600"></i>
+              <i className="fab fa-linkedin text-green-600"></i>
+            </div>
           </div>
         </div>
       </div>

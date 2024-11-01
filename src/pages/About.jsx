@@ -1,10 +1,10 @@
 const About = () => {
   return (
     <main className="bg-gray-50">
-      <section className="bg-green-100 py-16 px-8 lg:px-24 flex items-center">
+      <section className="bg-green-100 py-16 px-8 lg:px-15 flex items-center">
         <div className="flex-1 max-w-sm mx-auto">
           <img
-            src="./src/assets/images/3.png"
+            src="./src/assets/images/6.png"
             alt="image"
             className="mx-auto w-full h-auto"
           />
@@ -43,7 +43,7 @@ const About = () => {
             </div>
             <div className="md:w-1/2 flex justify-center">
               <img
-                src="./src/assets/images/3.png"
+                src="./src/assets/images/4.png"
                 alt="Illustration of mission"
                 className="mx-auto w-1/2"
               />
@@ -53,7 +53,7 @@ const About = () => {
           <div className="flex flex-col md:flex-row justify-between items-center mb-10">
             <div className="md:w-1/2 flex justify-center">
               <img
-                src="./src/assets/images/3.png"
+                src="./src/assets/images/5.png"
                 alt="Illustration of mission"
                 className="mx-auto w-1/2"
               />
