@@ -1,10 +1,11 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import Footer from "./component/footer.jsx";
 import Navbar from "./component/Navbar.jsx";
-import Homepage from "./pages/Homepage.jsx";
-import Footer from "./component/Footer.jsx";
 import About from "./pages/About.jsx";
-import Rewards from "./pages/Rewards.jsx";
 import Contact from "./pages/Contact.jsx";
+import Education from "./pages/Education.jsx";
+import Homepage from "./pages/Homepage.jsx";
+import Rewards from "./pages/Rewards.jsx";
 
 function App() {
   return (
@@ -13,8 +14,9 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/about" element={<About />} />
           <Route path="/Rewards" element={<Rewards />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/education" element={<Education />} />
           <Route path="/Contact" element={<Contact />} />
         </Routes>
         <Footer />
