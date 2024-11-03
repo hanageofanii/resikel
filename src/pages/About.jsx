@@ -1,7 +1,7 @@
 const About = () => {
   return (
     <main className="bg-gray-50">
-      <section className="bg-green-100 py-16 px-8 lg:px-15 flex items-center">
+      <section className="bg-green-200 py-16 px-8 lg:px-15 flex items-center">
         <div className="flex-1 max-w-sm mx-auto">
           <img
             src="./src/assets/images/6.png"
@@ -10,7 +10,7 @@ const About = () => {
           />
         </div>
         <div className="flex-1 text-left max-w-lg mx-auto space-y-4">
-          <h1 className="text-3xl font-bold text-center text-green-600">
+          <h1 className="text-3xl font-bold text-center text-black-300">
             About Us
           </h1>
           <p className=" text-justify text-black-700 mb-2">
@@ -33,7 +33,7 @@ const About = () => {
               <h3 className="text-2xl font-bold mb-4 text-justify">
                 Visi Kami
               </h3>
-              <p className="text-justify text-gray-700 mb-2">
+              <p className="text-justify text-black-700 mb-2">
                 Menjadi platform digital yang memberdayakan masyarakat dalam
                 pengelolaan sampah yang efektif dan berkelanjutan. Resikel
                 berkomitmen memberikan solusi praktis, edukasi, dan inspirasi
@@ -62,7 +62,7 @@ const About = () => {
               <h3 className="text-2xl font-bold mb-4 text-justify">
                 Misi Kami
               </h3>
-              <ol className="list-decimal list-inside items-justify text-gray-700">
+              <ol className="list-decimal list-inside items-justify text-black-700">
                 <li className="mb-2">
                   Mendorong kegiatan regulasi dan kebijakan yang mendukung daur
                   ulang.
@@ -84,7 +84,7 @@ const About = () => {
       <section className="py-10">
         <div className="container mx-auto text-center">
           <h3 className="text-2xl font-bold mb-4">Kantor Kami</h3>
-          <p className="text-gray-700 mb-4">Tembesi, Batam, Indonesia</p>
+          <p className="text-black-700 mb-4">Tembesi, Batam, Indonesia</p>
           <div className="mb-4">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.342817525823!2d106.8512233151034!3d-6.229096995527924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e41f2211c4f9793%3A0xb6cf5bb36d5d118b!2sTownhouse%20Gambir%20Park%20Blok%20A%2FNo.12%2C%20Jalan%20Gambir%20Park%2C%20Sukadamai%2C%20Kec.%20Serang%20Baru%2C%20Kabupaten%20Bekasi%2C%20Jawa%20Barat%2017311!5e0!3m2!1sen!2sid!4v1696096390293!5m2!1sen!2sid"
@@ -112,27 +112,27 @@ const About = () => {
               {
                 name: "Sandi Aji Pamungkas",
                 role: "Hipster",
-                image: "./src/assets/images/member2.jpg",
+                image: "./src/assets/images/member2.png",
               },
               {
                 name: "Sucipta Aditri Laksana",
                 role: "Hipster",
-                image: "./src/assets/images/member3.jpg",
+                image: "./src/assets/images/member3.png",
               },
               {
                 name: "Elpratama Perangin Angin",
                 role: "Hacker",
-                image: "./src/assets/images/member4.jpeg",
+                image: "./src/assets/images/member4.png",
               },
               {
                 name: "Titto Nugraha Auladhana",
                 role: "Hacker",
-                image: "./src/assets/images/member5.jpeg",
+                image: "./src/assets/images/member5.png",
               },
               {
                 name: "Muhammad Rafi",
                 role: "Hacker",
-                image: "./src/assets/images/member6.jpeg",
+                image: "./src/assets/images/member6.png",
               },
             ].map((member, index) => (
               <div
