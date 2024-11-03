@@ -4,11 +4,13 @@ const Navbar = () => {
       <div className="container mx-auto px-6 flex justify-between items-center max-w-6xl">
         {/* Logo */}
         <div className="flex items-center">
-          <img
-            src="./src/assets/images/logo.png"
-            alt="Logo Resikel"
-            className="w-11 h-11 mr-3"
-          />
+          <a href="/">
+            <img
+              src="./src/assets/images/logo.png"
+              alt="Logo Resikel"
+              className="w-11 h-11 mr-3"
+            />
+          </a>
         </div>
 
         {/* Navigation Links */}
@@ -27,16 +29,14 @@ const Navbar = () => {
             <li>
               <a
                 href="/Education"
-                className="text-black-600 hover:text-green-800"
-              >
+                className="text-black-600 hover:text-green-800">
                 Education
               </a>
             </li>
             <li>
               <a
                 href="/Rewards"
-                className="text-black-600 hover:text-green-800"
-              >
+                className="text-black-600 hover:text-green-800">
                 Rewards
               </a>
             </li>
