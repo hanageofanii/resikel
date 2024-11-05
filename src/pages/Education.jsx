@@ -147,7 +147,7 @@ const Education = () => {
                 </span>
               </div>
               <a
-                href="#"
+                href="/Blog"
                 className="py-2 text-green-700 text-base font-semibold hover:text-xl duration-150 active:text-lg">
                 Read Now →
               </a>

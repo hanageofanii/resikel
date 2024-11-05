@@ -6,6 +6,7 @@ import Contact from "./pages/Contact.jsx";
 import Education from "./pages/Education.jsx";
 import Homepage from "./pages/Homepage.jsx";
 import Rewards from "./pages/Rewards.jsx";
+import Blog from "./pages/Blog.jsx";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/education" element={<Education />} />
           <Route path="/Contact" element={<Contact />} />
+          <Route path="/Blog" element={<Blog />} />
         </Routes>
         <Footer />
       </div>
