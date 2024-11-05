@@ -8,7 +8,9 @@ const Rewards = () => {
         <div className="flex justify-between items-center mb-6">
           <div>
             <h2 className="text-xl font-bold">Add Your Trash Today!</h2>
-            <a href="#" className="text-sm text-gray-500 hover:underline">
+            <a
+              href="/Tracklocation"
+              className="text-sm text-gray-500 hover:underline">
               Track Location
             </a>
           </div>
@@ -17,19 +19,25 @@ const Rewards = () => {
             <div>
               <p className="text-sm text-gray-500">Total Points</p>
               <p className="text-xl font-bold text-green-500">1.405</p>
-              <a href="/claimreward" className="text-sm text-gray-500 hover:underline">
+              <a
+                href="/claimreward"
+                className="text-sm text-gray-500 hover:underline">
                 Claim Reward
               </a>
             </div>
           </div>
         </div>
         <div className="mt-6">
-            <div className="w-full px-8 pb-6 border border-gray-300 rounded-full mb-8">
-                <p className="text-justify mb-1 pt-1 font-bold">450 poin Trash+ to find a treasure</p>
-                <div className="w-full bg-gray-300 rounded-full h-4">
-                <div className="bg-green-400 h-4 rounded-full" style={{ width: '70%' }}></div>
-                </div>
+          <div className="w-full px-8 pb-6 border border-gray-300 rounded-full mb-8">
+            <p className="text-justify mb-1 pt-1 font-bold">
+              450 poin Trash+ to find a treasure
+            </p>
+            <div className="w-full bg-gray-300 rounded-full h-4">
+              <div
+                className="bg-green-400 h-4 rounded-full"
+                style={{ width: "70%" }}></div>
             </div>
+          </div>
         </div>
         <div className="bg-gray-50 p-6 rounded-lg shadow-inner">
           <h3 className="text-center text-xl font-bold mb-4">Formulir</h3>

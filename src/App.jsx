@@ -8,6 +8,7 @@ import Homepage from "./pages/Homepage.jsx";
 import Rewards from "./pages/Rewards.jsx";
 import Blog from "./pages/Blog.jsx";
 import ClaimReward from "./pages/ClaimReward.jsx";
+import Tracklocation from "./pages/Tracklocation.jsx";
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
           <Route path="/education" element={<Education />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/Blog" element={<Blog />} />
-          <Route path="/claimreward" element={<ClaimReward />} />
+          <Route path="/ClaimReward" element={<ClaimReward />} />
+          <Route path="/Tracklocation" element={<Tracklocation />} />
         </Routes>
         <Footer />
       </div>
