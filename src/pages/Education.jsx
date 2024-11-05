@@ -1,7 +1,7 @@
 const Education = () => {
   return (
     <main className="bg-gray-50">
-      <section className="bg-green-200 py-16 px-8 lg:px-24 flex items-center">
+      <section className="bg-green-200 py-8 px-8 lg:px-24 flex items-center">
         <div className="flex-1 text-left max-w-lg mx-auto space-y-4">
           <h1 className="text-3xl font-bold text-justify text-black">
             Bijak Kelola Sampah
@@ -62,9 +62,9 @@ const Education = () => {
         </div>
       </section>
 
-      <section className="bg-gray-100 py-12 px-8 lg:px-24 flex items-center">
-        <div className="container mx-auto border-b border-gray-300">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8 py-8 mb-10">
+      <section className="bg-gray-100 py-2 px-8 lg:px-24 flex items-center">
+        <div className="container mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8 py-2 mb-2">
             <div className="md:w-1/2 flex justify-center">
               <img
                 src="./src/assets/images/education2.png"
@@ -113,45 +113,127 @@ const Education = () => {
               </div>
             </div>
           </div>
+          <hr className="border-b border-gray-300 my-4" />
         </div>
       </section>
 
-      <section className="bg-gray-100 py-8 px-8 lg:px-24 flex items-center">
-        <div className="max-w-6xl mx-auto p-6 bg-white rounded-lg shadow-lg">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="max-w-6xl text-2xl font-bold text-black">
-              Our <span className="text-green-500">Blogs</span>
-            </h2>
-            <p className="text-gray-500 text-sm">5 MIN READ</p>
-          </div>
-
-          <div className="flex gap-6">
-            <div className="w-1/2">
-              <img
-                src="./src/assets/images/blogs.png"
-                alt="Recycle Image"
-                className="rounded-lg object-cover"
-              />
+      {/* Our Blog Section */}
+      <section className="bg-gray-100 py-6 px-8 lg:px-24 flex items-center">
+        <div className="container mx-auto">
+          <div className="max-w-6xl mx-auto p-6 bg-white rounded-lg shadow-lg">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="max-w-6xl text-2xl font-bold text-black">
+                Our <span className="text-green-500">Blogs</span>
+              </h2>
+              <p className="text-gray-500 text-sm">5 MIN READ</p>
             </div>
-            <div className="w-1/2 bg-green-200 rounded-lg p-6 py-16">
-              <p className="py-4 text-sm text-gray-500 mb-2">SEPT 24, 2024</p>
-              <h3 className="py-4 text-3xl text-black my-4">
-                Apa itu Recycle? Pahami Arti dan Cara Melakukannya!
-              </h3>
-              <div className="py-2 flex space-x-3 mb-4">
-                <span className="px-3 py-1 bg-green-300 text-green-700 rounded-full text-sm">
+
+            <div className="flex gap-6">
+              <div className="w-1/2">
+                <img
+                  src="./src/assets/images/blogs.png"
+                  alt="Recycle Image"
+                  className="rounded-lg object-cover"
+                />
+              </div>
+              <div className="w-1/2 bg-green-200 rounded-lg p-6 py-16">
+                <p className="py-4 text-sm text-gray-500 mb-2">SEPT 24, 2024</p>
+                <h3 className="py-4 text-3xl text-black my-4">
+                  Apa itu Recycle? Pahami Arti dan Cara Melakukannya!
+                </h3>
+                <div className="py-2 flex space-x-3 mb-4">
+                  <span className="px-3 py-1 bg-green-300 text-green-700 rounded-full text-sm">
+                    Recycle
+                  </span>
+                  <span className="px-3 py-1 bg-green-300 text-green-700 rounded-full text-sm">
+                    Education
+                  </span>
+                </div>
+                <a
+                  href="/Blog"
+                  className="py-2 text-green-700 text-base font-semibold hover:text-xl duration-150 active:text-lg"
+                >
+                  Read Now →
+                </a>
+              </div>
+            </div>
+          </div>
+          <hr className="border-b border-gray-300 mt-12" />
+        </div>
+      </section>
+
+      {/* Blogs Section */}
+      <section className="bg-gray-100 py-5 px-8 lg:px-24 flex items-center">
+        <div className="max-w-6xl mx-auto">
+          {/* Grid of Blog Cards */}
+          <div className="pb-6 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* First Blog Card  */}
+            <div className="bg-white rounded-lg shadow-lg p-4">
+              <img
+                src="./src/assets/images/blog1.jpeg"
+                alt="Recycle Image"
+                className="w-full h-48 object-cover rounded-lg mb-4"
+              />
+              <div className="flex items-center justify-between mb-2">
+                <span className="bg-green-300 text-green-700 text-xs font-semibold px-2 py-1 rounded-full">
                   Recycle
                 </span>
-                <span className="px-3 py-1 bg-green-300 text-green-700 rounded-full text-sm">
-                  Education
-                </span>
+                <span className="text-gray-500 text-xs">SEPT 24, 2024</span>
               </div>
-              <a
-                href="/Blog"
-                className="py-2 text-green-700 text-base font-semibold hover:text-xl duration-150 active:text-lg">
-                Read Now →
-              </a>
+              <h3 className="font-bold text-black mb-2">
+                Apa itu Recycle? Pahami Arti dan Cara Melakukannya!
+              </h3>
+              <p className="text-gray-500 text-sm">
+                Apa itu Recycle? Pahami Arti dan Cara Melakukannya!
+              </p>
             </div>
+            {/* Second Blog Card */}
+            <div className="bg-white rounded-lg shadow-lg p-4">
+              <img
+                src="./src/assets/images/blog2.jpeg"
+                alt="Recycle Image"
+                className="w-full h-48 object-cover rounded-lg mb-4"
+              />
+              <div className="flex items-center justify-between mb-2">
+                <span className="bg-green-300 text-green-700 text-xs font-semibold px-2 py-1 rounded-full">
+                  Recycle
+                </span>
+                <span className="text-gray-500 text-xs">SEPT 24, 2024</span>
+              </div>
+              <h3 className="font-bold text-black mb-2">
+                Apa itu Recycle? Pahami Arti dan Cara Melakukannya!
+              </h3>
+              <p className="text-gray-500 text-sm">
+                Apa itu Recycle? Pahami Arti dan Cara Melakukannya!
+              </p>
+            </div>
+            {/* Third Blog Card */}
+            <div className="bg-white rounded-lg shadow-lg p-4">
+              <img
+                src="./src/assets/images/blog1.jpeg"
+                alt="Recycle Image"
+                className="w-full h-48 object-cover rounded-lg mb-4"
+              />
+              <div className="flex items-center justify-between mb-2">
+                <span className="bg-green-300 text-green-700 text-xs font-semibold px-2 py-1 rounded-full">
+                  Recycle
+                </span>
+                <span className="text-gray-500 text-xs">SEPT 24, 2024</span>
+              </div>
+              <h3 className="font-bold text-black mb-2">
+                Apa itu Recycle? Pahami Arti dan Cara Melakukannya!
+              </h3>
+              <p className="text-gray-500 text-sm">
+                Apa itu Recycle? Pahami Arti dan Cara Melakukannya!
+              </p>
+            </div>
+          </div>
+
+          {/* View More Button */}
+          <div className="flex justify-center my-5">
+            <button className="px-6 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition">
+              View More
+            </button>
           </div>
         </div>
       </section>
