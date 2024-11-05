@@ -4,7 +4,7 @@ const articles = [
     title: "Recycle",
     date: "SEPT 14, 2024",
     description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
-    imageUrl: "https://placehold.co/600x400",
+    imageUrl: "./src/assets/images/blog1.jpeg",
     altText: "Recycling symbol made of green leaves",
   },
   {
@@ -12,7 +12,7 @@ const articles = [
     title: "Recycle",
     date: "SEPT 14, 2024",
     description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
-    imageUrl: "https://placehold.co/600x400",
+    imageUrl: "./src/assets/images/blog2.jpeg",
     altText: "Recycling symbol made of green leaves",
   },
   {
@@ -20,7 +20,7 @@ const articles = [
     title: "Recycle",
     date: "SEPT 14, 2024",
     description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
-    imageUrl: "https://placehold.co/600x400",
+    imageUrl: "./src/assets/images/blogs.png",
     altText: "Recycling symbol made of green leaves",
   },
   {
@@ -28,7 +28,7 @@ const articles = [
     title: "Recycle",
     date: "SEPT 14, 2024",
     description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
-    imageUrl: "https://placehold.co/600x400",
+    imageUrl: "./src/assets/images/blog1.jpeg",
     altText: "Recycling symbol made of green leaves",
   },
   {
@@ -36,7 +36,7 @@ const articles = [
     title: "Recycle",
     date: "SEPT 14, 2024",
     description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
-    imageUrl: "https://placehold.co/600x400",
+    imageUrl: "./src/assets/images/blog2.jpeg",
     altText: "Recycling symbol made of green leaves",
   },
   {
@@ -44,7 +44,7 @@ const articles = [
     title: "Recycle",
     date: "SEPT 14, 2024",
     description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
-    imageUrl: "https://placehold.co/600x400",
+    imageUrl: "./src/assets/images/blogs.png",
     altText: "Recycling symbol made of green leaves",
   },
   {
@@ -52,7 +52,7 @@ const articles = [
     title: "Recycle",
     date: "SEPT 14, 2024",
     description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
-    imageUrl: "https://placehold.co/600x400",
+    imageUrl: "./src/assets/images/blog1.jpeg",
     altText: "Recycling symbol made of green leaves",
   },
   {
@@ -60,7 +60,7 @@ const articles = [
     title: "Recycle",
     date: "SEPT 14, 2024",
     description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
-    imageUrl: "https://placehold.co/600x400",
+    imageUrl: "./src/assets/images/blog2.jpeg",
     altText: "Recycling symbol made of green leaves",
   },
   {
@@ -68,7 +68,7 @@ const articles = [
     title: "Recycle",
     date: "SEPT 14, 2024",
     description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
-    imageUrl: "https://placehold.co/600x400",
+    imageUrl: "./src/assets/images/blogs.png",
     altText: "Recycling symbol made of green leaves",
   },
 ];
@@ -76,6 +76,9 @@ const articles = [
 const ArticlesList = () => {
   return (
     <div className="container mx-auto p-4">
+      <header className="w-full bg-white-200 py-16 px-8 lg:px-24 text-center">
+        <h1 className="text-4xl font-bold">Our Blogs</h1>
+      </header>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {articles.map((article) => (
           <div

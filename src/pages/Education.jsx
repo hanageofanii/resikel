@@ -151,8 +151,7 @@ const Education = () => {
                 </div>
                 <a
                   href="/Blog"
-                  className="py-2 text-green-700 text-base font-semibold hover:text-xl duration-150 active:text-lg"
-                >
+                  className="py-2 text-green-700 text-base font-semibold hover:text-xl duration-150 active:text-lg">
                   Read Now →
                 </a>
               </div>
@@ -230,11 +229,13 @@ const Education = () => {
           </div>
 
           {/* View More Button */}
-          <div className="flex justify-center my-5">
-            <button className="px-6 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition">
-              View More
-            </button>
-          </div>
+          <a href="/ArticlesList" className="text-green-500 text-center">
+            <div className="flex justify-center my-5">
+              <button className="px-6 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition">
+                View More
+              </button>
+            </div>
+          </a>
         </div>
       </section>
     </main>

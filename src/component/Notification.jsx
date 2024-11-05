@@ -13,7 +13,7 @@ const Notification = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white shadow-lg rounded-lg p-6 max-w-sm text-center">
+      <div className="bg-white shadow-lg rounded-lg py-10 px-5 max-w-lg w-full text-center">
         <div className="flex justify-center mb-4">
           <FaCheckCircle className="text-green-500 text-4xl" />
         </div>

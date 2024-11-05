@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 const Blog = () => {
@@ -34,7 +33,7 @@ const Blog = () => {
       />
       <p className="text-gray-500 text-xs mt-2">Photo by Everyday Eco Rin</p>
       <p className="text-justify leading-relaxed mt-4">
-        Jika Kamu bertanya apa itu Recycle, maka jawabannya adalah daur ulang,
+        Jika Kamu bertanya apa itu Recycle, maka jawabannya adalah daur ulang,
         proses untuk menghancurkan barang yang sudah tidak digunakan, untuk
         kemudian diolah lagi menjadi sesuatu yang baru dan memiliki manfaat,
         sehingga bisa kembali digunakan. Sebagian menganggap bahwa daur ulang
