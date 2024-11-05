@@ -1,20 +1,69 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  const navigate = useNavigate();
 
   const toggleFaq = (index) => {
-    if (openIndex === index) {
-      setOpenIndex(null);
-    } else {
-      setOpenIndex(index);
-    }
+    setOpenIndex(openIndex === index ? null : index);
   };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    event.target.reset();
+
+    // Navigasi ke halaman notifikasi dengan pesan
+    navigate("/notification", {
+      state: {
+        message: "Form berhasil disubmit!",
+        returnPath: "/Contact", // Specify the return path for rewards
+      },
+    });
+
+    console.log("Form submitted");
+  };
+
+  const faqs = [
+    {
+      question: "Apa itu Resikel?",
+      answer:
+        "Resikel adalah aplikasi yang membantu kamu mengelola sampah dengan cara yang lebih baik dan ramah lingkungan. Dengan Resikel, kamu bisa memilah sampah lebih mudah dan mendapatkan informasi penting tentang pengelolaan limbah.",
+    },
+    {
+      question: "Apa itu sampah?",
+      answer:
+        "Sampah adalah barang-barang yang tidak terpakai lagi, seperti sisa makanan, kemasan, dan barang-barang yang sudah tidak digunakan. Pengelolaan sampah yang baik sangat penting untuk kesehatan dan kebersihan lingkungan.",
+    },
+    {
+      question: "Apa jenis sampah?",
+      answer: {
+        "Sampah Organik": [
+          "Sisa makanan, kulit buah, dan sayuran.",
+          "Daun dan ranting.",
+        ],
+        "Sampah Anorganik": ["Plastik, kertas, dan logam."],
+        "Sampah Berbahaya": ["Limbah medis dan baterai."],
+        "Sampah Elektronik": ["Perangkat elektronik yang tidak terpakai."],
+        "Sampah Sisa Konstruksi": ["Material seperti kayu dan beton."],
+      },
+    },
+    {
+      question: "Apa itu pengolahan sampah?",
+      answer:
+        "Pengolahan sampah meliputi pengumpulan, pemilahan, dan daur ulang untuk mengurangi dampak negatifnya terhadap lingkungan. Proses ini penting agar sampah yang bisa didaur ulang tidak menjadi limbah yang mencemari lingkungan.",
+    },
+    {
+      question: "Bagaimana cara menggunakan Resikel?",
+      answer:
+        "Kamu bisa mengunjungi situs web Resikel dan membuat akun untuk mendapatkan akses penuh. Di sana, kamu akan menemukan panduan tentang cara mengelola sampah dan lokasi tempat pembuangan sampah terdekat.",
+    },
+  ];
 
   return (
     <main>
       {/* Introduction Section */}
-      <section className="bg-green-100 text-center py-16 px-8 lg:px-24">
+      <section className="bg-green-200 text-center py-16 px-8 lg:px-24">
         <h1 className="text-4xl font-extrabold text-gray-800 mb-4">
           Got Questions?
         </h1>
@@ -31,54 +80,7 @@ const Contact = () => {
         </h2>
 
         <div className="space-y-4 text-justify">
-          {[
-            {
-              question: "Apa itu Resikel?",
-              answer:
-                "Resikel adalah aplikasi atau platform yang berfokus pada pengelolaan sampah berbasis digital. Aplikasi ini bertujuan untuk mendorong masyarakat dalam mengelola sampah secara lebih efisien dan ramah lingkungan. Melalui Resikel, pengguna dapat melakukan pemilahan sampah dengan lebih mudah, yang merupakan langkah awal dalam proses daur ulang. Aplikasi ini juga menyediakan informasi dan edukasi tentang pentingnya pengurangan limbah, sehingga masyarakat dapat lebih sadar akan dampak sampah terhadap lingkungan.",
-            },
-            {
-              question: "Apa itu sampah?",
-              answer:
-                "Sampah adalah segala jenis limbah atau material yang tidak lagi dibutuhkan atau digunakan oleh individu atau masyarakat. Sampah dapat berasal dari berbagai sumber, seperti rumah tangga, industri, pertanian, dan komersial. Dalam kehidupan sehari-hari, sampah sering kali terdiri dari sisa makanan, kemasan plastik, kertas, dan barang-barang yang sudah tidak terpakai. Pengelolaan sampah yang baik sangat penting untuk menjaga kebersihan lingkungan dan kesehatan masyarakat.",
-            },
-            {
-              question: "Apa jenis sampah?",
-              answer: {
-                "Sampah Organik": [
-                  "Sisa makanan, seperti kulit buah dan sayuran, merupakan bagian dari sampah organik yang dapat terurai dengan cepat.",
-                  "Daun dan ranting yang jatuh dari pohon juga termasuk dalam kategori ini dan dapat dijadikan kompos.",
-                ],
-                "Sampah Anorganik": [
-                  "Plastik adalah salah satu jenis sampah anorganik yang paling umum dan sulit terurai.",
-                  "Kertas dan karton yang berasal dari kemasan dan dokumen juga termasuk dalam kategori ini dan dapat didaur ulang.",
-                  "Logam, seperti kaleng minuman, juga merupakan jenis sampah anorganik yang bisa didaur ulang.",
-                ],
-                "Sampah Berbahaya": [
-                  "Limbah medis, seperti jarum suntik dan bahan kimia dari rumah sakit, termasuk dalam kategori ini dan harus ditangani dengan hati-hati.",
-                  "Baterai yang mengandung bahan berbahaya juga termasuk sampah berbahaya yang tidak boleh dibuang sembarangan.",
-                  "Bahan kimia beracun, seperti cat dan pestisida, memerlukan prosedur pembuangan khusus untuk menghindari pencemaran.",
-                ],
-                "Sampah Elektronik": [
-                  "Perangkat elektronik yang tidak terpakai, seperti ponsel dan komputer, termasuk dalam kategori ini dan memerlukan penanganan khusus.",
-                  "Komponen elektronik yang rusak atau tidak terpakai juga merupakan bagian dari sampah elektronik.",
-                ],
-                "Sampah Sisa Konstruksi": [
-                  "Material konstruksi seperti kayu, beton, dan logam yang tersisa setelah proyek pembangunan juga termasuk jenis sampah ini.",
-                ],
-              },
-            },
-            {
-              question: "Apa itu pengolahan sampah?",
-              answer:
-                "Pengolahan sampah adalah proses yang melibatkan pengumpulan, pemilahan, daur ulang, dan pembuangan sampah secara efisien untuk mengurangi dampak negatif terhadap lingkungan. Proses ini dimulai dengan pengumpulan sampah dari berbagai sumber, baik dari rumah tangga maupun industri. Setelah itu, sampah dipilah berdasarkan jenisnya untuk memudahkan proses daur ulang. Sampah yang dapat didaur ulang, seperti kertas, plastik, dan logam, kemudian diproses menjadi bahan baru yang dapat digunakan kembali, sehingga mengurangi kebutuhan akan sumber daya alam baru. Sementara itu, sampah yang tidak dapat didaur ulang biasanya diolah melalui proses pembuangan yang aman, seperti pengolahan di tempat pembuangan akhir atau pembakaran dengan teknologi yang ramah lingkungan.",
-            },
-            {
-              question: "Bagaimana cara menggunakan Resikel?",
-              answer:
-                "Untuk menggunakan Resikel, Anda hanya perlu mengunjungi situs web Resikel di browser Anda. Setelah itu, Anda dapat membuat akun dengan mengisi informasi yang diperlukan untuk mendapatkan akses penuh ke fitur-fitur yang tersedia. Di situs web ini, Anda dapat menemukan panduan tentang cara memisahkan dan mengelola sampah Anda dengan benar. Selain itu, situs ini juga menyediakan informasi mengenai lokasi tempat pembuangan sampah terdekat serta artikel edukatif tentang pengelolaan limbah yang berkelanjutan. Anda juga dapat melaporkan jenis sampah yang telah Anda kelola melalui situs ini untuk mendapatkan penghargaan dan berkontribusi dalam program keberlanjutan lingkungan.",
-            },
-          ].map((faq, index) => (
+          {faqs.map((faq, index) => (
             <div
               key={index}
               className="border rounded-lg overflow-hidden cursor-pointer"
@@ -113,7 +115,7 @@ const Contact = () => {
       {/* Contact Form Section */}
       <section className="bg-white text-center py-16 px-8 lg:px-24">
         <h2 className="text-3xl font-bold text-gray-800 mb-8">Contact</h2>
-        <form className="space-y-6 max-w-lg mx-auto">
+        <form className="space-y-6 max-w-lg mx-auto" onSubmit={handleSubmit}>
           <div className="text-left">
             <label className="block text-gray-600 font-light mb-2">
               Your Name

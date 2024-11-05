@@ -1,7 +1,29 @@
+import { useNavigate } from "react-router-dom";
+
 const Rewards = () => {
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    // Reset form
+    event.target.reset();
+
+    // Arahkan ke halaman notifikasi dengan state
+    navigate("/notification", {
+      state: {
+        message: "Form berhasil disubmit!",
+        returnPath: "/Rewards", // Specify the return path for rewards
+      },
+    });
+
+    // Log untuk memastikan handleSubmit dipanggil
+    console.log("Form submitted");
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center">
-      <header className="w-full bg-green-200 py-4 text-center">
+      <header className="w-full bg-green-200 py-16 px-8 lg:px-24 text-center">
         <h1 className="text-2xl font-bold">Yuk Kurangi Sampah!</h1>
       </header>
       <main className="w-full max-w-4xl bg-white mt-6 p-6 rounded-lg shadow-md">
@@ -41,7 +63,7 @@ const Rewards = () => {
         </div>
         <div className="bg-gray-50 p-6 rounded-lg shadow-inner">
           <h3 className="text-center text-xl font-bold mb-4">Formulir</h3>
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
               <label className="block text-sm font-medium text-gray-700">
                 Your Name
@@ -49,14 +71,26 @@ const Rewards = () => {
               <input
                 type="text"
                 className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                required
               />
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700">
                 Jenis Sampah
               </label>
-              <select className="mt-1 block w-full border border-gray-300 rounded-md p-2">
+              <select
+                className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                required>
                 <option>Pilih jenis sampah</option>
+                <option value="plastik">Plastik</option>
+                <option value="kertas">Kertas</option>
+                <option value="kardus">Kardus</option>
+                <option value="logam">Logam</option>
+                <option value="organik">Organik</option>
+                <option value="elektronik">Sampah Elektronik</option>
+                <option value="bahan berbahaya">
+                  Bahan Berbahaya dan Beracun (B3)
+                </option>
               </select>
             </div>
             <div className="flex items-center">
@@ -65,8 +99,9 @@ const Rewards = () => {
                   Berat Sampah
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                  required
                 />
               </div>
               <span className="ml-2 text-sm font-medium text-gray-700">Kg</span>
@@ -74,7 +109,7 @@ const Rewards = () => {
             <div className="text-center">
               <button
                 type="submit"
-                className="bg-orange-300 text-white py-2 px-4 rounded-md">
+                className="bg-orange-300 text-white py-2 px-4 rounded-md hover:bg-orange-500">
                 Submit
               </button>
             </div>
