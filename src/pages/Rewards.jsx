@@ -1,7 +1,7 @@
 const Rewards = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center">
-      <header className="w-full bg-green-400 py-4 text-center">
+      <header className="w-full bg-green-200 py-4 text-center">
         <h1 className="text-2xl font-bold">Yuk Kurangi Sampah!</h1>
       </header>
       <main className="w-full max-w-4xl bg-white mt-6 p-6 rounded-lg shadow-md">
@@ -17,21 +17,19 @@ const Rewards = () => {
             <div>
               <p className="text-sm text-gray-500">Total Points</p>
               <p className="text-xl font-bold text-green-500">1.405</p>
-              <a href="#" className="text-sm text-gray-500 hover:underline">
+              <a href="/claimreward" className="text-sm text-gray-500 hover:underline">
                 Claim Reward
               </a>
             </div>
           </div>
         </div>
-        <div className="mb-6">
-          <p className="text-sm text-gray-500 mb-2">
-            450 poin Trash to find a treasure
-          </p>
-          <div className="w-full bg-gray-200 rounded-full h-4">
-            <div
-              className="bg-green-300 h-4 rounded-full"
-              style={{ width: "50%" }}></div>
-          </div>
+        <div className="mt-6">
+            <div className="w-full px-8 pb-6 border border-gray-300 rounded-full mb-8">
+                <p className="text-justify mb-1 pt-1 font-bold">450 poin Trash+ to find a treasure</p>
+                <div className="w-full bg-gray-300 rounded-full h-4">
+                <div className="bg-green-400 h-4 rounded-full" style={{ width: '70%' }}></div>
+                </div>
+            </div>
         </div>
         <div className="bg-gray-50 p-6 rounded-lg shadow-inner">
           <h3 className="text-center text-xl font-bold mb-4">Formulir</h3>
