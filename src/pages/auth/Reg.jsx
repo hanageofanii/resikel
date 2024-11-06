@@ -16,7 +16,7 @@ function RegisterForm() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white-200">
+    <div className="min-h-screen flex items-center justify-center bg-green-200">
       <div className="w-full max-w-lg p-8">
         <h1 className="text-4xl font-bold text-center mb-8">REGISTER</h1>
         <form className="space-y-6" onSubmit={handleSubmit}>

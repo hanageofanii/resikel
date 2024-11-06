@@ -9,7 +9,7 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row h-screen">
+    <div className="flex flex-col md:flex-row h-screen bg-green-200">
       <div className="md:w-1/2 flex items-center justify-center p-4">
         <img
           src="./src/assets/images/mascot.png"
