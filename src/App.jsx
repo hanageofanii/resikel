@@ -11,6 +11,8 @@ import ClaimReward from "./pages/ClaimReward.jsx";
 import Tracklocation from "./pages/Tracklocation.jsx";
 import Notification from "./component/Notification.jsx";
 import ArticlesList from "./pages/ArticlesList.jsx";
+import LogIn from "./pages/auth/Login.jsx";
+import Reg from "./pages/auth/Reg.jsx";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
           <Route path="/Tracklocation" element={<Tracklocation />} />
           <Route path="/Notification" element={<Notification />} />
           <Route path="/ArticlesList" element={<ArticlesList />} />
+          <Route path="/LogIn" element={<LogIn />} />
+          <Route path="/Reg" element={<Reg />} />
         </Routes>
         <Footer />
       </div>

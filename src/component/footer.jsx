@@ -1,4 +1,12 @@
+import { useLocation } from "react-router-dom";
+
 const Footer = () => {
+  const location = useLocation();
+  const isAuthPage =
+    location.pathname === "/Login" || location.pathname === "/Reg"; // Mengecek apakah halaman Login atau Register
+
+  if (isAuthPage) return null; // Jika di halaman Login atau Register, footer tidak ditampilkan
+
   return (
     <footer className="bg-green-200 text-center py-8">
       <div className="max-w-4xl mx-auto">
