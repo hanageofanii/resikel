@@ -1,11 +1,10 @@
 import { useNavigate } from "react-router-dom";
 
 function App() {
-  const navigate = useNavigate(); // Inisialisasi hook untuk navigasi
+  const navigate = useNavigate();
 
   const handleSignIn = () => {
-    // Ketika tombol SIGN IN ditekan, arahkan ke homepage
-    navigate("/"); // Ganti '/' dengan rute homepage kamu
+    navigate("/");
   };
 
   return (
@@ -34,7 +33,7 @@ function App() {
           Forget your password?
         </a>
         <button
-          onClick={handleSignIn} // Menambahkan fungsi untuk navigasi
+          onClick={handleSignIn}
           className="bg-orange-400 text-white py-3 px-8 rounded w-full md:w-auto">
           SIGN IN
         </button>

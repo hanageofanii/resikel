@@ -3,9 +3,9 @@ import { useLocation } from "react-router-dom";
 const Navbar = () => {
   const location = useLocation();
   const isAuthPage =
-    location.pathname === "/Login" || location.pathname === "/Reg"; // Mengecek apakah halaman Login atau Register
+    location.pathname === "/Login" || location.pathname === "/Reg";
 
-  if (isAuthPage) return null; // Jika di halaman Login atau Register, navbar tidak ditampilkan
+  if (isAuthPage) return null;
 
   return (
     <header className="bg-green-200 py-4">
@@ -56,9 +56,7 @@ const Navbar = () => {
           <i className="fas fa-user text-green-600"></i>
           <a
             href="/Login"
-            className="text-black-600 cursor-pointer hover:text-green-800">
-            {/* Tampilkan hanya ikon login tanpa teks */}
-          </a>
+            className="text-black-600 cursor-pointer hover:text-green-800"></a>
         </div>
       </div>
     </header>

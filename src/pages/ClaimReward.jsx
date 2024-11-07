@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 const ClaimReward = () => {
@@ -29,8 +28,7 @@ const ClaimReward = () => {
             <div className="w-full bg-gray-300 rounded-full h-4">
               <div
                 className="bg-green-400 h-4 rounded-full"
-                style={{ width: "70%" }}
-              ></div>
+                style={{ width: "70%" }}></div>
             </div>
           </div>
         </div>

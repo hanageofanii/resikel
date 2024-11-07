@@ -9,44 +9,42 @@ const Tracklocation = () => {
     // Inisialisasi peta di Batam
     const mapInstance = L.map("map").setView([1.0858, 104.0759], 13); // Koordinat Batam
 
-    // Menambahkan layer peta
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(mapInstance);
 
-    // Daftar lokasi di Batam
     const locations = [
       {
-        lat: 1.0838, // Contoh koordinat Batam Center
+        lat: 1.0838,
         lng: 104.0589,
         name: "Batam Center",
         status: "Belum Penuh",
         color: "green",
       },
       {
-        lat: 1.1385, // Contoh koordinat Nagoya
+        lat: 1.1385,
         lng: 104.0462,
         name: "Nagoya",
         status: "Penuh",
         color: "red",
       },
       {
-        lat: 1.1553, // Contoh koordinat Sekupang
+        lat: 1.1553,
         lng: 104.0375,
         name: "Sekupang",
         status: "Belum Penuh",
         color: "green",
       },
       {
-        lat: 1.0283, // Contoh koordinat Batu Ampar
+        lat: 1.0283,
         lng: 104.0627,
         name: "Batu Ampar",
         status: "Penuh",
         color: "red",
       },
       {
-        lat: 1.1302, // Contoh koordinat Barelang
+        lat: 1.1302,
         lng: 104.1484,
         name: "Barelang",
         status: "Belum Penuh",
@@ -72,14 +70,14 @@ const Tracklocation = () => {
           <p>Status Sampah: ${location.status}</p>
         </div>
       `;
-      marker.bindPopup(popupContent); // Mengaitkan popup dengan marker
+      marker.bindPopup(popupContent);
     });
 
     // Cleanup function untuk menghapus peta saat komponen dibongkar
     return () => {
       mapInstance.remove();
     };
-  }, []); // Hanya dijalankan sekali saat komponen dimuat
+  }, []);
 
   return (
     <div>

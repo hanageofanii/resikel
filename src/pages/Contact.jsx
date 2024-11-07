@@ -13,11 +13,10 @@ const Contact = () => {
     event.preventDefault();
     event.target.reset();
 
-    // Navigasi ke halaman notifikasi dengan pesan
     navigate("/notification", {
       state: {
         message: "Form berhasil disubmit!",
-        returnPath: "/Contact", // Specify the return path for rewards
+        returnPath: "/Contact",
       },
     });
 

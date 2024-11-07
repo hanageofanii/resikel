@@ -5,10 +5,10 @@ const Notification = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const message = location.state?.message || "Tidak ada notifikasi.";
-  const returnPath = location.state?.returnPath || "/"; // Default path if not provided
+  const returnPath = location.state?.returnPath || "/";
 
   const handleReturn = () => {
-    navigate(returnPath); // Navigate back to the specified path
+    navigate(returnPath);
   };
 
   return (

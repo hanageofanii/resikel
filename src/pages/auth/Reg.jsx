@@ -4,15 +4,12 @@ function RegisterForm() {
   const [showPopup, setShowPopup] = useState(false);
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Mencegah form untuk reload halaman
-
-    // Munculkan popup
+    e.preventDefault();
     setShowPopup(true);
 
-    // Redirect ke halaman login setelah beberapa detik
     setTimeout(() => {
-      window.location.href = "/Login"; // Ganti dengan rute login kamu
-    }, 2000); // 2 detik
+      window.location.href = "/Login";
+    }, 2000);
   };
 
   return (
