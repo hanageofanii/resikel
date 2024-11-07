@@ -1,3 +1,5 @@
+import { FaArrowLeft } from "react-icons/fa";
+
 const articles = [
   {
     id: 1,
@@ -79,6 +81,17 @@ const ArticlesList = () => {
       <header className="w-full bg-white-200 py-16 px-8 lg:px-24 text-center">
         <h1 className="text-4xl font-bold">Our Blogs</h1>
       </header>
+
+      {/* Back to Education button */}
+      <div className="mt-4 mb-8">
+        <a
+          href="/Education"
+          className="inline-flex items-center text-gray-700 hover:text-gray-900 text-lg font-semibold">
+          <FaArrowLeft className="mr-2 text-xl" /> {/* Arrow icon */}
+          Back to Education
+        </a>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {articles.map((article) => (
           <div

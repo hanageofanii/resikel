@@ -1,10 +1,40 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function App() {
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [errors, setErrors] = useState({});
+  const [showPopup, setShowPopup] = useState(false);
 
-  const handleSignIn = () => {
-    navigate("/");
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+
+    const newErrors = {};
+    if (!formData.email) {
+      newErrors.email = "Email is required";
+    }
+    if (!formData.password) {
+      newErrors.password = "Password is required";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setErrors({});
+    setShowPopup(true);
+
+    setTimeout(() => {
+      setShowPopup(false);
+      navigate("/");
+    }, 2000);
   };
 
   return (
@@ -19,27 +49,58 @@ function App() {
       <div className="md:w-1/2 flex flex-col justify-center items-center p-8">
         <h1 className="text-4xl font-bold mb-8">SIGN IN</h1>
         <p className="mb-6">Enter your email to sign in.</p>
-        <input
-          type="email"
-          placeholder="Enter your email"
-          className="mb-6 p-4 w-full md:w-96 border rounded"
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          className="mb-6 p-4 w-full md:w-96 border rounded"
-        />
-        <a href="#" className="text-sm text-blue-500 mb-6">
-          Forget your password?
-        </a>
-        <button
-          onClick={handleSignIn}
-          className="bg-orange-400 text-white py-3 px-8 rounded w-full md:w-auto">
-          SIGN IN
-        </button>
+        <form onSubmit={handleSignIn} className="w-full md:w-96 space-y-6">
+          <div>
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full p-4 border rounded"
+            />
+            {errors.email && (
+              <p className="text-red-500 text-sm">{errors.email}</p>
+            )}
+          </div>
+          <div>
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              className="w-full p-4 border rounded"
+            />
+            {errors.password && (
+              <p className="text-red-500 text-sm">{errors.password}</p>
+            )}
+          </div>
+          <a href="#" className="text-sm text-blue-500">
+            Forget your password?
+          </a>
+          {/* Centering the button */}
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="bg-orange-400 text-white py-3 px-8 rounded mt-6">
+              SIGN IN
+            </button>
+          </div>
+        </form>
         <a href="/Reg" className="text-sm text-gray-700 mt-6">
-          Do you have account?
+          Dont have an account? Register here.
         </a>
+
+        {/* Popup Notification */}
+        {showPopup && (
+          <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center">
+            <div className="bg-white p-8 rounded-lg shadow-lg">
+              <p className="text-xl">Login successful!</p>
+              <p className="mt-4">Redirecting to home...</p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
