@@ -169,7 +169,7 @@ const ClaimReward = () => {
 
         {/* Header */}
         <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-bold">Anda Mendapat Hadiah!</h1>
+          <h1 className="text-3xl font-bold">Tukarkan Point Anda!</h1>
           <div className="border border-orange-300 rounded-lg px-8 py-2 text-right">
             <p className="text-orange-500 font-semibold text-xl">Poin Saya</p>
             <p className="text-green-500 text-xl font-bold">{points}</p>
@@ -181,8 +181,7 @@ const ClaimReward = () => {
           {currentRewards.map((reward) => (
             <div
               key={reward.id}
-              className="w-1/3 border rounded-lg p-4 flex flex-col items-center text-center"
-            >
+              className="w-1/3 border rounded-lg p-4 flex flex-col items-center text-center">
               <img
                 src="./src/assets/images/claimreward.png"
                 alt={`Reward ${reward.id}`}
@@ -191,9 +190,8 @@ const ClaimReward = () => {
               <button
                 onClick={() => handleRedeem(reward.cost)}
                 className="bg-gray-200 py-1 px-4 rounded-full text-sm mb-2"
-                disabled={isRedeeming}
-              >
-                Redeem {reward.pointsText}
+                disabled={isRedeeming}>
+                Klaim {reward.pointsText}
               </button>
               <p>{reward.pointsText}</p>
             </div>
@@ -204,15 +202,13 @@ const ClaimReward = () => {
         <div className="flex justify-center items-center mt-8 space-x-2">
           <button
             className="bg-orange-300 text-white w-8 h-8 rounded-full"
-            onClick={handlePreviousPage}
-          >
+            onClick={handlePreviousPage}>
             &lt;
           </button>
           <span className="text-xl">{currentPage}</span>
           <button
             className="bg-orange-300 text-white w-8 h-8 rounded-full"
-            onClick={handleNextPage}
-          >
+            onClick={handleNextPage}>
             &gt;
           </button>
         </div>
@@ -222,8 +218,8 @@ const ClaimReward = () => {
           <div className="fixed bottom-4 right-4 bg-green-100 border border-green-400 p-4 rounded-lg shadow-lg flex items-center space-x-4">
             <div className="flex flex-col">
               <p>
-                Redeem berhasil! Anda telah menukar {claimedPoints} poin. Kirim
-                notifikasi ke pengepul untuk pengambilan.
+                Klaim Point berhasil! Anda telah menukar {claimedPoints} poin.
+                Kirim notifikasi ke pengepul untuk pengambilan.
               </p>
               <p className="font-bold text-lg mt-2">
                 Screenshot bukti ini dan serahkan ke pengepul.
@@ -231,8 +227,7 @@ const ClaimReward = () => {
             </div>
             <button
               onClick={handleCloseNotification}
-              className="ml-4 text-red-500 font-bold"
-            >
+              className="ml-4 text-red-500 font-bold">
               X
             </button>
           </div>
@@ -245,8 +240,7 @@ const ClaimReward = () => {
             </div>
             <button
               onClick={handleCloseNotification}
-              className="ml-4 text-red-500 font-bold"
-            >
+              className="ml-4 text-red-500 font-bold">
               X
             </button>
           </div>
@@ -256,9 +250,8 @@ const ClaimReward = () => {
           <div className="mt-6">
             <button
               onClick={downloadRedeemProof}
-              className="bg-blue-500 text-white py-2 px-6 rounded-lg"
-            >
-              Unduh Bukti Redeem.
+              className="bg-blue-500 text-white py-2 px-6 rounded-lg">
+              Unduh Bukti Klaim Poin.
             </button>
           </div>
         )}

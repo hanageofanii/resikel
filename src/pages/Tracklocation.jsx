@@ -89,23 +89,11 @@ const Tracklocation = () => {
         <div className="relative">
           <div className="absolute left-1/2 transform -translate-x-1/2 h-full border-l-2 border-dotted border-gray-300"></div>
           {[
-            {
-              name: "Kelurahan Duriangkang",
-              status: "Belum Penuh",
-              color: "green",
-            },
-            { name: "Kelurahan Duriangkang", status: "Penuh", color: "red" },
-            {
-              name: "Kelurahan Duriangkang",
-              status: "Belum Penuh",
-              color: "green",
-            },
-            { name: "Kelurahan Duriangkang", status: "Penuh", color: "red" },
-            {
-              name: "Kelurahan Duriangkang",
-              status: "Belum Penuh",
-              color: "green",
-            },
+            { name: "Batam Center", status: "Belum Penuh", color: "green" },
+            { name: "Nagoya", status: "Penuh", color: "red" },
+            { name: "Sekupang", status: "Belum Penuh", color: "green" },
+            { name: "Batu Ampar", status: "Penuh", color: "red" },
+            { name: "Barelang", status: "Belum Penuh", color: "green" },
           ].map((item, index) => (
             <div className="flex items-center mb-10" key={index}>
               <div className="w-1/2 text-right pr-10">
@@ -114,8 +102,7 @@ const Tracklocation = () => {
               </div>
               <div className="w-1/2 text-left pl-10">
                 <div
-                  className={`w-8 h-8 bg-${item.color}-600 rounded-full`}
-                ></div>
+                  className={`w-8 h-8 bg-${item.color}-600 rounded-full`}></div>
               </div>
             </div>
           ))}

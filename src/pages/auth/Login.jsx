@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 function App() {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [formData, setFormData] = useState({ email: "", Katasandi: "" });
   const [errors, setErrors] = useState({});
   const [showPopup, setShowPopup] = useState(false);
 
@@ -17,10 +17,10 @@ function App() {
 
     const newErrors = {};
     if (!formData.email) {
-      newErrors.email = "Email is required";
+      newErrors.email = "Masukan email anda";
     }
     if (!formData.password) {
-      newErrors.password = "Password is required";
+      newErrors.password = "Masukan Kata Sandi anda";
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -47,14 +47,14 @@ function App() {
         />
       </div>
       <div className="md:w-1/2 flex flex-col justify-center items-center p-8">
-        <h1 className="text-4xl font-bold mb-8">LOGIN</h1>
-        <p className="mb-6">Masukkan email anda untuk login.</p>
+        <h1 className="text-4xl font-bold mb-8">MASUK</h1>
+        <p className="mb-6">Masukkan email anda untuk masuk.</p>
         <form onSubmit={handleSignIn} className="w-full md:w-96 space-y-6">
           <div>
             <input
               type="email"
               name="email"
-              placeholder="example@gmail.com"
+              placeholder="contoh@gmail.com"
               value={formData.email}
               onChange={handleChange}
               className="w-full p-4 border rounded"
@@ -77,15 +77,14 @@ function App() {
             )}
           </div>
           <a href="#" className="text-sm text-blue-500">
-            Lupa password?
+            Lupa Kata Sandi?
           </a>
           {/* Centering the button */}
           <div className="flex justify-center">
             <button
               type="submit"
-              className="bg-orange-400 text-white py-3 px-8 rounded mt-2 w-full"
-            >
-              LOGIN
+              className="bg-orange-400 text-white py-3 px-8 rounded mt-2 w-full">
+              MASUK
             </button>
           </div>
         </form>
@@ -97,7 +96,7 @@ function App() {
         {showPopup && (
           <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center">
             <div className="bg-white p-8 rounded-lg shadow-lg">
-              <p className="text-xl">Login berhasil!</p>
+              <p className="text-xl">Berhasil Masuk!</p>
               <p className="mt-4">Mengalihkan ke beranda...</p>
             </div>
           </div>

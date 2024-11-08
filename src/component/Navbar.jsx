@@ -47,24 +47,21 @@ const Navbar = () => {
               <li>
                 <a
                   href="/About"
-                  className="text-black-600 hover:text-green-800"
-                >
+                  className="text-black-600 hover:text-green-800">
                   Tentang Kami
                 </a>
               </li>
               <li>
                 <a
                   href="/Education"
-                  className="text-black-600 hover:text-green-800"
-                >
+                  className="text-black-600 hover:text-green-800">
                   Edukasi
                 </a>
               </li>
               <li>
                 <a
                   href="/Rewards"
-                  className="text-black-600 hover:text-green-800"
-                >
+                  className="text-black-600 hover:text-green-800">
                   Hadiah
                 </a>
               </li>
@@ -73,9 +70,8 @@ const Navbar = () => {
               <li className="lg:hidden">
                 <a
                   href="/Login"
-                  className="text-black-600 cursor-pointer hover:text-green-800"
-                >
-                  Login
+                  className="text-black-600 cursor-pointer hover:text-green-800">
+                  Masuk
                 </a>
               </li>
             </ul>
@@ -86,8 +82,7 @@ const Navbar = () => {
             <i className="fas fa-user text-green-600"></i>
             <a
               href="/Login"
-              className="text-black-600 cursor-pointer hover:text-green-800"
-            ></a>
+              className="text-black-600 cursor-pointer hover:text-green-800"></a>
           </div>
         </div>
       </header>

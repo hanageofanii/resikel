@@ -64,11 +64,11 @@ const Contact = () => {
       {/* Introduction Section */}
       <section className="bg-green-200 text-center py-16 px-8 lg:px-24">
         <h1 className="text-4xl font-extrabold text-gray-800 mb-4">
-          Got Questions?
+          Punya Pertanyaan?
         </h1>
         <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-          Get in touch with the Resikel team, and we’ll get back to you as soon
-          as we can!
+          Hubungi tim Resikel, dan kami akan menghubungi Anda sesegera mungkin
+          sebisa mungkin!
         </p>
       </section>
 
@@ -113,42 +113,43 @@ const Contact = () => {
 
       {/* Contact Form Section */}
       <section className="bg-white text-center py-16 px-8 lg:px-24">
-        <h2 className="text-3xl font-bold text-gray-800 mb-8">Contact</h2>
+        <h2 className="text-3xl font-bold text-gray-800 mb-8">Kontak</h2>
         <form className="space-y-6 max-w-lg mx-auto" onSubmit={handleSubmit}>
           <div className="text-left">
             <label className="block text-gray-600 font-light mb-2">
-              Your Name
+              Nama Anda
             </label>
             <input
               type="text"
               className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-[#59cf94]"
-              placeholder="Enter your name"
+              placeholder="Masukan Nama Anda"
+              required
             />
           </div>
           <div className="text-left">
             <label className="block text-gray-600 font-light mb-2">
-              Your Email
+              Email Anda
             </label>
             <input
               type="email"
               className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-[#59cf94]"
-              placeholder="Enter your email"
+              placeholder="Masukan Email Anda"
+              required
             />
           </div>
           <div className="text-left">
-            <label className="block text-gray-600 font-light mb-2">
-              Message
-            </label>
+            <label className="block text-gray-600 font-light mb-2">Pesan</label>
             <textarea
               className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-[#59cf94]"
-              placeholder="What would you like to learn?"
-              rows="4"></textarea>
+              placeholder="Masukan Pesan Anda"
+              rows="4"
+              required></textarea>
           </div>
           <div>
             <button
               type="submit"
               className="bg-[#59cf94] text-white py-3 px-8 rounded-full hover:bg-green-600 transition duration-300">
-              Submit
+              Kirim
             </button>
           </div>
         </form>

@@ -155,13 +155,12 @@ const Education = () => {
                     Recycle
                   </span>
                   <span className="px-3 py-1 bg-green-300 text-green-700 rounded-full text-sm">
-                    Education
+                    Edukasi
                   </span>
                 </div>
                 <a
                   href="/Blog"
-                  className="py-2 text-green-700 text-base font-semibold hover:text-xl duration-150 active:text-lg"
-                >
+                  className="py-2 text-green-700 text-base font-semibold hover:text-xl duration-150 active:text-lg">
                   Baca Sekarang →
                 </a>
               </div>
@@ -246,8 +245,7 @@ const Education = () => {
           <div className="mt-12 text-center">
             <a
               href="/ArticlesList"
-              className="inline-block px-8 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition-colors"
-            >
+              className="inline-block px-8 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition-colors">
               selengkapnya
             </a>
           </div>

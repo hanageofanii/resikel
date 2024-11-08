@@ -23,19 +23,19 @@ function RegisterForm() {
 
     const newErrors = {};
     if (!formData.fullName) {
-      newErrors.fullName = "Full Name is required";
+      newErrors.fullName = "Masukan Nama Lengkap anda";
     }
     if (!formData.email) {
-      newErrors.email = "Email is required";
+      newErrors.email = "Masukan email anda";
     }
     if (!formData.phone) {
-      newErrors.phone = "Phone number is required";
+      newErrors.phone = "Masukan Nomor Telepon anda";
     }
     if (!formData.password) {
-      newErrors.password = "Password is required";
+      newErrors.password = "Masukan Kata Sandi anda";
     }
     if (formData.password !== formData.repeatPassword) {
-      newErrors.repeatPassword = "Passwords do not match";
+      newErrors.repeatPassword = "Kata Sandi tidak sesuai";
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -54,7 +54,7 @@ function RegisterForm() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-green-200">
       <div className="w-full max-w-lg p-8">
-        <h1 className="text-4xl font-bold text-center mb-8">REGISTER</h1>
+        <h1 className="text-4xl font-bold text-center mb-8">DAFTAR</h1>
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div>
             <label className="block text-lg mb-2">Nama lengkap</label>
@@ -77,7 +77,7 @@ function RegisterForm() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="example@gmail.com"
+              placeholder="contoh@gmail.com"
               className="w-full p-3 border rounded-lg"
             />
             {errors.email && (
@@ -129,8 +129,7 @@ function RegisterForm() {
           <div>
             <button
               type="submit"
-              className="w-full p-3 bg-orange-400 text-white font-bold rounded-lg"
-            >
+              className="w-full p-3 bg-orange-400 text-white font-bold rounded-lg">
               DAFTAR
             </button>
           </div>
