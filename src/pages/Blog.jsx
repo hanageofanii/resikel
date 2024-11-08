@@ -4,7 +4,7 @@ const Blog = () => {
   return (
     <div className="p-5 max-w-3xl mx-auto">
       <Link to="/education" className="text-green-500 no-underline">
-        <p>← Blogs</p>
+        <p>← Blog</p>
       </Link>
       <h1 className="text-4xl font-bold mt-4">
         Apa itu Recycle? Pahami Arti dan Cara Melakukannya!
