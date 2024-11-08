@@ -79,16 +79,17 @@ const ArticlesList = () => {
   return (
     <div className="container mx-auto p-4">
       <header className="w-full bg-white-200 py-16 px-8 lg:px-24 text-center">
-        <h1 className="text-4xl font-bold">Our Blogs</h1>
+        <h1 className="text-4xl font-bold">Blog Kami</h1>
       </header>
 
       {/* Back to Education button */}
       <div className="mt-4 mb-8">
         <a
           href="/Education"
-          className="inline-flex items-center text-gray-700 hover:text-gray-900 text-lg font-semibold">
+          className="inline-flex items-center text-gray-700 hover:text-gray-900 text-lg font-semibold"
+        >
           <FaArrowLeft className="mr-2 text-xl" /> {/* Arrow icon */}
-          Back to Education
+          Kembali ke Edukasi
         </a>
       </div>
 
@@ -96,7 +97,8 @@ const ArticlesList = () => {
         {articles.map((article) => (
           <div
             key={article.id}
-            className="border rounded-lg overflow-hidden shadow-lg">
+            className="border rounded-lg overflow-hidden shadow-lg"
+          >
             {article.imageUrl && (
               <img
                 src={article.imageUrl}
