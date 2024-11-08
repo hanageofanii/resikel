@@ -57,13 +57,13 @@ function RegisterForm() {
         <h1 className="text-4xl font-bold text-center mb-8">REGISTER</h1>
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div>
-            <label className="block text-lg mb-2">Your Full Name</label>
+            <label className="block text-lg mb-2">Nama lengkap</label>
             <input
               type="text"
               name="fullName"
               value={formData.fullName}
               onChange={handleChange}
-              placeholder="Enter your full name"
+              placeholder="Nama"
               className="w-full p-3 border rounded-lg"
             />
             {errors.fullName && (
@@ -71,13 +71,13 @@ function RegisterForm() {
             )}
           </div>
           <div>
-            <label className="block text-lg mb-2">Active Email Address*</label>
+            <label className="block text-lg mb-2">Email aktif*</label>
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="Enter your email"
+              placeholder="example@gmail.com"
               className="w-full p-3 border rounded-lg"
             />
             {errors.email && (
@@ -85,13 +85,13 @@ function RegisterForm() {
             )}
           </div>
           <div>
-            <label className="block text-lg mb-2">Phone Number*</label>
+            <label className="block text-lg mb-2">Nomor telepon*</label>
             <input
               type="tel"
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              placeholder="Enter your phone number (+62xxxxxxx)"
+              placeholder="+62-xxxxxxx"
               className="w-full p-3 border rounded-lg"
             />
             {errors.phone && (
@@ -105,7 +105,7 @@ function RegisterForm() {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              placeholder="Enter your password"
+              placeholder="*****"
               className="w-full p-3 border rounded-lg"
             />
             {errors.password && (
@@ -113,13 +113,13 @@ function RegisterForm() {
             )}
           </div>
           <div>
-            <label className="block text-lg mb-2">Repeat Password*</label>
+            <label className="block text-lg mb-2">Ulangi password*</label>
             <input
               type="password"
               name="repeatPassword"
               value={formData.repeatPassword}
               onChange={handleChange}
-              placeholder="Repeat your password"
+              placeholder="*****"
               className="w-full p-3 border rounded-lg"
             />
             {errors.repeatPassword && (
@@ -129,8 +129,9 @@ function RegisterForm() {
           <div>
             <button
               type="submit"
-              className="w-full p-3 bg-orange-400 text-white font-bold rounded-lg">
-              REGISTER
+              className="w-full p-3 bg-orange-400 text-white font-bold rounded-lg"
+            >
+              DAFTAR
             </button>
           </div>
         </form>
@@ -139,8 +140,8 @@ function RegisterForm() {
         {showPopup && (
           <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center">
             <div className="bg-white p-8 rounded-lg shadow-lg">
-              <p className="text-xl">Registration successful!</p>
-              <p className="mt-4">Redirecting to login...</p>
+              <p className="text-xl">Daftar berhasil!</p>
+              <p className="mt-4">Mengalihkan ke halaman login...</p>
             </div>
           </div>
         )}

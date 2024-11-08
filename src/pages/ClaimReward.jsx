@@ -14,12 +14,12 @@ const ClaimReward = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const rewardsPerPage = 3;
   const rewards = [
-    { id: 1, cost: 1000, pointsText: "1000 Points" },
-    { id: 2, cost: 2000, pointsText: "2000 Points" },
-    { id: 3, cost: 3000, pointsText: "3000 Points" },
-    { id: 4, cost: 4000, pointsText: "4000 Points" },
-    { id: 5, cost: 5000, pointsText: "5000 Points" },
-    { id: 6, cost: 6000, pointsText: "6000 Points" },
+    { id: 1, cost: 1000, pointsText: "1000 Poin" },
+    { id: 2, cost: 2000, pointsText: "2000 Poin" },
+    { id: 3, cost: 3000, pointsText: "3000 Poin" },
+    { id: 4, cost: 4000, pointsText: "4000 Poin" },
+    { id: 5, cost: 5000, pointsText: "5000 Poin" },
+    { id: 6, cost: 6000, pointsText: "6000 Poin" },
   ];
 
   const canvasRef = useRef(null);
@@ -160,18 +160,18 @@ const ClaimReward = () => {
   return (
     <div>
       <header className="w-full bg-green-200 py-10 text-center">
-        <h1 className="text-4xl font-bold">Rewards</h1>
+        <h1 className="text-4xl font-bold">Hadiah</h1>
       </header>
       <div className="p-6 max-w-5xl mx-auto">
         <Link to="/Rewards" className="text-green-500 no-underline">
-          <p>← Rewards</p>
+          <p>← Hadiah</p>
         </Link>
 
         {/* Header */}
         <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-bold">You Got Rewards!</h1>
+          <h1 className="text-3xl font-bold">Anda Mendapat Hadiah!</h1>
           <div className="border border-orange-300 rounded-lg px-8 py-2 text-right">
-            <p className="text-orange-500 font-semibold text-xl">My Points</p>
+            <p className="text-orange-500 font-semibold text-xl">Poin Saya</p>
             <p className="text-green-500 text-xl font-bold">{points}</p>
           </div>
         </div>
@@ -181,7 +181,8 @@ const ClaimReward = () => {
           {currentRewards.map((reward) => (
             <div
               key={reward.id}
-              className="w-1/3 border rounded-lg p-4 flex flex-col items-center text-center">
+              className="w-1/3 border rounded-lg p-4 flex flex-col items-center text-center"
+            >
               <img
                 src="./src/assets/images/claimreward.png"
                 alt={`Reward ${reward.id}`}
@@ -190,7 +191,8 @@ const ClaimReward = () => {
               <button
                 onClick={() => handleRedeem(reward.cost)}
                 className="bg-gray-200 py-1 px-4 rounded-full text-sm mb-2"
-                disabled={isRedeeming}>
+                disabled={isRedeeming}
+              >
                 Redeem {reward.pointsText}
               </button>
               <p>{reward.pointsText}</p>
@@ -202,13 +204,15 @@ const ClaimReward = () => {
         <div className="flex justify-center items-center mt-8 space-x-2">
           <button
             className="bg-orange-300 text-white w-8 h-8 rounded-full"
-            onClick={handlePreviousPage}>
+            onClick={handlePreviousPage}
+          >
             &lt;
           </button>
           <span className="text-xl">{currentPage}</span>
           <button
             className="bg-orange-300 text-white w-8 h-8 rounded-full"
-            onClick={handleNextPage}>
+            onClick={handleNextPage}
+          >
             &gt;
           </button>
         </div>
@@ -227,7 +231,8 @@ const ClaimReward = () => {
             </div>
             <button
               onClick={handleCloseNotification}
-              className="ml-4 text-red-500 font-bold">
+              className="ml-4 text-red-500 font-bold"
+            >
               X
             </button>
           </div>
@@ -240,7 +245,8 @@ const ClaimReward = () => {
             </div>
             <button
               onClick={handleCloseNotification}
-              className="ml-4 text-red-500 font-bold">
+              className="ml-4 text-red-500 font-bold"
+            >
               X
             </button>
           </div>
@@ -250,7 +256,8 @@ const ClaimReward = () => {
           <div className="mt-6">
             <button
               onClick={downloadRedeemProof}
-              className="bg-blue-500 text-white py-2 px-6 rounded-lg">
+              className="bg-blue-500 text-white py-2 px-6 rounded-lg"
+            >
               Unduh Bukti Redeem.
             </button>
           </div>

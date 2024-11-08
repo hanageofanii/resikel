@@ -11,7 +11,7 @@ const About = () => {
         </div>
         <div className="flex-1 text-left max-w-lg mx-auto space-y-4">
           <h1 className="text-3xl font-bold text-center text-black-300">
-            About Us
+            Tentang Kami
           </h1>
           <p className=" text-justify text-black-700 mb-2">
             Resikel adalah aplikasi yang dikembangkan oleh Yayasan Pelita Hijau
@@ -93,7 +93,8 @@ const About = () => {
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
-              title="Map Location"></iframe>
+              title="Map Location"
+            ></iframe>
           </div>
         </div>
       </section>

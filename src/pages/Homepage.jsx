@@ -39,7 +39,7 @@ const Homepage = () => {
           </p>
           <a href="/About">
             <button className="mt-4 bg-orange-400 text-white py-2 px-4 rounded-full hover:bg-orange-500">
-              Explore More
+              Telusuri lebih lanjut
             </button>
           </a>
         </div>
@@ -93,7 +93,7 @@ const Homepage = () => {
           </p>
           <a href="/Education">
             <button className="mt-4 bg-orange-400 text-white py-2 px-4 rounded-full hover:bg-orange-500">
-              Explore More
+              Jelajahi lebih lanjut
             </button>
           </a>
         </div>

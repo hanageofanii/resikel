@@ -41,28 +41,31 @@ const Navbar = () => {
             <ul className="flex flex-col lg:flex-row lg:space-x-6 space-y-4 lg:space-y-0">
               <li>
                 <a href="/" className="text-black-600 hover:text-green-800">
-                  Home
+                  Beranda
                 </a>
               </li>
               <li>
                 <a
                   href="/About"
-                  className="text-black-600 hover:text-green-800">
-                  About Us
+                  className="text-black-600 hover:text-green-800"
+                >
+                  Tentang Kami
                 </a>
               </li>
               <li>
                 <a
                   href="/Education"
-                  className="text-black-600 hover:text-green-800">
-                  Education
+                  className="text-black-600 hover:text-green-800"
+                >
+                  Edukasi
                 </a>
               </li>
               <li>
                 <a
                   href="/Rewards"
-                  className="text-black-600 hover:text-green-800">
-                  Rewards
+                  className="text-black-600 hover:text-green-800"
+                >
+                  Hadiah
                 </a>
               </li>
 
@@ -70,7 +73,8 @@ const Navbar = () => {
               <li className="lg:hidden">
                 <a
                   href="/Login"
-                  className="text-black-600 cursor-pointer hover:text-green-800">
+                  className="text-black-600 cursor-pointer hover:text-green-800"
+                >
                   Login
                 </a>
               </li>
@@ -82,7 +86,8 @@ const Navbar = () => {
             <i className="fas fa-user text-green-600"></i>
             <a
               href="/Login"
-              className="text-black-600 cursor-pointer hover:text-green-800"></a>
+              className="text-black-600 cursor-pointer hover:text-green-800"
+            ></a>
           </div>
         </div>
       </header>

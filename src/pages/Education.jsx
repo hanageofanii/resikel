@@ -130,8 +130,8 @@ const Education = () => {
         <div className="container mx-auto">
           <div className="max-w-6xl mx-auto p-6 bg-white rounded-lg shadow-lg">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-2xl font-bold text-black">
-                Our <span className="text-green-500">Blogs</span>
+              <h2 className="text-2xl font-bold text-green-500">
+                Blog <span className="text-black">Kami</span>
               </h2>
               <p className="text-gray-500 text-sm">5 MIN READ</p>
             </div>
@@ -160,8 +160,9 @@ const Education = () => {
                 </div>
                 <a
                   href="/Blog"
-                  className="py-2 text-green-700 text-base font-semibold hover:text-xl duration-150 active:text-lg">
-                  Read Now →
+                  className="py-2 text-green-700 text-base font-semibold hover:text-xl duration-150 active:text-lg"
+                >
+                  Baca Sekarang →
                 </a>
               </div>
             </div>
@@ -245,8 +246,9 @@ const Education = () => {
           <div className="mt-12 text-center">
             <a
               href="/ArticlesList"
-              className="inline-block px-8 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition-colors">
-              View More
+              className="inline-block px-8 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition-colors"
+            >
+              selengkapnya
             </a>
           </div>
         </div>

@@ -31,22 +31,26 @@ const Rewards = () => {
         {/* Added mb-12 here */}
         <div className="flex justify-between items-center mb-6">
           <div>
-            <h2 className="text-xl font-bold">Add Your Trash Today!</h2>
+            <h2 className="text-xl font-bold">
+              Kumpulkan sampah anda hari ini!
+            </h2>
             <a
               href="/Tracklocation"
-              className="text-sm text-gray-500 hover:underline">
-              Track Location
+              className="text-sm text-gray-500 hover:underline"
+            >
+              Lacak Lokasi
             </a>
           </div>
           <div className="flex items-center border border-orange-300 rounded-lg p-4">
             <i className="fas fa-recycle text-orange-300 text-2xl mr-2"></i>
             <div>
-              <p className="text-sm text-gray-500">Total Points</p>
+              <p className="text-sm text-gray-500">Total Poin</p>
               <p className="text-xl font-bold text-green-500">1.405</p>
               <a
                 href="/claimreward"
-                className="text-sm text-gray-500 hover:underline">
-                Claim Reward
+                className="text-sm text-gray-500 hover:underline"
+              >
+                Klaim hadiah
               </a>
             </div>
           </div>
@@ -59,7 +63,8 @@ const Rewards = () => {
             <div className="w-full bg-gray-300 rounded-full h-4">
               <div
                 className="bg-green-400 h-4 rounded-full"
-                style={{ width: "70%" }}></div>
+                style={{ width: "70%" }}
+              ></div>
             </div>
           </div>
         </div>
@@ -68,12 +73,13 @@ const Rewards = () => {
           <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
               <label className="block text-sm font-medium text-gray-700">
-                Your Name
+                Nama Anda
               </label>
               <input
                 type="text"
                 className="mt-1 block w-full border border-gray-300 rounded-md p-2"
                 required
+                placeholder="masukkan nama anda"
               />
             </div>
             <div>
@@ -82,7 +88,8 @@ const Rewards = () => {
               </label>
               <select
                 className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-                required>
+                required
+              >
                 <option>Pilih jenis sampah</option>
                 <option value="plastik">Plastik</option>
                 <option value="kertas">Kertas</option>
@@ -111,8 +118,9 @@ const Rewards = () => {
             <div className="text-center">
               <button
                 type="submit"
-                className="bg-orange-300 text-white py-2 px-4 rounded-md hover:bg-orange-500">
-                Submit
+                className="bg-orange-300 text-white py-2 px-4 rounded-md hover:bg-orange-500"
+              >
+                Kirim
               </button>
             </div>
           </form>
