@@ -9,15 +9,15 @@ const Rewards = () => {
     // Reset form
     event.target.reset();
 
-    // Arahkan ke halaman notifikasi dengan state
+    // Navigate to the notification page with state
     navigate("/notification", {
       state: {
         message: "Form berhasil disubmit!",
-        returnPath: "/Rewards", // Specify the return path for rewards
+        returnPath: "/Rewards",
       },
     });
 
-    // Log untuk memastikan handleSubmit dipanggil
+    // Log for debugging
     console.log("Form submitted");
   };
 
@@ -26,7 +26,9 @@ const Rewards = () => {
       <header className="w-full bg-green-200 py-16 px-8 lg:px-24 text-center">
         <h1 className="text-2xl font-bold">Yuk Kurangi Sampah!</h1>
       </header>
-      <main className="w-full max-w-4xl bg-white mt-6 p-6 rounded-lg shadow-md">
+      <main className="w-full max-w-4xl bg-white mt-6 p-6 rounded-lg shadow-md mb-12">
+        {" "}
+        {/* Added mb-12 here */}
         <div className="flex justify-between items-center mb-6">
           <div>
             <h2 className="text-xl font-bold">Add Your Trash Today!</h2>
