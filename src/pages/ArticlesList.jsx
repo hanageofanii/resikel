@@ -86,14 +86,9 @@ const ArticlesList = () => {
       <div className="mt-4 mb-8">
         <a
           href="/Education"
-          className="inline-flex items-center text-gray-700 hover:text-gray-900 text-lg font-semibold"
-        >
+          className="inline-flex items-center text-gray-700 hover:text-gray-900 text-lg font-semibold">
           <FaArrowLeft className="mr-2 text-xl" /> {/* Arrow icon */}
-<<<<<<< HEAD
           Kembali
-=======
-          Kembali ke Edukasi
->>>>>>> a1b68b1b6b473c0410f4e70d16317bbe9604dc68
         </a>
       </div>
 
@@ -101,8 +96,7 @@ const ArticlesList = () => {
         {articles.map((article) => (
           <div
             key={article.id}
-            className="border rounded-lg overflow-hidden shadow-lg"
-          >
+            className="border rounded-lg overflow-hidden shadow-lg">
             {article.imageUrl && (
               <img
                 src={article.imageUrl}
