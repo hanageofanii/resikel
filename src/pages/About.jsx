@@ -87,7 +87,7 @@ const About = () => {
           <p className="text-black-700 mb-4">Tembesi, Batam, Indonesia</p>
           <div className="mb-4">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.342817525823!2d106.8512233151034!3d-6.229096995527924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e41f2211c4f9793%3A0xb6cf5bb36d5d118b!2sTownhouse%20Gambir%20Park%20Blok%20A%2FNo.12%2C%20Jalan%20Gambir%20Park%2C%20Sukadamai%2C%20Kec.%20Serang%20Baru%2C%20Kabupaten%20Bekasi%2C%20Jawa%20Barat%2017311!5e0!3m2!1sen!2sid!4v1696096390293!5m2!1sen!2sid"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15955.16833052255!2d104.0759!3d1.0858!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d98b7b5c500e33%3A0x8b907ab0b13e0b5c!2sBatam!5e0!3m2!1sen!2sid!4v1696096390293!5m2!1sen!2sid"
               width="100%"
               height="300"
               style={{ border: 0 }}

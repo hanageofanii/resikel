@@ -82,9 +82,7 @@ const Navbar = () => {
             <i className="fas fa-user text-green-600"></i>
             <a
               href="/Login"
-              className="text-black-600 cursor-pointer hover:text-green-800">
-              Login
-            </a>
+              className="text-black-600 cursor-pointer hover:text-green-800"></a>
           </div>
         </div>
       </header>
