@@ -11,7 +11,7 @@ const Homepage = () => {
             Kami!
           </p>
           <a href="/Rewards">
-            <button className="mt-4 bg-orange-400 text-white py-2 px-4 rounded-full hover:bg-orange-500">
+            <button className="mt-4 bg-green-500 text-white font-bold py-2 px-4 rounded-full hover:bg-green-600">
               Ayo Kurangi Sampah!
             </button>
           </a>
@@ -38,7 +38,7 @@ const Homepage = () => {
             mengurangi sampah dan dapatkan reward menarik!
           </p>
           <a href="/About">
-            <button className="mt-4 bg-orange-400 text-white py-2 px-4 rounded-full hover:bg-orange-500">
+            <button className="mt-4 bg-green-500 text-white font-bold py-2 px-4 rounded-full hover:bg-green-600">
               Telusuri lebih lanjut
             </button>
           </a>
@@ -92,7 +92,7 @@ const Homepage = () => {
             ulang.
           </p>
           <a href="/Education">
-            <button className="mt-4 bg-orange-400 text-white py-2 px-4 rounded-full hover:bg-orange-500">
+            <button className="mt-4 bg-green-500 text-white font-bold py-2 px-4 rounded-full hover:bg-green-600">
               Jelajahi lebih lanjut
             </button>
           </a>

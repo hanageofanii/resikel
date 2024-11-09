@@ -93,8 +93,7 @@ const About = () => {
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
-              title="Map Location"
-            ></iframe>
+              title="Map Location"></iframe>
           </div>
         </div>
       </section>
