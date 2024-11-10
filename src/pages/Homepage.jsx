@@ -7,11 +7,11 @@ const Homepage = () => {
             Yuk Kurangi Sampahmu Hari Ini!
           </h1>
           <p className="text-xl text-black-600">
-            Dan Dapatkan Reward untuk Setiap Sampah yang Kamu Berikan kepada
+            Dan Dapatkan Hadiah untuk Setiap Sampah yang Kamu Berikan kepada
             Kami!
           </p>
           <a href="/Rewards">
-            <button className="mt-4 bg-green-500 text-white font-bold py-2 px-4 rounded-full hover:bg-green-600">
+            <button className="mt-4 bg-orange-500 text-white font-bold py-2 px-4 rounded-full hover:bg-orange-600">
               Ayo Kurangi Sampah!
             </button>
           </a>
@@ -35,10 +35,10 @@ const Homepage = () => {
             Pernah bertanya-tanya ke mana sampah kita berakhir? Di RESIKEL, kami
             berkomitmen untuk mengurangi sampah dengan menyediakan platform yang
             memudahkan kamu untuk mendaur ulang. Temukan cara-cara kreatif untuk
-            mengurangi sampah dan dapatkan reward menarik!
+            mengurangi sampah dan dapatkan Hadiah menarik!
           </p>
           <a href="/About">
-            <button className="mt-4 bg-green-500 text-white font-bold py-2 px-4 rounded-full hover:bg-green-600">
+            <button className="mt-4 bg-orange-500 text-white font-bold py-2 px-4 rounded-full hover:bg-orange-600">
               Telusuri lebih lanjut
             </button>
           </a>
@@ -92,7 +92,7 @@ const Homepage = () => {
             ulang.
           </p>
           <a href="/Education">
-            <button className="mt-4 bg-green-500 text-white font-bold py-2 px-4 rounded-full hover:bg-green-600">
+            <button className="mt-4 bg-orange-500 text-white font-bold py-2 px-4 rounded-full hover:bg-orange-600">
               Jelajahi lebih lanjut
             </button>
           </a>

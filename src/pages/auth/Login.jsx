@@ -95,9 +95,13 @@ function App() {
         {/* Popup Notification */}
         {showPopup && (
           <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center">
-            <div className="bg-white p-8 rounded-lg shadow-lg">
-              <p className="text-xl">Berhasil Masuk!</p>
-              <p className="mt-4">Mengalihkan ke beranda...</p>
+            <div className="bg-white p-8 rounded-lg shadow-lg flex items-center justify-center space-x-4">
+              {/* Icon and text */}
+              <span className="text-3xl text-green-500">✅</span>
+              <div>
+                <p className="text-xl">Berhasil Masuk!</p>
+                <p className="mt-4">Mengalihkan ke beranda...</p>
+              </div>
             </div>
           </div>
         )}

@@ -10,20 +10,20 @@ const Footer = () => {
   return (
     <footer className="bg-green-200 text-center py-8">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {/* Logo Section */}
-          <div className="flex justify-center md:justify-start items-center mb-6 md:mb-0">
+          <div className="flex justify-center sm:justify-start items-center">
             <a href="/">
               <img
                 src="./src/assets/images/logo.png"
                 alt="Logo Resikel"
-                className="w-20 h-20"
+                className="w-24 h-24"
               />
             </a>
           </div>
 
-          {/* Roadmap Links */}
-          <div className="flex flex-col items-center md:items-start mb-6 md:mb-0">
+          {/* Informasi Links */}
+          <div className="flex flex-col items-center sm:items-start">
             <p className="text-lg font-bold mb-2">Informasi</p>
             <a
               href="/About"
@@ -45,8 +45,8 @@ const Footer = () => {
             </a>
           </div>
 
-          {/* Contact Section */}
-          <div className="text-black-700 text-center md:text-left mb-6 md:mb-0">
+          {/* Hubungi Kami Section */}
+          <div className="flex flex-col items-center sm:items-start">
             <p className="text-lg font-bold mb-2">Hubungi Kami</p>
             <p>
               <a
@@ -67,8 +67,8 @@ const Footer = () => {
             </a>
           </div>
 
-          {/* Social Media Section */}
-          <div className="flex flex-col items-center md:items-start">
+          {/* Sosial Media Section */}
+          <div className="flex flex-col items-center sm:items-start">
             <p className="text-lg font-bold mb-2">Sosial Media Kami</p>
             <div className="flex space-x-4 mb-4">
               <a
@@ -101,6 +101,13 @@ const Footer = () => {
               </a>
             </div>
           </div>
+        </div>
+
+        {/* Copyright Section */}
+        <div className="mt-8 text-center">
+          <p className="text-sm text-black-600">
+            &copy; 2024 Jaya Ternak. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

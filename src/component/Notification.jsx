@@ -26,7 +26,7 @@ const Notification = () => {
         <div className="mt-6">
           <button
             onClick={handleReturn}
-            className="inline-block bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-300 sm:py-3 sm:px-6 md:px-8">
+            className="inline-block bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-orange-600 transition duration-300 sm:py-3 sm:px-6 md:px-8">
             Kembali
           </button>
         </div>

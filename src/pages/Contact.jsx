@@ -148,7 +148,7 @@ const Contact = () => {
           <div>
             <button
               type="submit"
-              className="bg-[#59cf94] text-white py-3 px-8 rounded-full hover:bg-green-600 transition duration-300">
+              className="bg-orange-500 text-white font-bold py-3 px-8 rounded-full hover:bg-orange-600 transition duration-300">
               Kirim
             </button>
           </div>

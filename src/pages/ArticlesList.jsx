@@ -106,7 +106,7 @@ const ArticlesList = () => {
             )}
             <div className="p-4">
               <div className="flex justify-between items-center mb-2">
-                <span className="bg-gray-200 text-gray-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">
+                <span className="bg-orange-500 text-white text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">
                   {article.title}
                 </span>
                 <span className="text-gray-600 text-xs">{article.date}</span>

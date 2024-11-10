@@ -147,20 +147,18 @@ const Education = () => {
               </div>
               <div className="w-full lg:w-1/2 bg-green-200 rounded-lg p-6 py-16">
                 <p className="py-4 text-sm text-gray-500 mb-2">SEPT 24, 2024</p>
-                <h3 className="py-4 text-3xl text-black my-4">
+                <h3 className="py-4 text-3xl text-black my-4 font-bold">
                   Apa itu Recycle? Pahami Arti dan Cara Melakukannya!
                 </h3>
                 <div className="py-2 flex space-x-3 mb-4">
-                  <span className="px-3 py-1 bg-green-300 text-green-700 rounded-full text-sm">
+                  <span className="px-3 py-1 bg-orange-500 text-white font-bold rounded-full text-sm">
                     Recycle
                   </span>
-                  <span className="px-3 py-1 bg-green-300 text-green-700 rounded-full text-sm">
+                  <span className="px-3 py-1 bg-orange-500 text-white font-bold rounded-full text-sm">
                     Edukasi
                   </span>
                 </div>
-                <a
-                  href="/Blog"
-                  className="py-2 text-green-700 text-base font-semibold hover:text-xl duration-150 active:text-lg">
+                <a href="/Blog" className="py-2 text-green-700 font-semibold">
                   Baca Sekarang →
                 </a>
               </div>
@@ -183,7 +181,7 @@ const Education = () => {
                 className="w-full h-48 object-cover rounded-lg mb-4"
               />
               <div className="flex items-center justify-between mb-2">
-                <span className="bg-green-300 text-green-700 text-xs font-semibold px-2 py-1 rounded-full">
+                <span className="bg-orange-500 text-white  text-xs font-semibold px-2 py-1 rounded-full">
                   Recycle
                 </span>
                 <span className="text-gray-500 text-xs">SEPT 24, 2024</span>
@@ -204,7 +202,7 @@ const Education = () => {
                 className="w-full h-48 object-cover rounded-lg mb-4"
               />
               <div className="flex items-center justify-between mb-2">
-                <span className="bg-green-300 text-green-700 text-xs font-semibold px-2 py-1 rounded-full">
+                <span className="bg-orange-500 text-white  text-xs font-semibold px-2 py-1 rounded-full">
                   Recycle
                 </span>
                 <span className="text-gray-500 text-xs">SEPT 24, 2024</span>
@@ -226,7 +224,7 @@ const Education = () => {
                 className="w-full h-48 object-cover rounded-lg mb-4"
               />
               <div className="flex items-center justify-between mb-2">
-                <span className="bg-green-300 text-green-700 text-xs font-semibold px-2 py-1 rounded-full">
+                <span className="bg-orange-500 text-white  text-xs font-semibold px-2 py-1 rounded-full">
                   Reduce
                 </span>
                 <span className="text-gray-500 text-xs">SEPT 24, 2024</span>
@@ -245,7 +243,7 @@ const Education = () => {
           <div className="mt-12 text-center">
             <a
               href="/ArticlesList"
-              className="inline-block px-8 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition-colors">
+              className="inline-block px-8 py-3 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transition-colors">
               selengkapnya
             </a>
           </div>

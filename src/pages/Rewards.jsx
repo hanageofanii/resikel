@@ -112,7 +112,7 @@ const Rewards = () => {
             <div className="text-center">
               <button
                 type="submit"
-                className="bg-orange-300 text-white py-2 px-4 rounded-md hover:bg-orange-500">
+                className="bg-orange-500 text-white  font-bold py-2 px-4 rounded-md hover:bg-orange-600">
                 Kirim
               </button>
             </div>

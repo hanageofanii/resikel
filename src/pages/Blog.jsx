@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Blog = () => {
   return (
-    <div className="p-5 max-w-3xl mx-auto">
+    <div className="p-10 max-w-3xl mx-auto">
       <Link to="/education" className="text-green-500 no-underline">
         <p>← Blog</p>
       </Link>
