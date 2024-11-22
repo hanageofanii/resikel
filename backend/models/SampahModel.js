@@ -1,21 +1,37 @@
-import Sequelize from "sequelize";
-import db from "../config/Database";
+import { Sequelize } from "sequelize";
+import db from "../config/Database.js";
 
-const Sampah = db.define("sampah", {
-  id: {
-    type: Sequelize.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
+const { DataTypes } = Sequelize;
+
+const Sampah = db.define(
+  "sampah",
+  {
+    name: DataTypes.STRING,
+    jenis: DataTypes.STRING,
+    berat: DataTypes.INTEGER,
+
+    // id: {
+    //   type: Sequelize.INTEGER,
+    //   primaryKey: true,
+    //   autoIncrement: true,
+    // },
+    // nama: {
+    //   type: Sequelize.STRING,
+    // },
+    // jenis: {
+    //   type: Sequelize.STRING,
+    // },
+    // berat: {
+    //   type: Sequelize.INTEGER,
+    // },
   },
-  nama: {
-    type: Sequelize.STRING,
-  },
-  jenis: {
-    type: Sequelize.STRING,
-  },
-  berat: {
-    type: Sequelize.INTEGER,
-  },
-});
+  {
+    freezeTableName: true,
+  }
+);
 
 export default Sampah;
+
+(async () => {
+  await db.sync();
+})();

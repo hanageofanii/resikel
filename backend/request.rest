@@ -1,17 +1,16 @@
-GET http://localhost:5000/users
+GET http://localhost:5000/contact
 
 ###
 GET http://localhost:5000/users/1
 
 ###
-POST http://localhost:5000/users
+POST http://localhost:5000/contact
 Content-Type: application/json
 
 {
-    "name": "Titto",
-    "age": 21,
-    "address": "Bekasi",
-    "email": "titot@gmail.com"
+    "name": "rapi",
+    "email": "rapi@gmail.com",
+    "message": "akfolaondjf oakenfoan foaknef oaknf oaiej foiakj ofiweja ofiaeh foiaf oljwefo oakwj foiawje fopijawf oi."
 }
 
 ###
@@ -23,4 +22,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:5000/users/3
+DELETE http://localhost:5000/sampah/8
