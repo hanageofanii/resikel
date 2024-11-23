@@ -1,18 +1,26 @@
 import express from "express";
 import {
-  createUser,
-  deleteUser,
+  // createUser,
+  // deleteUser,
   getUsers,
-  getUsersById,
-  updateUser,
+  Register,
+  Login,
+  Logout,
+  // getUsersById,
+  // updateUser,
 } from "../controllers/UserController.js";
+import { verifyToken } from "../middleware/VerifyToken.js";
+import { refreshToken } from "../controllers/RefreshToken.js";
 
 const router = express.Router();
 
-router.get("/users", getUsers);
-router.get("/users/:id", getUsersById);
-router.post("/users", createUser);
-router.patch("/users/:id", updateUser);
-router.delete("/users/:id", deleteUser);
+router.get("/users", verifyToken, getUsers);
+// router.get("/users/:id", getUsersById);
+router.post("/users", Register);
+router.post("/login", Login);
+router.get("/token", refreshToken);
+router.delete("/logout", Logout);
+// router.patch("/users/:id", updateUser);
+// router.delete("/users/:id", deleteUser);
 
 export default router;

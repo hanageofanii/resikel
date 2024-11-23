@@ -1,17 +1,34 @@
-GET http://localhost:5000/contact
-
+GET http://localhost:5000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsIm5hbWUiOiJyYXBpIiwiZW1haWwiOiJyYXBpQGdtYWlsLmNvbSIsImlhdCI6MTczMjM2NjczMSwiZXhwIjoxNzMyMzY2NzQ2fQ.gMqbQ5KiLDGT1g_rVXQf6OviWTKjdU1MLq1YAwq2hPo
 ###
 GET http://localhost:5000/users/1
 
 ###
-POST http://localhost:5000/contact
+POST http://localhost:5000/users
 Content-Type: application/json
 
 {
-    "name": "rapi",
-    "email": "rapi@gmail.com",
-    "message": "akfolaondjf oakenfoan foaknef oaknf oaiej foiakj ofiweja ofiaeh foiaf oljwefo oakwj foiawje fopijawf oi."
+    "name": "rapi 2",
+    "email": "rapi2@gmail.com",
+    "phone": "08111111",
+    "password": "123456",
+    "confPassword": "123451"
 }
+
+###
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email" : "rapi@gmail.com",
+    "password" : "123456"
+}
+ 
+###
+GET http://localhost:5000/token
+
+###
+DELETE http://localhost:5000/logout
 
 ###
 PATCH http://localhost:5000/users/1

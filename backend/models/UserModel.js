@@ -3,20 +3,21 @@ import db from "../config/Database.js";
 
 const { DataTypes } = Sequelize;
 
-const User = db.define(
+const Users = db.define(
   "users",
   {
     name: DataTypes.STRING,
-    age: DataTypes.INTEGER,
-    address: DataTypes.STRING,
     email: DataTypes.STRING,
+    phone: DataTypes.STRING,
+    password: DataTypes.STRING,
+    refresh_token: DataTypes.TEXT,
   },
   {
     freezeTableName: true,
   }
 );
 
-export default User;
+export default Users;
 
 (async () => {
   await db.sync();
