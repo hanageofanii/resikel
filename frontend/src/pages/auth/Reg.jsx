@@ -1,9 +1,10 @@
 import { useState } from "react";
+import axios from "axios";
 
 function RegisterForm() {
   const [showPopup, setShowPopup] = useState(false);
   const [formData, setFormData] = useState({
-    fullName: "",
+    name: "",
     email: "",
     phone: "",
     password: "",
@@ -18,12 +19,26 @@ function RegisterForm() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
+    try {
+      await axios.post("http://localhost:5000/users", {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        password: formData.password,
+        repeatPassword: formData.repeatPassword,
+      });
+    } catch (error) {
+      if (error.response) {
+        setMsg(error.response.data.msg);
+      }
+    }
+
     const newErrors = {};
-    if (!formData.fullName) {
-      newErrors.fullName = "Masukan Nama Lengkap anda";
+    if (!formData.name) {
+      newErrors.name = "Masukan Nama Lengkap anda";
     }
     if (!formData.email) {
       newErrors.email = "Masukan email anda";
@@ -60,14 +75,14 @@ function RegisterForm() {
             <label className="block text-lg mb-2">Nama lengkap</label>
             <input
               type="text"
-              name="fullName"
-              value={formData.fullName}
+              name="name"
+              value={formData.name}
               onChange={handleChange}
               placeholder="Nama"
               className="w-full p-3 border rounded-lg"
             />
-            {errors.fullName && (
-              <p className="text-red-500 text-sm">{errors.fullName}</p>
+            {errors.name && (
+              <p className="text-red-500 text-sm">{errors.name}</p>
             )}
           </div>
           <div>
