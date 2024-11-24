@@ -1,81 +1,92 @@
+import { useEffect, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 
-const articles = [
-  {
-    id: 1,
-    title: "Recycle",
-    date: "SEPT 14, 2024",
-    description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
-    imageUrl: "./src/assets/images/blog1.jpeg",
-    altText: "Recycling symbol made of green leaves",
-  },
-  {
-    id: 2,
-    title: "Recycle",
-    date: "SEPT 14, 2024",
-    description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
-    imageUrl: "./src/assets/images/blog2.jpeg",
-    altText: "Recycling symbol made of green leaves",
-  },
-  {
-    id: 3,
-    title: "Recycle",
-    date: "SEPT 14, 2024",
-    description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
-    imageUrl: "./src/assets/images/blogs.png",
-    altText: "Recycling symbol made of green leaves",
-  },
-  {
-    id: 4,
-    title: "Recycle",
-    date: "SEPT 14, 2024",
-    description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
-    imageUrl: "./src/assets/images/blog1.jpeg",
-    altText: "Recycling symbol made of green leaves",
-  },
-  {
-    id: 5,
-    title: "Recycle",
-    date: "SEPT 14, 2024",
-    description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
-    imageUrl: "./src/assets/images/blog2.jpeg",
-    altText: "Recycling symbol made of green leaves",
-  },
-  {
-    id: 6,
-    title: "Recycle",
-    date: "SEPT 14, 2024",
-    description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
-    imageUrl: "./src/assets/images/blogs.png",
-    altText: "Recycling symbol made of green leaves",
-  },
-  {
-    id: 7,
-    title: "Recycle",
-    date: "SEPT 14, 2024",
-    description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
-    imageUrl: "./src/assets/images/blog1.jpeg",
-    altText: "Recycling symbol made of green leaves",
-  },
-  {
-    id: 8,
-    title: "Recycle",
-    date: "SEPT 14, 2024",
-    description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
-    imageUrl: "./src/assets/images/blog2.jpeg",
-    altText: "Recycling symbol made of green leaves",
-  },
-  {
-    id: 9,
-    title: "Recycle",
-    date: "SEPT 14, 2024",
-    description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
-    imageUrl: "./src/assets/images/blogs.png",
-    altText: "Recycling symbol made of green leaves",
-  },
-];
+// const articles = [
+//   {
+//     id: 1,
+//     title: "Recycle",
+//     date: "SEPT 14, 2024",
+//     description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
+//     imageUrl: "./src/assets/images/blog1.jpeg",
+//     altText: "Recycling symbol made of green leaves",
+//   },
+//   {
+//     id: 2,
+//     title: "Recycle",
+//     date: "SEPT 14, 2024",
+//     description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
+//     imageUrl: "./src/assets/images/blog2.jpeg",
+//     altText: "Recycling symbol made of green leaves",
+//   },
+//   {
+//     id: 3,
+//     title: "Recycle",
+//     date: "SEPT 14, 2024",
+//     description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
+//     imageUrl: "./src/assets/images/blogs.png",
+//     altText: "Recycling symbol made of green leaves",
+//   },
+//   {
+//     id: 4,
+//     title: "Recycle",
+//     date: "SEPT 14, 2024",
+//     description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
+//     imageUrl: "./src/assets/images/blog1.jpeg",
+//     altText: "Recycling symbol made of green leaves",
+//   },
+//   {
+//     id: 5,
+//     title: "Recycle",
+//     date: "SEPT 14, 2024",
+//     description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
+//     imageUrl: "./src/assets/images/blog2.jpeg",
+//     altText: "Recycling symbol made of green leaves",
+//   },
+//   {
+//     id: 6,
+//     title: "Recycle",
+//     date: "SEPT 14, 2024",
+//     description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
+//     imageUrl: "./src/assets/images/blogs.png",
+//     altText: "Recycling symbol made of green leaves",
+//   },
+//   {
+//     id: 7,
+//     title: "Recycle",
+//     date: "SEPT 14, 2024",
+//     description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
+//     imageUrl: "./src/assets/images/blog1.jpeg",
+//     altText: "Recycling symbol made of green leaves",
+//   },
+//   {
+//     id: 8,
+//     title: "Recycle",
+//     date: "SEPT 14, 2024",
+//     description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
+//     imageUrl: "./src/assets/images/blog2.jpeg",
+//     altText: "Recycling symbol made of green leaves",
+//   },
+//   {
+//     id: 9,
+//     title: "Recycle",
+//     date: "SEPT 14, 2024",
+//     description: "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
+//     imageUrl: "./src/assets/images/blogs.png",
+//     altText: "Recycling symbol made of green leaves",
+//   },
+// ];
 
 const ArticlesList = () => {
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    // Fetch data dari API backend
+    fetch("http://localhost:5000/articles")
+      .then((response) => response.json())
+      .then((data) => setArticles(data))
+      .catch((error) => console.error("Error fetching articles:", error));
+  }, []);
+
   return (
     <div className="container mx-auto p-4">
       <header className="w-full bg-white-200 py-16 px-8 lg:px-24 text-center">
@@ -86,7 +97,8 @@ const ArticlesList = () => {
       <div className="mt-4 mb-8">
         <a
           href="/Education"
-          className="inline-flex items-center text-gray-700 hover:text-gray-900 text-lg font-semibold">
+          className="inline-flex items-center text-gray-700 hover:text-gray-900 text-lg font-semibold"
+        >
           <FaArrowLeft className="mr-2 text-xl" /> {/* Arrow icon */}
           Kembali
         </a>
@@ -96,7 +108,8 @@ const ArticlesList = () => {
         {articles.map((article) => (
           <div
             key={article.id}
-            className="border rounded-lg overflow-hidden shadow-lg">
+            className="border rounded-lg overflow-hidden shadow-lg"
+          >
             {article.imageUrl && (
               <img
                 src={article.imageUrl}
@@ -111,7 +124,7 @@ const ArticlesList = () => {
                 </span>
                 <span className="text-gray-600 text-xs">{article.date}</span>
               </div>
-              <p className="text-gray-800 text-sm">{article.description}</p>
+              <p className="text-gray-800 text-sm">{article.desc}</p>
             </div>
           </div>
         ))}

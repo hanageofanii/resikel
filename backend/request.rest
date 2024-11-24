@@ -4,15 +4,15 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsIm5hb
 GET http://localhost:5000/users/1
 
 ###
-POST http://localhost:5000/users
+POST http://localhost:5000/articles
 Content-Type: application/json
 
 {
-    "name": "rapi 2",
-    "email": "rapi2@gmail.com",
-    "phone": "08111111",
-    "password": "123456",
-    "confPassword": "123451"
+    "title": "Recycle",
+    "date": "SEPT 14, 2024",
+    "desc": "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
+    "imageUrl": "./src/assets/images/blogs.jpeg",
+    "altText": "Recycling symbol made of green leaves"
 }
 
 ###
@@ -31,12 +31,12 @@ GET http://localhost:5000/token
 DELETE http://localhost:5000/logout
 
 ###
-PATCH http://localhost:5000/users/1
+PATCH http://localhost:5000/articles/4
 Content-Type: application/json
 
 {
-    "address": "Cikarang"
+    "imageUrl": "./src/assets/images/blogs.png"
 }
 
 ###
-DELETE http://localhost:5000/sampah/8
+DELETE http://localhost:5000/articles/2
