@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function App() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ function App() {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSignIn = (e) => {
+  const handleSignIn = async (e) => {
     e.preventDefault();
 
     const newErrors = {};
@@ -29,12 +30,40 @@ function App() {
     }
 
     setErrors({});
-    setShowPopup(true);
 
-    setTimeout(() => {
-      setShowPopup(false);
-      navigate("/");
-    }, 2000);
+    try {
+      const response = await axios.post("http://localhost:5000/login", {
+        email: formData.email,
+        password: formData.password,
+      });
+
+      console.log(response.data); // Hasil login dari backend
+      setShowPopup(true); // Tampilkan popup berhasil login
+
+      setTimeout(() => {
+        setShowPopup(false);
+        navigate("/"); // Arahkan ke beranda
+      }, 2000);
+    } catch (error) {
+      // Tampilkan pesan error dari backend
+      if (error.response && error.response.data.msg) {
+        setErrors({ apiError: error.response.data.msg });
+        setShowPopup(true); // Tampilkan popup error
+        // Tunggu 2 detik sebelum refresh halaman
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      } else {
+        console.error("Login error:", error);
+        setErrors({ apiError: "Terjadi kesalahan. Silakan coba lagi." });
+        setShowPopup(true);
+
+        // Tunggu 2 detik sebelum refresh halaman
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      }
+    }
   };
 
   return (
@@ -83,7 +112,8 @@ function App() {
           <div className="flex justify-center">
             <button
               type="submit"
-              className="bg-orange-400 text-white py-3 px-8 rounded mt-2 w-full">
+              className="bg-orange-400 text-white py-3 px-8 rounded mt-2 w-full"
+            >
               MASUK
             </button>
           </div>
@@ -96,11 +126,22 @@ function App() {
         {showPopup && (
           <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center">
             <div className="bg-white p-8 rounded-lg shadow-lg flex items-center justify-center space-x-4">
-              {/* Icon and text */}
-              <span className="text-3xl text-green-500">✅</span>
+              <span
+                className={`text-3xl ${
+                  errors.apiError ? "text-red-500" : "text-green-500"
+                }`}
+              >
+                {errors.apiError ? "❌" : "✅"}
+              </span>
               <div>
-                <p className="text-xl">Berhasil Masuk!</p>
-                <p className="mt-4">Mengalihkan ke beranda...</p>
+                <p className="text-xl">
+                  {errors.apiError ? "Login Gagal!" : "Berhasil Masuk!"}
+                </p>
+                <p className="mt-4">
+                  {errors.apiError
+                    ? errors.apiError
+                    : "Mengalihkan ke beranda..."}
+                </p>
               </div>
             </div>
           </div>

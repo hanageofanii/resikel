@@ -129,7 +129,8 @@ function RegisterForm() {
           <div>
             <button
               type="submit"
-              className="w-full p-3 bg-orange-400 text-white font-bold rounded-lg">
+              className="w-full p-3 bg-orange-400 text-white font-bold rounded-lg"
+            >
               DAFTAR
             </button>
           </div>
