@@ -22,20 +22,6 @@ function RegisterForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      await axios.post("http://localhost:5000/users", {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        password: formData.password,
-        repeatPassword: formData.repeatPassword,
-      });
-    } catch (error) {
-      if (error.response) {
-        setMsg(error.response.data.msg);
-      }
-    }
-
     const newErrors = {};
     if (!formData.name) {
       newErrors.name = "Masukan Nama Lengkap anda";
@@ -59,6 +45,21 @@ function RegisterForm() {
     }
 
     setErrors({});
+
+    try {
+      await axios.post("http://localhost:5000/users", {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        password: formData.password,
+        repeatPassword: formData.repeatPassword,
+      });
+    } catch (error) {
+      if (error.response) {
+        setMsg(error.response.data.msg);
+      }
+    }
+
     setShowPopup(true);
 
     setTimeout(() => {

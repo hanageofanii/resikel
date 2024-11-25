@@ -13,10 +13,12 @@ import Notification from "./component/Notification.jsx";
 import ArticlesList from "./pages/ArticlesList.jsx";
 import LogIn from "./pages/auth/Login.jsx";
 import Reg from "./pages/auth/Reg.jsx";
+import ScrollToTop from "./pages/ScrollToTop.jsx";
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div>
         <Navbar />
         <Routes>

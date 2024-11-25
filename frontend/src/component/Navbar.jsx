@@ -127,8 +127,9 @@ const Navbar = () => {
             <i className="fas fa-user text-green-600 transition-transform duration-300 group-hover:scale-110"></i>
             <button
               onClick={Logout}
-              className="text-black transition-transform duration-300 hover:scale-110"
+              className="relative text-black-600 hover:text-green-800 transition-all duration-300 py-2 px-4 rounded-lg group"
             >
+              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-green-600 transform origin-left transition-all duration-300 scale-x-0 group-hover:scale-x-100" />
               Logout
             </button>
           </div>
