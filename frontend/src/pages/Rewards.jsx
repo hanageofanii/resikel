@@ -1,23 +1,56 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 
 const Rewards = () => {
+  const [openIndex, setOpenIndex] = useState(null);
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    name: "",
+    jenis: "",
+    berat: "",
+  });
 
-  const handleSubmit = (event) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
-    // Reset form
     event.target.reset();
 
-    // Navigate to the notification page with state
-    navigate("/notification", {
-      state: {
-        message: "Form berhasil dikirim!",
-        returnPath: "/Rewards",
-      },
+    try {
+      const response = await axios.post("http://localhost:5000/sampah", {
+        name: formData.name,
+        jenis: formData.jenis,
+        berat: formData.berat,
+      });
+
+      if (response.status === 201) {
+        // "Contact Created"
+        navigate("/notification", {
+          state: {
+            message: "Form berhasil disubmit!",
+            returnPath: "/Rewards",
+          },
+        });
+      }
+    } catch (error) {
+      console.error("Error submitting the form:", error);
+      alert("Terjadi kesalahan saat mengirim pesan.");
+    }
+
+    // Reset form
+    setFormData({
+      name: "",
+      jenis: "",
+      berat: "",
     });
 
-    // Log for debugging
     console.log("Form submitted");
   };
 
@@ -36,7 +69,8 @@ const Rewards = () => {
             </h2>
             <a
               href="/Tracklocation"
-              className="text-sm text-gray-500 hover:underline">
+              className="text-sm text-gray-500 hover:underline"
+            >
               Lacak Lokasi
             </a>
           </div>
@@ -47,19 +81,10 @@ const Rewards = () => {
               <p className="text-xl font-bold text-green-500">1.405</p>
               <a
                 href="/claimreward"
-                className="text-sm text-gray-500 hover:underline">
+                className="text-sm text-gray-500 hover:underline"
+              >
                 Klaim hadiah
               </a>
-            </div>
-          </div>
-        </div>
-        <div className="mt-6">
-          <div className="w-full px-8 pb-6 border border-gray-300 rounded-full mb-8">
-            <p className="text-justify mb-1 pt-1 font-bold">450 poin Trash+</p>
-            <div className="w-full bg-gray-300 rounded-full h-4">
-              <div
-                className="bg-green-400 h-4 rounded-full"
-                style={{ width: "70%" }}></div>
             </div>
           </div>
         </div>
@@ -72,6 +97,9 @@ const Rewards = () => {
               </label>
               <input
                 type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 rounded-md p-2"
                 required
                 placeholder="masukkan nama anda"
@@ -82,8 +110,12 @@ const Rewards = () => {
                 Jenis Sampah
               </label>
               <select
+                name="jenis"
+                value={formData.jenis}
+                onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-                required>
+                required
+              >
                 <option>Pilih jenis sampah</option>
                 <option value="plastik">Plastik</option>
                 <option value="kertas">Kertas</option>
@@ -103,6 +135,9 @@ const Rewards = () => {
                 </label>
                 <input
                   type="number"
+                  name="berat"
+                  value={formData.berat}
+                  onChange={handleChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md p-2"
                   required
                 />
@@ -112,7 +147,8 @@ const Rewards = () => {
             <div className="text-center">
               <button
                 type="submit"
-                className="bg-orange-500 text-white  font-bold py-2 px-4 rounded-md hover:bg-orange-600">
+                className="bg-orange-500 text-white  font-bold py-2 px-4 rounded-md hover:bg-orange-600"
+              >
                 Kirim
               </button>
             </div>
