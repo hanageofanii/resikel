@@ -17,6 +17,8 @@
     "@mui/icons-material": "^6.1.6",
     "@mui/material": "^6.1.6",
     "@mui/styled-engine-sc": "^6.1.6",
+    "axios": "^1.7.7",
+    "date-fns": "^4.1.0",
     "html2canvas": "^1.4.1",
     "leaflet": "^1.9.4",
     "prop-types": "^15.8.1",

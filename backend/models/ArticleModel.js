@@ -7,7 +7,6 @@ const Article = db.define(
   "articles",
   {
     title: DataTypes.STRING,
-    date: DataTypes.STRING,
     desc: DataTypes.TEXT,
     imageUrl: DataTypes.STRING,
     altText: DataTypes.STRING,

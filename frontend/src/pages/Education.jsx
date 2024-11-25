@@ -243,7 +243,8 @@ const Education = () => {
           <div className="mt-12 text-center">
             <a
               href="/ArticlesList"
-              className="inline-block px-8 py-3 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transition-colors">
+              className="inline-block px-8 py-3 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transition-colors"
+            >
               selengkapnya
             </a>
           </div>

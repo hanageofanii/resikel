@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+import { id } from "date-fns/locale";
 import { useEffect, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 
@@ -122,7 +124,11 @@ const ArticlesList = () => {
                 <span className="bg-orange-500 text-white text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">
                   {article.title}
                 </span>
-                <span className="text-gray-600 text-xs">{article.date}</span>
+                <span className="text-gray-600 text-xs">
+                  {format(new Date(article.createdAt), "dd MMMM yyyy", {
+                    locale: id,
+                  })}
+                </span>
               </div>
               <p className="text-gray-800 text-sm">{article.desc}</p>
             </div>
