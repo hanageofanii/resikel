@@ -32,10 +32,16 @@ function App() {
     setErrors({});
 
     try {
-      const response = await axios.post("http://localhost:5000/login", {
-        email: formData.email,
-        password: formData.password,
-      });
+      const response = await axios.post(
+        "http://localhost:5000/login",
+        {
+          email: formData.email,
+          password: formData.password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
 
       console.log(response.data); // Hasil login dari backend
       setShowPopup(true); // Tampilkan popup berhasil login

@@ -19,7 +19,7 @@ router.get("/users", verifyToken, getUsers);
 router.post("/users", Register);
 router.post("/login", Login);
 router.get("/token", refreshToken);
-router.delete("/logout", Logout);
+router.post("/logout", Logout);
 // router.patch("/users/:id", updateUser);
 // router.delete("/users/:id", deleteUser);
 

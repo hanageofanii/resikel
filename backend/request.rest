@@ -9,7 +9,6 @@ Content-Type: application/json
 
 {
     "title": "Recycle",
-    "date": "SEPT 14, 2024",
     "desc": "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
     "imageUrl": "./src/assets/images/blogs.jpeg",
     "altText": "Recycling symbol made of green leaves"
