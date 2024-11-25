@@ -1,23 +1,52 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Contact = () => {
   const [openIndex, setOpenIndex] = useState(null);
   const navigate = useNavigate();
 
-  const toggleFaq = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     event.target.reset();
 
-    navigate("/notification", {
-      state: {
-        message: "Form berhasil disubmit!",
-        returnPath: "/Contact",
-      },
+    try {
+      const response = await axios.post("http://localhost:5000/contact", {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+      });
+
+      if (response.status === 201) {
+        // "Contact Created"
+        navigate("/notification", {
+          state: {
+            message: "Form berhasil disubmit!",
+            returnPath: "/Contact",
+          },
+        });
+      }
+    } catch (error) {
+      console.error("Error submitting the form:", error);
+      alert("Terjadi kesalahan saat mengirim pesan.");
+    }
+
+    // Reset form
+    setFormData({
+      name: "",
+      email: "",
+      message: "",
     });
 
     console.log("Form submitted");
@@ -83,7 +112,8 @@ const Contact = () => {
             <div
               key={index}
               className="border rounded-lg overflow-hidden cursor-pointer"
-              onClick={() => toggleFaq(index)}>
+              onClick={() => toggleFaq(index)}
+            >
               <div className="bg-gray-50 p-4 text-xl font-semibold text-gray-700 flex justify-between items-center">
                 <span>{faq.question}</span>
                 <span className="text-gray-500">
@@ -121,6 +151,9 @@ const Contact = () => {
             </label>
             <input
               type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
               className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-[#59cf94]"
               placeholder="Masukan Nama Anda"
               required
@@ -132,6 +165,9 @@ const Contact = () => {
             </label>
             <input
               type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
               className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-[#59cf94]"
               placeholder="Masukan Email Anda"
               required
@@ -140,15 +176,20 @@ const Contact = () => {
           <div className="text-left">
             <label className="block text-gray-600 font-light mb-2">Pesan</label>
             <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
               className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-[#59cf94]"
               placeholder="Masukan Pesan Anda"
               rows="4"
-              required></textarea>
+              required
+            ></textarea>
           </div>
           <div>
             <button
               type="submit"
-              className="bg-orange-500 text-white font-bold py-3 px-8 rounded-full hover:bg-orange-600 transition duration-300">
+              className="bg-orange-500 text-white font-bold py-3 px-8 rounded-full hover:bg-orange-600 transition duration-300"
+            >
               Kirim
             </button>
           </div>

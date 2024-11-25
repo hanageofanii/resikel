@@ -14,12 +14,9 @@ const port = process.env.PORT || 5000;
 app.use(cookieParser());
 app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(UserRoute);
 app.use(SampahRoute);
 app.use(ContactRoute);
 app.use(ArticleRoute);
 app.listen(5000, () => console.log("Server up and running..."));
-
-// app.listen(port, () => {
-//   console.log(`Server listening on port ${port}`);
-// });

@@ -9,21 +9,6 @@ const Contact = db.define(
     name: DataTypes.STRING,
     email: DataTypes.STRING,
     message: DataTypes.TEXT,
-
-    // id: {
-    //   type: Sequelize.INTEGER,
-    //   primaryKey: true,
-    //   autoIncrement: true,
-    // },
-    // name: {
-    //   type: Sequelize.STRING,
-    // },
-    // email: {
-    //   type: Sequelize.STRING,
-    // },
-    // message: {
-    //   type: Sequelize.TEXT,
-    // },
   },
   {
     freezeTableName: true,
