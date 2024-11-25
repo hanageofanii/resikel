@@ -2,6 +2,7 @@ import { format } from "date-fns";
 import { id } from "date-fns/locale";
 import { useEffect, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 // const articles = [
 //   {
@@ -130,7 +131,9 @@ const ArticlesList = () => {
                   })}
                 </span>
               </div>
-              <p className="text-gray-800 text-sm">{article.desc}</p>
+              <Link to="/Blog" className="hover:font-bold">
+                <p className="text-gray-800 text-sm">{article.desc}</p>
+              </Link>
             </div>
           </div>
         ))}

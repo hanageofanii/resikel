@@ -10,6 +10,8 @@ const Article = db.define(
     desc: DataTypes.TEXT,
     imageUrl: DataTypes.STRING,
     altText: DataTypes.STRING,
+    author: DataTypes.STRING,
+    content: DataTypes.TEXT,
   },
   {
     freezeTableName: true,
