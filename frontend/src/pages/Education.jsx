@@ -1,6 +1,10 @@
+import Navbar from "../component/Navbar";
+import Footer from "../component/footer.jsx";
+
 const Education = () => {
   return (
     <main className="bg-gray-100">
+      <Navbar />
       {/* Section 1: Introduction with 3R */}
       <section className="bg-green-200 py-8 px-8 lg:px-24 flex flex-col lg:flex-row items-center">
         <div className="flex-1 text-left max-w-lg mx-auto space-y-4">
@@ -243,12 +247,14 @@ const Education = () => {
           <div className="mt-12 text-center">
             <a
               href="/ArticlesList"
-              className="inline-block px-8 py-3 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transition-colors">
+              className="inline-block px-8 py-3 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transition-colors"
+            >
               selengkapnya
             </a>
           </div>
         </div>
       </section>
+      <Footer />
     </main>
   );
 };

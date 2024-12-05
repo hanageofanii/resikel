@@ -1,6 +1,10 @@
+import Navbar from "../component/Navbar";
+import Footer from "../component/footer.jsx";
+
 const About = () => {
   return (
     <main className="bg-gray-50">
+      <Navbar />
       <section className="bg-green-200 py-16 px-8 lg:px-15 flex items-center">
         <div className="flex-1 max-w-sm mx-auto">
           <img
@@ -93,7 +97,8 @@ const About = () => {
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
-              title="Map Location"></iframe>
+              title="Map Location"
+            ></iframe>
           </div>
         </div>
       </section>
@@ -153,6 +158,7 @@ const About = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </main>
   );
 };

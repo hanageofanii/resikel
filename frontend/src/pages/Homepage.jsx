@@ -1,6 +1,9 @@
+import Navbar from "../component/Navbar";
+import Footer from "../component/footer.jsx";
 const Homepage = () => {
   return (
     <main>
+      <Navbar />
       <section className="bg-green-200 text-center py-16 px-8 lg:px-24 flex items-center justify-center">
         <div className="flex-1 text-left max-w-lg mx-auto space-y-4">
           <h1 className="text-3xl font-bold text-black-600">
@@ -98,6 +101,7 @@ const Homepage = () => {
           </a>
         </div>
       </section>
+      <Footer />
     </main>
   );
 };

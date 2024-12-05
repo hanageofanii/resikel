@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../component/Navbar";
+import Footer from "../component/footer.jsx";
 
 const Contact = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -61,6 +63,7 @@ const Contact = () => {
 
   return (
     <main>
+      <Navbar />
       {/* Introduction Section */}
       <section className="bg-green-200 text-center py-16 px-8 lg:px-24">
         <h1 className="text-4xl font-extrabold text-gray-800 mb-4">
@@ -83,7 +86,8 @@ const Contact = () => {
             <div
               key={index}
               className="border rounded-lg overflow-hidden cursor-pointer"
-              onClick={() => toggleFaq(index)}>
+              onClick={() => toggleFaq(index)}
+            >
               <div className="bg-gray-50 p-4 text-xl font-semibold text-gray-700 flex justify-between items-center">
                 <span>{faq.question}</span>
                 <span className="text-gray-500">
@@ -143,17 +147,20 @@ const Contact = () => {
               className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-[#59cf94]"
               placeholder="Masukan Pesan Anda"
               rows="4"
-              required></textarea>
+              required
+            ></textarea>
           </div>
           <div>
             <button
               type="submit"
-              className="bg-orange-500 text-white font-bold py-3 px-8 rounded-full hover:bg-orange-600 transition duration-300">
+              className="bg-orange-500 text-white font-bold py-3 px-8 rounded-full hover:bg-orange-600 transition duration-300"
+            >
               Kirim
             </button>
           </div>
         </form>
       </section>
+      <Footer />
     </main>
   );
 };

@@ -1,6 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import Footer from "./component/footer.jsx";
-import Navbar from "./component/Navbar.jsx";
+// import Footer from "./component/footer.jsx";
+// import Navbar from "./component/Navbar.jsx";
 import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 import Education from "./pages/Education.jsx";
@@ -13,12 +13,16 @@ import Notification from "./component/Notification.jsx";
 import ArticlesList from "./pages/ArticlesList.jsx";
 import LogIn from "./pages/auth/Login.jsx";
 import Reg from "./pages/auth/Reg.jsx";
+import AdminDashboard from "./pages/admin/Dashboard.jsx";
+import Edukasi from "./pages/admin/Edukasi.jsx";
+import AdminUsers from "./pages/admin/Users.jsx";
+import AdminSettings from "./pages/admin/Settings.jsx";
 
 function App() {
   return (
     <Router>
       <div>
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/Rewards" element={<Rewards />} />
@@ -32,8 +36,12 @@ function App() {
           <Route path="/ArticlesList" element={<ArticlesList />} />
           <Route path="/LogIn" element={<LogIn />} />
           <Route path="/Reg" element={<Reg />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/edukasi" element={<Edukasi />} />
+          <Route path="/admin/users" element={<AdminUsers />} />
+          <Route path="/admin/settings" element={<AdminSettings />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </Router>
   );

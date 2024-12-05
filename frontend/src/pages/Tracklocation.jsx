@@ -3,6 +3,8 @@ import L from "leaflet";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "leaflet/dist/leaflet.css";
 import "tailwindcss/tailwind.css";
+import Navbar from "../component/Navbar";
+import Footer from "../component/footer.jsx";
 
 const Tracklocation = () => {
   useEffect(() => {
@@ -81,6 +83,7 @@ const Tracklocation = () => {
 
   return (
     <div>
+      <Navbar />
       <div className="bg-green-200 py-16 px-8 lg:px-24 text-center ">
         <h1 className="text-3xl font-bold mb-10">Lacak Lokasi</h1>
         <div id="map" style={{ height: "400px" }}></div>
@@ -102,12 +105,14 @@ const Tracklocation = () => {
               </div>
               <div className="w-1/2 text-left pl-10">
                 <div
-                  className={`w-8 h-8 bg-${item.color}-600 rounded-full`}></div>
+                  className={`w-8 h-8 bg-${item.color}-600 rounded-full`}
+                ></div>
               </div>
             </div>
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

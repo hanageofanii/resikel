@@ -1,3 +1,5 @@
+import Navbar from "../component/Navbar";
+import Footer from "../component/footer.jsx";
 import { useNavigate } from "react-router-dom";
 
 const Rewards = () => {
@@ -23,6 +25,7 @@ const Rewards = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center">
+      <Navbar />
       <header className="w-full bg-green-200 py-16 px-8 lg:px-24 text-center">
         <h1 className="text-2xl font-bold">Yuk Kurangi Sampah!</h1>
       </header>
@@ -36,7 +39,8 @@ const Rewards = () => {
             </h2>
             <a
               href="/Tracklocation"
-              className="text-sm text-gray-500 hover:underline">
+              className="text-sm text-gray-500 hover:underline"
+            >
               Lacak Lokasi
             </a>
           </div>
@@ -47,7 +51,8 @@ const Rewards = () => {
               <p className="text-xl font-bold text-green-500">1.405</p>
               <a
                 href="/claimreward"
-                className="text-sm text-gray-500 hover:underline">
+                className="text-sm text-gray-500 hover:underline"
+              >
                 Klaim hadiah
               </a>
             </div>
@@ -59,7 +64,8 @@ const Rewards = () => {
             <div className="w-full bg-gray-300 rounded-full h-4">
               <div
                 className="bg-green-400 h-4 rounded-full"
-                style={{ width: "70%" }}></div>
+                style={{ width: "70%" }}
+              ></div>
             </div>
           </div>
         </div>
@@ -83,7 +89,8 @@ const Rewards = () => {
               </label>
               <select
                 className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-                required>
+                required
+              >
                 <option>Pilih jenis sampah</option>
                 <option value="plastik">Plastik</option>
                 <option value="kertas">Kertas</option>
@@ -112,7 +119,8 @@ const Rewards = () => {
             <div className="text-center">
               <button
                 type="submit"
-                className="bg-orange-500 text-white  font-bold py-2 px-4 rounded-md hover:bg-orange-600">
+                className="bg-orange-500 text-white  font-bold py-2 px-4 rounded-md hover:bg-orange-600"
+              >
                 Kirim
               </button>
             </div>

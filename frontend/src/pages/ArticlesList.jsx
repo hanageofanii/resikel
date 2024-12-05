@@ -1,3 +1,5 @@
+import Navbar from "../component/Navbar";
+import Footer from "../component/footer.jsx";
 import { useEffect, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 
@@ -89,6 +91,7 @@ const ArticlesList = () => {
 
   return (
     <div className="container mx-auto p-4">
+      <Navbar />
       <header className="w-full bg-white-200 py-16 px-8 lg:px-24 text-center">
         <h1 className="text-4xl font-bold">Blog Kami</h1>
       </header>
@@ -129,6 +132,7 @@ const ArticlesList = () => {
           </div>
         ))}
       </div>
+      <Footer />
     </div>
   );
 };
