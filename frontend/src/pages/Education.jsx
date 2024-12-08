@@ -166,17 +166,17 @@ const Education = () => {
                   Apa itu Recycle? Pahami Arti dan Cara Melakukannya!
                 </h3>
                 <div className="py-2 flex space-x-3 mb-4">
-                  <span className="px-3 py-1 bg-green-800 text-white font-bold rounded-full text-sm">
+                  <span className="px-10 py-1 bg-transparent border-2 border-gray-500 text-black rounded-full text-sm">
                     Recycle
                   </span>
-                  <span className="px-3 py-1 bg-green-800 text-white font-bold rounded-full text-sm">
+                  <span className="px-10 py-1 bg-transparent border-2 border-gray-600 text-black rounded-full text-sm">
                     Edukasi
                   </span>
                 </div>
                 <button className="mt-8">
                   <Link
                     to="/ArticlesList"
-                    className="inline-block px-4 py-2 bg-green-800 text-white rounded-lg font-semibold hover:bg-green-600 transition-colors"
+                    className="inline-block px-4 py-2 bg-orange-500 text-white rounded-full font-semibold hover:bg-orange-600 transition-colors"
                   >
                     Lihat Artikel →
                   </Link>
