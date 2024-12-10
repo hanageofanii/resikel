@@ -10,8 +10,10 @@ Content-Type: application/json
 {
     "title": "Recycle",
     "desc": "Apa Itu Penyortiran? Pahami dari dan Cara Mendaurulangnya!",
-    "imageUrl": "./src/assets/images/blogs.jpeg",
-    "altText": "Recycling symbol made of green leaves"
+    "imageUrl": "./src/assets/images/blogs.png",
+    "altText": "Recycling symbol made of green leaves",
+    "author" : "Photo by TRVST",
+    "content" : "Disini kami berdiri"
 }
 
 ###
