@@ -1,8 +1,8 @@
-import { useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 
 const ClaimReward = () => {
-  const [points, setPoints] = useState(1405);
+  const [points, setPoints] = useState(1405); // Inisialisasi poin awal
   const [claimedPoints, setClaimedPoints] = useState(0);
   const [showNotification, setShowNotification] = useState(false);
   const [showDownloadButton, setShowDownloadButton] = useState(false);
@@ -11,15 +11,24 @@ const ClaimReward = () => {
     showInsufficientPointsNotification,
     setShowInsufficientPointsNotification,
   ] = useState(false);
+
+  useEffect(() => {
+    // Mengambil poin yang disimpan di localStorage saat halaman dimuat
+    const savedPoints = localStorage.getItem("totalPoints");
+    if (savedPoints) {
+      setPoints(parseInt(savedPoints)); // Set poin dari localStorage
+    }
+  }, []);
+
   const [currentPage, setCurrentPage] = useState(1);
   const rewardsPerPage = 3;
   const rewards = [
-    { id: 1, cost: 1000, pointsText: "1000 Poin" },
-    { id: 2, cost: 2000, pointsText: "2000 Poin" },
-    { id: 3, cost: 3000, pointsText: "3000 Poin" },
-    { id: 4, cost: 4000, pointsText: "4000 Poin" },
-    { id: 5, cost: 5000, pointsText: "5000 Poin" },
-    { id: 6, cost: 6000, pointsText: "6000 Poin" },
+    { id: 1, cost: 1000, pointsText: "1.000 Poin" },
+    { id: 2, cost: 2000, pointsText: "2.000 Poin" },
+    { id: 3, cost: 3000, pointsText: "3.000 Poin" },
+    { id: 4, cost: 4000, pointsText: "4.000 Poin" },
+    { id: 5, cost: 5000, pointsText: "5.000 Poin" },
+    { id: 6, cost: 6000, pointsText: "6.000 Poin" },
   ];
 
   const canvasRef = useRef(null);
@@ -32,11 +41,16 @@ const ClaimReward = () => {
     if (points >= cost) {
       setIsRedeeming(true);
       setTimeout(() => {
-        setPoints(points - cost);
+        const newPoints = points - cost;
+        setPoints(newPoints);
         setClaimedPoints(cost);
         setIsRedeeming(false);
         setShowNotification(true);
         setShowDownloadButton(true);
+
+        // Menyimpan poin yang baru ke localStorage
+        localStorage.setItem("totalPoints", newPoints);
+
         drawOnCanvas(cost);
       }, 2000);
     } else {
@@ -53,85 +67,155 @@ const ClaimReward = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
+    // Clear the previous canvas content
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    let gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-    gradient.addColorStop(0, "#80C7F7");
-    gradient.addColorStop(1, "#4D9EFF");
+    // Set a background gradient
+    const gradient = ctx.createLinearGradient(
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
+    gradient.addColorStop(0, "#BBF7D0"); // Light yellow
+    gradient.addColorStop(1, "#FF5733"); // Vibrant orange
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+    // Draw the main rounded rectangle
+    const margin = 20;
+    const width = canvas.width - 2 * margin;
+    const height = canvas.height - 2 * margin;
     const borderRadius = 15;
-    ctx.lineWidth = 6;
-    ctx.strokeStyle = "#006F8E";
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = "#FF5733"; // Red border
+    ctx.fillStyle = "#FFFFFF"; // White background
+
     ctx.beginPath();
-    ctx.moveTo(borderRadius, 0);
-    ctx.lineTo(canvas.width - borderRadius, 0);
-    ctx.arcTo(canvas.width, 0, canvas.width, borderRadius, borderRadius);
-    ctx.lineTo(canvas.width, canvas.height - borderRadius);
+    ctx.moveTo(margin + borderRadius, margin);
     ctx.arcTo(
-      canvas.width,
-      canvas.height,
-      canvas.width - borderRadius,
-      canvas.height,
+      margin + width,
+      margin,
+      margin + width,
+      margin + height,
       borderRadius
     );
-    ctx.lineTo(borderRadius, canvas.height);
-    ctx.arcTo(0, canvas.height, 0, canvas.height - borderRadius, borderRadius);
-    ctx.lineTo(0, borderRadius);
-    ctx.arcTo(0, 0, borderRadius, 0, borderRadius);
+    ctx.arcTo(
+      margin + width,
+      margin + height,
+      margin,
+      margin + height,
+      borderRadius
+    );
+    ctx.arcTo(margin, margin + height, margin, margin, borderRadius);
+    ctx.arcTo(margin, margin, margin + width, margin, borderRadius);
     ctx.closePath();
+    ctx.fill();
     ctx.stroke();
 
-    ctx.fillStyle = "#FFFFFF";
-    ctx.fill();
-
-    const recycleLogo = new Image();
-    recycleLogo.src = "./src/assets/images/logo.png";
-    recycleLogo.onload = () => {
-      // Draw the logo on canvas once it's loaded
-      ctx.drawImage(recycleLogo, 20, 20, 50, 50);
-    };
-
-    ctx.fillStyle = "#006F8E";
-    ctx.font = "bold 18px Arial";
+    // Add "Resikel" text
+    ctx.fillStyle = "#000"; // Orange color
+    ctx.font = "bold 24px Poppins";
     ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-
-    ctx.fillText("REDEEM KUPON", canvas.width / 2, 50);
-
-    ctx.fillStyle = "#333333";
-    ctx.font = "16px Arial";
-    ctx.textAlign = "left";
     ctx.textBaseline = "top";
+    ctx.fillText("RESIKEL", canvas.width / 2, margin + 10);
 
-    const padding = 100;
-    ctx.fillText(`Poin yang diklaim: ${cost}`, 80, padding);
-    ctx.fillText(`Sisa Poin: ${points - cost}`, 80, padding + 25);
+    // Add "Kupon Diskon" text
+    ctx.fillStyle = "#FF5733"; // Red
+    ctx.font = "bold 36px Poppins";
+    ctx.fillText("Kupon Diskon", canvas.width / 2, margin + 50);
 
+    // Add discount value
+    ctx.fillStyle = "#333333"; // Dark text
+    ctx.font = "bold 48px Poppins";
+    ctx.fillText(`Rp${cost}`, canvas.width / 2, margin + 110);
+
+    // Add claim and expiration dates
+    const claimDate = new Date(); // Current date
     const expirationDate = new Date();
-    expirationDate.setDate(expirationDate.getDate() + 3);
+    expirationDate.setDate(claimDate.getDate() + 3); // Add 3 days for expiration
 
-    const day = String(expirationDate.getDate()).padStart(2, "0");
-    const month = String(expirationDate.getMonth() + 1).padStart(2, "0");
-    const year = expirationDate.getFullYear();
-    const expirationString = `Kadaluarsa pada: ${day}/${month}/${year}`;
+    const claimDateStr = `${claimDate.getDate().toString().padStart(2, "0")}/${(
+      claimDate.getMonth() + 1
+    )
+      .toString()
+      .padStart(2, "0")}/${claimDate.getFullYear()}`;
+    const expirationDateStr = `${expirationDate
+      .getDate()
+      .toString()
+      .padStart(2, "0")}/${(expirationDate.getMonth() + 1)
+      .toString()
+      .padStart(2, "0")}/${expirationDate.getFullYear()}`;
 
-    ctx.fillText(expirationString, 80, padding + 55);
-
-    ctx.font = "italic 14px Arial";
+    ctx.font = "16px Poppins";
+    ctx.textBaseline = "middle";
     ctx.fillText(
-      "Tukarkan sebelum tanggal kupon kadaluarsa!",
-      80,
-      canvas.height - 30
+      `Tanggal Klaim: ${claimDateStr}`,
+      canvas.width / 2,
+      margin + 180
+    );
+    ctx.fillText(
+      `Tanggal Kedaluwarsa: ${expirationDateStr}`,
+      canvas.width / 2,
+      margin + 210
     );
 
-    ctx.strokeStyle = "#006F8E";
-    ctx.lineWidth = 4;
-    ctx.beginPath();
-    ctx.moveTo(0, canvas.height - 50);
-    ctx.lineTo(canvas.width, canvas.height - 50);
-    ctx.stroke();
+    // Add reminder text for expiration
+    ctx.font = "italic 14px Poppins bold";
+    ctx.fillStyle = "#555555"; // Gray
+    ctx.fillText(
+      "Tukarkan kupon sebelum kedaluwarsa!",
+      canvas.width / 2,
+      canvas.height - margin - 20
+    );
+
+    // Add decorative logos
+    const logoLeft = new Image();
+    logoLeft.src = "./src/assets/images/logo.png"; // Replace with your logo path
+    logoLeft.onload = () => {
+      const logoSize = 60; // Adjust size of the logo
+      ctx.globalAlpha = 0.8; // Slightly transparent for better aesthetics
+      ctx.drawImage(
+        logoLeft,
+        margin + 10, // Left margin
+        canvas.height - margin - logoSize - 10, // Bottom position
+        logoSize,
+        logoSize
+      );
+      ctx.globalAlpha = 1.0; // Reset alpha
+    };
+
+    const logoRight = new Image();
+    logoRight.src = "./src/assets/images/logo.png"; // Replace with your logo path
+    logoRight.onload = () => {
+      const logoSize = 60; // Adjust size of the logo
+      ctx.globalAlpha = 0.8; // Slightly transparent for better aesthetics
+      ctx.drawImage(
+        logoRight,
+        canvas.width - margin - logoSize - 10, // Right margin
+        canvas.height - margin - logoSize - 10, // Bottom position
+        logoSize,
+        logoSize
+      );
+      ctx.globalAlpha = 1.0; // Reset alpha
+    };
+
+    // Add logo (if applicable)
+    // const logo = new Image();
+    // logo.src = "./src/assets/images/logo.png"; // Replace with your logo path
+    // logo.onload = () => {
+    //   ctx.globalAlpha = 0.5; // Slightly transparent
+    //   const logoWidth = 100;
+    //   const logoHeight = 100;
+    //   ctx.drawImage(
+    //     logo,
+    //     (canvas.width - logoWidth) / 2,
+    //     canvas.height / 2 - 50,
+    //     logoWidth,
+    //     logoHeight
+    //   );
+    //   ctx.globalAlpha = 1.0; // Reset alpha
+    // };
   };
 
   const downloadRedeemProof = () => {

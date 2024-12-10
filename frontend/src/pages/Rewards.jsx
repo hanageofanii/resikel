@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 const Rewards = () => {
@@ -10,6 +10,16 @@ const Rewards = () => {
     jenis: "",
     berat: "",
   });
+
+  const [totalPoints, setTotalPoints] = useState(0);
+
+  // Load points from localStorage when the component is mounted
+  useEffect(() => {
+    const savedPoints = localStorage.getItem("totalPoints");
+    if (savedPoints) {
+      setTotalPoints(parseInt(savedPoints));
+    }
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,7 +41,14 @@ const Rewards = () => {
       });
 
       if (response.status === 201) {
-        // "Contact Created"
+        // Increment points based on the weight of the trash (e.g., 10 points per kg)
+        const newPoints = totalPoints + parseInt(formData.berat) * 10;
+        setTotalPoints(newPoints);
+
+        // Save updated points to localStorage
+        localStorage.setItem("totalPoints", newPoints);
+
+        // Navigate to notification page
         navigate("/notification", {
           state: {
             message: "Form berhasil disubmit!",
@@ -44,7 +61,7 @@ const Rewards = () => {
       alert("Terjadi kesalahan saat mengirim pesan.");
     }
 
-    // Reset form
+    // Reset form data
     setFormData({
       name: "",
       jenis: "",
@@ -60,8 +77,6 @@ const Rewards = () => {
         <h1 className="text-2xl font-bold">Yuk Kurangi Sampah!</h1>
       </header>
       <main className="w-full max-w-4xl bg-white mt-6 p-6 rounded-lg shadow-md mb-12">
-        {" "}
-        {/* Added mb-12 here */}
         <div className="flex justify-between items-center mb-6">
           <div>
             <h2 className="text-xl font-bold">
@@ -69,8 +84,7 @@ const Rewards = () => {
             </h2>
             <a
               href="/Tracklocation"
-              className="text-sm text-gray-500 hover:underline"
-            >
+              className="text-sm text-gray-500 hover:underline">
               Lacak Lokasi
             </a>
           </div>
@@ -78,11 +92,10 @@ const Rewards = () => {
             <i className="fas fa-recycle text-orange-300 text-2xl mr-2"></i>
             <div>
               <p className="text-sm text-gray-500">Total Poin</p>
-              <p className="text-xl font-bold text-green-500">1.405</p>
+              <p className="text-xl font-bold text-green-500">{totalPoints}</p>
               <a
                 href="/claimreward"
-                className="text-sm text-gray-500 hover:underline"
-              >
+                className="text-sm text-gray-500 hover:underline">
                 Klaim hadiah
               </a>
             </div>
@@ -114,8 +127,7 @@ const Rewards = () => {
                 value={formData.jenis}
                 onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-                required
-              >
+                required>
                 <option>Pilih jenis sampah</option>
                 <option value="plastik">Plastik</option>
                 <option value="kertas">Kertas</option>
@@ -147,8 +159,7 @@ const Rewards = () => {
             <div className="text-center">
               <button
                 type="submit"
-                className="bg-orange-500 text-white  font-bold py-2 px-4 rounded-md hover:bg-orange-600"
-              >
+                className="bg-orange-500 text-white font-bold py-2 px-4 rounded-md hover:bg-orange-600">
                 Kirim
               </button>
             </div>

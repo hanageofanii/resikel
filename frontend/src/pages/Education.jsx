@@ -176,8 +176,7 @@ const Education = () => {
                 <button className="mt-8">
                   <Link
                     to="/ArticlesList"
-                    className="inline-block px-4 py-2 bg-orange-500 text-white rounded-full font-semibold hover:bg-orange-600 transition-colors"
-                  >
+                    className="inline-block px-4 py-2 bg-orange-500 text-white rounded-full font-semibold hover:bg-orange-600 transition-colors">
                     Lihat Artikel →
                   </Link>
                 </button>
