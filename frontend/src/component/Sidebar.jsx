@@ -15,7 +15,9 @@ const Sidebar = () => {
     location.pathname === "/claimreward" ||
     location.pathname === "/Tracklocation" ||
     location.pathname === "/Contact" ||
-    location.pathname === "/Blog";
+    location.pathname === "/Blog" ||
+    location.pathname === "/notification" ||
+    location.pathname === "/NotFound";
   if (isAuthPage) return null;
 
   return (
@@ -52,7 +54,11 @@ const Sidebar = () => {
             >
               <Link
                 to={item.path}
-                className="block p-3 text-lg font-semibold rounded-lg text-center hover:text-black"
+                className={`block p-3 text-lg font-semibold rounded-lg text-center hover:text-black ${
+                  location.pathname === item.path
+                    ? "bg-green-300 text-black"
+                    : ""
+                }`}
               >
                 {item.label}
               </Link>

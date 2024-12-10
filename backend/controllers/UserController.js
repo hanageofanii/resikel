@@ -100,3 +100,23 @@ export const Logout = async (req, res) => {
   res.clearCookie("refreshToken");
   return res.sendStatus(200);
 };
+
+export const Delete = async (req, res) => {
+  const { id } = req.params; // Ambil ID dari parameter URL
+  try {
+    const result = await Users.destroy({
+      where: { id: id },
+    });
+
+    if (result === 0) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    return res.json({ message: `User with ID ${id} deleted successfully` });
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    res
+      .status(500)
+      .json({ message: "Error deleting user", error: error.message });
+  }
+};
