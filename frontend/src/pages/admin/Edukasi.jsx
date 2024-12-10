@@ -1,46 +1,7 @@
-// src/pages/admin/Dashboard.jsx
-// import React from "react";
 import AdminHeader from "../../component/admin/AdminHeader";
 import AdminSidebar from "../../component/admin/AdminSidebar";
-import React, { useState } from "react";
-import {
-  Button,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  IconButton,
-} from "@mui/material";
-import { Edit as EditIcon, Delete as DeleteIcon } from "@mui/icons-material";
 
 const Edukasi = () => {
-  // State untuk data artikel
-  const [articles, setArticles] = useState([
-    { id: 1, title: "Artikel 1", createdAt: "2024-01-01" },
-    { id: 2, title: "Artikel 2", createdAt: "2024-02-01" },
-    { id: 3, title: "Artikel 3", createdAt: "2024-03-01" },
-  ]);
-  // Fungsi untuk menambah artikel
-  const handleAddArticle = () => {
-    console.log("Tombol Tambah Artikel diklik!");
-    // Implementasi logika untuk menambah artikel baru
-  };
-
-  // Fungsi untuk mengupdate artikel
-  const handleUpdateArticle = (id) => {
-    console.log(`Update artikel dengan ID: ${id}`);
-    // Implementasi logika untuk update artikel
-  };
-
-  // Fungsi untuk menghapus artikel
-  const handleDeleteArticle = (id) => {
-    setArticles(articles.filter((article) => article.id !== id));
-    console.log(`Artikel dengan ID ${id} dihapus`);
-  };
-
   return (
     <div className="flex h-screen">
       {" "}
@@ -54,57 +15,135 @@ const Edukasi = () => {
 
         {/* Main content section */}
         <div className="flex-grow p-6">
-          <h1 className="text-2xl font-semibold mb-10">Edukasi</h1>
+          <h1 className="text-2xl font-semibold">Dashboard Admin</h1>
           {/* Other content goes here */}
-          {/* Tombol Tambah Artikel */}
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleAddArticle}
-            className="my-10"
-          >
-            Tambah Artikel
-          </Button>
-
-          {/* Tabel Artikel */}
-          <TableContainer component={Paper} className="mt-6">
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>No</TableCell>
-                  <TableCell>Title</TableCell>
-                  <TableCell>Tanggal Dibuat</TableCell>
-                  <TableCell>Aksi</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {articles.map((article, index) => (
-                  <TableRow key={article.id}>
-                    <TableCell>{index + 1}</TableCell>
-                    <TableCell>{article.title}</TableCell>
-                    <TableCell>{article.createdAt}</TableCell>
-                    <TableCell>
-                      {/* Tombol Update */}
-                      <IconButton
-                        color="success"
-                        onClick={() => handleUpdateArticle(article.id)}
-                        className="mr-2"
-                      >
-                        <EditIcon />
-                      </IconButton>
-                      {/* Tombol Delete */}
-                      <IconButton
-                        color="error"
-                        onClick={() => handleDeleteArticle(article.id)}
-                      >
-                        <DeleteIcon />
-                      </IconButton>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+          <div className="flex flex-col">
+            <div className="overflow-x-auto">
+              <div className="p-1.5 w-full inline-block align-middle">
+                <div className="overflow-hidden border rounded-lg">
+                  <table className="min-w-full divide-y divide-gray-200">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th
+                          scope="col"
+                          className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+                        >
+                          ID
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+                        >
+                          Name
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+                        >
+                          Email
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
+                        >
+                          Edit
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
+                        >
+                          Delete
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200">
+                      <tr>
+                        <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
+                          1
+                        </td>
+                        <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
+                          Jone Doe
+                        </td>
+                        <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
+                          jonne62@gmail.com
+                        </td>
+                        <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                          <a
+                            className="text-green-500 hover:text-green-700"
+                            href="#"
+                          >
+                            Edit
+                          </a>
+                        </td>
+                        <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                          <a
+                            className="text-red-500 hover:text-red-700"
+                            href="#"
+                          >
+                            Delete
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
+                          2
+                        </td>
+                        <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
+                          Jone Doe
+                        </td>
+                        <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
+                          jonne62@gmail.com
+                        </td>
+                        <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                          <a
+                            className="text-green-500 hover:text-green-700"
+                            href="#"
+                          >
+                            Edit
+                          </a>
+                        </td>
+                        <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                          <a
+                            className="text-red-500 hover:text-red-700"
+                            href="#"
+                          >
+                            Delete
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
+                          3
+                        </td>
+                        <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
+                          Jone Doe
+                        </td>
+                        <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
+                          jonne62@gmail.com
+                        </td>
+                        <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                          <a
+                            className="text-green-500 hover:text-green-700"
+                            href="#"
+                          >
+                            Edit
+                          </a>
+                        </td>
+                        <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                          <a
+                            className="text-red-500 hover:text-red-700"
+                            href="#"
+                          >
+                            Delete
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

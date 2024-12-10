@@ -17,6 +17,7 @@ import AdminDashboard from "./pages/admin/Dashboard.jsx";
 import Edukasi from "./pages/admin/Edukasi.jsx";
 import AdminUsers from "./pages/admin/Users.jsx";
 import AdminSettings from "./pages/admin/Settings.jsx";
+// import NewEdukasiForm from "./pages/admin/NewEdukasiForm.jsx";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="/Reg" element={<Reg />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/edukasi" element={<Edukasi />} />
+          {/* <Route path="/admin/newedukasiform" element={<NewEdukasiForm />} /> */}
           <Route path="/admin/users" element={<AdminUsers />} />
           <Route path="/admin/settings" element={<AdminSettings />} />
         </Routes>
