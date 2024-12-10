@@ -63,6 +63,17 @@ const ClaimReward = () => {
     setShowInsufficientPointsNotification(false);
   };
 
+  const generateToken = (length) => {
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let token = "";
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      token += characters[randomIndex];
+    }
+    return token;
+  };
+
   const drawOnCanvas = (cost) => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -128,7 +139,7 @@ const ClaimReward = () => {
     // Add discount value
     ctx.fillStyle = "#333333"; // Dark text
     ctx.font = "bold 48px Poppins";
-    ctx.fillText(`Rp${cost}`, canvas.width / 2, margin + 110);
+    ctx.fillText(`Rp.${cost}`, canvas.width / 2, margin + 110);
 
     // Add claim and expiration dates
     const claimDate = new Date(); // Current date
@@ -168,6 +179,12 @@ const ClaimReward = () => {
       canvas.width / 2,
       canvas.height - margin - 20
     );
+
+    // Generate a unique token and add it to the canvas
+    const token = generateToken(8); // Example token length of 32
+    ctx.fillStyle = "#FF5733"; // Red color for token
+    ctx.font = "bold 12px Poppins";
+    ctx.fillText(`Kode Token: ${token}`, canvas.width / 2, margin + 100);
 
     // Add decorative logos
     const logoLeft = new Image();
