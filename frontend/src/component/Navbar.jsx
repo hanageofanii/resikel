@@ -26,7 +26,12 @@ const Navbar = () => {
 
   const location = useLocation();
   const isAuthPage =
-    location.pathname === "/Login" || location.pathname === "/Reg";
+    location.pathname === "/Login" ||
+    location.pathname === "/Reg" ||
+    location.pathname === "/articleadmin" ||
+    location.pathname === "/contactadmin" ||
+    location.pathname === "/sampahadmin" ||
+    location.pathname === "/useradmin";
   const [isOpen, setIsOpen] = useState(false);
 
   if (isAuthPage) return null;

@@ -1,6 +1,11 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Footer from "./component/footer.jsx";
 import Navbar from "./component/Navbar.jsx";
+import Sidebar from "./component/Sidebar.jsx";
+import ArticleAdmin from "./pages/ArticleAdmin.jsx";
+import ContactAdmin from "./pages/ContactAdmin.jsx";
+import SampahAdmin from "./pages/SampahAdmin.jsx";
+import UserAdmin from "./pages/UserAdmin.jsx";
 import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 import Education from "./pages/Education.jsx";
@@ -19,6 +24,7 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
+      <Sidebar />
       <div>
         <Navbar />
         <Routes>
@@ -34,6 +40,10 @@ function App() {
           <Route path="/ArticlesList" element={<ArticlesList />} />
           <Route path="/LogIn" element={<LogIn />} />
           <Route path="/Reg" element={<Reg />} />
+          <Route path="/ArticleAdmin" element={<ArticleAdmin />} />
+          <Route path="/ContactAdmin" element={<ContactAdmin />} />
+          <Route path="/SampahAdmin" element={<SampahAdmin />} />
+          <Route path="/UserAdmin" element={<UserAdmin />} />
         </Routes>
         <Footer />
       </div>
