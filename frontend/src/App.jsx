@@ -1,24 +1,24 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Footer from "./component/footer.jsx";
 import Navbar from "./component/Navbar.jsx";
-import Sidebar from "./component/Sidebar.jsx";
-import ArticleAdmin from "./pages/ArticleAdmin.jsx";
-import ContactAdmin from "./pages/ContactAdmin.jsx";
-import SampahAdmin from "./pages/SampahAdmin.jsx";
-import UserAdmin from "./pages/UserAdmin.jsx";
-import About from "./pages/About.jsx";
-import Contact from "./pages/Contact.jsx";
-import Education from "./pages/Education.jsx";
-import Homepage from "./pages/Homepage.jsx";
-import Rewards from "./pages/Rewards.jsx";
-import Blog from "./pages/Blog.jsx";
-import ClaimReward from "./pages/ClaimReward.jsx";
-import Tracklocation from "./pages/Tracklocation.jsx";
 import Notification from "./component/Notification.jsx";
+import Sidebar from "./component/Sidebar.jsx";
+import About from "./pages/About.jsx";
+import ArticleAdmin from "./pages/ArticleAdmin.jsx";
 import ArticlesList from "./pages/ArticlesList.jsx";
 import LogIn from "./pages/auth/Login.jsx";
 import Reg from "./pages/auth/Reg.jsx";
+import Blog from "./pages/Blog.jsx";
+import ClaimReward from "./pages/ClaimReward.jsx";
+import Contact from "./pages/Contact.jsx";
+import ContactAdmin from "./pages/ContactAdmin.jsx";
+import Education from "./pages/Education.jsx";
+import Homepage from "./pages/Homepage.jsx";
+import Rewards from "./pages/Rewards.jsx";
+import SampahAdmin from "./pages/SampahAdmin.jsx";
 import ScrollToTop from "./pages/ScrollToTop.jsx";
+import Tracklocation from "./pages/Tracklocation.jsx";
+import UserAdmin from "./pages/UserAdmin.jsx";
 
 function App() {
   return (
@@ -33,7 +33,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/education" element={<Education />} />
           <Route path="/Contact" element={<Contact />} />
-          <Route path="/Blog" element={<Blog />} />
+          <Route path="/article/:id" element={<Blog />} />
           <Route path="/ClaimReward" element={<ClaimReward />} />
           <Route path="/Tracklocation" element={<Tracklocation />} />
           <Route path="/Notification" element={<Notification />} />

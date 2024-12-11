@@ -1,9 +1,9 @@
 // src/components/Sidebar.js
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { Link, matchPath, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
   const location = useLocation();
+  const isArticlePath = matchPath("/article/:id", location.pathname);
   const isAuthPage =
     location.pathname === "/Login" ||
     location.pathname === "/Reg" ||
@@ -15,7 +15,7 @@ const Sidebar = () => {
     location.pathname === "/claimreward" ||
     location.pathname === "/Tracklocation" ||
     location.pathname === "/Contact" ||
-    location.pathname === "/Blog" ||
+    isArticlePath ||
     location.pathname === "/notification" ||
     location.pathname === "/NotFound";
   if (isAuthPage) return null;

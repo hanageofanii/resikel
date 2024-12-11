@@ -100,7 +100,7 @@ const ArticlesList = () => {
       <div className="mt-4 mb-8">
         <a
           href="/Education"
-          className="inline-flex items-center text-gray-700 hover:text-gray-900 text-lg font-semibold"
+          className="inline-flex items-center text-dark text-lg font-semibold hover:text-gray-500"
         >
           <FaArrowLeft className="mr-2 text-xl" /> {/* Arrow icon */}
           Kembali
@@ -111,30 +111,28 @@ const ArticlesList = () => {
         {articles.map((article) => (
           <div
             key={article.id}
-            className="border rounded-lg overflow-hidden shadow-lg"
+            className="border rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out"
           >
-            {article.imageUrl && (
+            <Link to={`/article/${article.id}`}>
               <img
                 src={article.imageUrl}
                 alt={article.altText}
                 className="w-full h-48 object-cover"
               />
-            )}
-            <div className="p-4">
-              <div className="flex justify-between items-center mb-2">
-                <span className="bg-orange-500 text-white text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">
-                  {article.title}
-                </span>
-                <span className="text-gray-600 text-xs">
-                  {format(new Date(article.createdAt), "dd MMMM yyyy", {
-                    locale: id,
-                  })}
-                </span>
-              </div>
-              <Link to="/Blog" className="hover:font-bold">
+              <div className="p-4">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="bg-orange-500 text-white text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">
+                    {article.title}
+                  </span>
+                  <span className="text-gray-600 text-xs">
+                    {format(new Date(article.createdAt), "dd MMMM yyyy", {
+                      locale: id,
+                    })}
+                  </span>
+                </div>
                 <p className="text-gray-800 text-sm">{article.desc}</p>
-              </Link>
-            </div>
+              </div>
+            </Link>
           </div>
         ))}
       </div>
