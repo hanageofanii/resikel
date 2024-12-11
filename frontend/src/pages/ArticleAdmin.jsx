@@ -11,6 +11,7 @@ const ArticleAdmin = () => {
     author: "",
     content: "",
   });
+  const [deleting, setDeleting] = useState([]); // Track articles being deleted
 
   const tableEndRef = useRef(null); // Ref untuk bagian akhir tabel
 
@@ -64,14 +65,20 @@ const ArticleAdmin = () => {
     tableEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // Delete article
+  // Delete article with animation
   const handleDeleteArticle = async (id) => {
-    try {
-      await axios.delete(`http://localhost:5000/articles/${id}`);
-      setArticles((prev) => prev.filter((article) => article.id !== id));
-    } catch (error) {
-      console.error("Error deleting article:", error);
-    }
+    setDeleting((prev) => [...prev, id]); // Mark article as being deleted
+    setTimeout(async () => {
+      try {
+        await axios.delete(`http://localhost:5000/articles/${id}`);
+        setArticles((prev) => prev.filter((article) => article.id !== id));
+        console.log("Article deleted successfully");
+      } catch (error) {
+        console.error("Error deleting article:", error);
+      } finally {
+        setDeleting((prev) => prev.filter((deletingId) => deletingId !== id)); // Remove from deleting list
+      }
+    }, 300); // Wait for animation to finish before deleting
   };
 
   return (
@@ -172,7 +179,12 @@ const ArticleAdmin = () => {
           </thead>
           <tbody>
             {articles.map((article) => (
-              <tr key={article.id}>
+              <tr
+                key={article.id}
+                className={`transition-opacity duration-300 ${
+                  deleting.includes(article.id) ? "opacity-0" : "opacity-100"
+                }`}
+              >
                 <td className="border border-gray-300 px-4 py-2">
                   {article.id}
                 </td>
