@@ -15,6 +15,7 @@ app.use(cookieParser());
 app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use("/uploads", express.static("uploads"));
 app.use(UserRoute);
 app.use(SampahRoute);
 app.use(ContactRoute);

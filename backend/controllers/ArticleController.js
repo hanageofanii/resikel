@@ -24,10 +24,14 @@ export const getArticlesById = async (req, res) => {
 
 export const createArticles = async (req, res) => {
   try {
-    await Articles.create(req.body);
+    const { title, desc, altText, author, content } = req.body;
+    const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
+
+    await Articles.create({ title, desc, imageUrl, altText, author, content });
     res.status(201).json({ msg: "Article Created" });
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
+    res.status(500).json({ error: error.message });
   }
 };
 

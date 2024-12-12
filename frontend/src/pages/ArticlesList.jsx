@@ -40,7 +40,7 @@ const ArticlesList = () => {
           >
             <Link to={`/article/${article.id}`}>
               <img
-                src={article.imageUrl}
+                src={`http://localhost:5000${article.imageUrl}`}
                 alt={article.altText}
                 className="w-full h-48 object-cover"
               />

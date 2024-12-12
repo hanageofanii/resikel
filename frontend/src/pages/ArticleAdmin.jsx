@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import { useEffect, useRef, useState } from "react";
 
 const ArticleAdmin = () => {
   const [articles, setArticles] = useState([]);
@@ -38,23 +38,31 @@ const ArticleAdmin = () => {
   // Add new article
   const handleAddArticle = async (e) => {
     e.preventDefault();
+
+    const data = new FormData();
+    Object.entries(formData).forEach(([key, value]) => {
+      data.append(key, value);
+    });
+
     try {
       const response = await axios.post(
         "http://localhost:5000/articles",
-        formData
+        data,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
       );
-      // Tambahkan artikel baru ke state articles
+
       setArticles((prev) => [...prev, response.data]);
-      // Reset form setelah submit
       setFormData({
         title: "",
         desc: "",
-        imageUrl: "",
+        image: null, // Reset image field
         altText: "",
         author: "",
         content: "",
       });
-      scrollToBottom(); // Panggil scroll ke bagian bawah tabel
+      scrollToBottom();
     } catch (error) {
       console.error("Error adding article:", error);
     }
@@ -109,12 +117,12 @@ const ArticleAdmin = () => {
             className="w-full p-2 border border-gray-300 rounded"
           />
           <input
-            type="text"
-            name="imageUrl"
-            placeholder="Image URL"
-            value={formData.imageUrl}
-            onChange={handleInputChange}
-            className="w-full p-2 border rounded"
+            type="file"
+            name="image"
+            onChange={(e) =>
+              setFormData((prev) => ({ ...prev, image: e.target.files[0] }))
+            }
+            className="w-full p-2 border border-gray-300 rounded"
           />
           <input
             type="text"
