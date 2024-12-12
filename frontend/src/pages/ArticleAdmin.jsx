@@ -149,7 +149,7 @@ const ArticleAdmin = () => {
           />
           <button
             type="submit"
-            className="w-full py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+            className="w-full py-2 bg-orange-500 text-white rounded hover:bg-orange-600 transition"
           >
             Add Article
           </button>
@@ -204,7 +204,7 @@ const ArticleAdmin = () => {
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
                   <img
-                    src={article.imageUrl}
+                    src={`http://localhost:5000${article.imageUrl}`}
                     alt={article.altText}
                     className="w-16 h-16 object-cover"
                   />
