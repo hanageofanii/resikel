@@ -5,6 +5,8 @@ const ArticleAdmin = () => {
   const [articles, setArticles] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [articleToDelete, setArticleToDelete] = useState(null);
+  const [editModalOpen, setEditModalOpen] = useState(false); // Manage edit modal
+  const [articleToEdit, setArticleToEdit] = useState(null); // Store article being edited
   const [formData, setFormData] = useState({
     title: "",
     desc: "",
@@ -70,6 +72,46 @@ const ArticleAdmin = () => {
     }
   };
 
+  const handleOpenEditModal = (article) => {
+    setArticleToEdit(article); // Set artikel yang akan diedit
+    setFormData({
+      title: article.title,
+      desc: article.desc,
+      imageUrl: article.imageUrl,
+      altText: article.altText,
+      author: article.author,
+      content: article.content,
+    }); // Isi form dengan data artikel
+    setEditModalOpen(true); // Tampilkan modal edit
+  };
+
+  const handleCloseEditModal = () => {
+    setArticleToEdit(null); // Reset artikel yang sedang diedit
+    setEditModalOpen(false); // Sembunyikan modal edit
+  };
+
+  const handleEditConfirmed = async (e) => {
+    e.preventDefault();
+    if (!articleToEdit) return;
+
+    try {
+      await axios.patch(
+        `http://localhost:5000/articles/${articleToEdit.id}`,
+        formData
+      );
+      setArticles((prev) =>
+        prev.map((article) =>
+          article.id === articleToEdit.id
+            ? { ...article, ...formData }
+            : article
+        )
+      ); // Update daftar artikel
+      handleCloseEditModal(); // Tutup modal setelah sukses
+    } catch (error) {
+      console.error("Error editing article:", error);
+    }
+  };
+
   const handleOpenModal = (id) => {
     setArticleToDelete(id);
     setModalOpen(true);
@@ -110,6 +152,77 @@ const ArticleAdmin = () => {
 
   return (
     <div className="pl-72 pt-8 pr-8">
+      {/* Modal Edit */}
+      {editModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded shadow-lg w-1/3">
+            <h2 className="text-lg font-bold mb-4">Edit Article</h2>
+            <form onSubmit={handleEditConfirmed} className="space-y-4">
+              <input
+                type="text"
+                name="title"
+                placeholder="Title"
+                value={formData.title}
+                onChange={handleInputChange}
+                className="w-full p-2 border border-gray-300 rounded"
+              />
+              <textarea
+                name="desc"
+                placeholder="Description"
+                value={formData.desc}
+                onChange={handleInputChange}
+                className="w-full p-2 border border-gray-300 rounded"
+              />
+              <input
+                type="file"
+                name="image"
+                onChange={(e) =>
+                  setFormData((prev) => ({ ...prev, image: e.target.files[0] }))
+                }
+                className="w-full p-2 border border-gray-300 rounded"
+              />
+              <input
+                type="text"
+                name="altText"
+                placeholder="Alt Text"
+                value={formData.altText}
+                onChange={handleInputChange}
+                className="w-full p-2 border border-gray-300 rounded"
+              />
+              <input
+                type="text"
+                name="author"
+                placeholder="Author"
+                value={formData.author}
+                onChange={handleInputChange}
+                className="w-full p-2 border border-gray-300 rounded"
+              />
+              <textarea
+                name="content"
+                placeholder="Content"
+                value={formData.content}
+                onChange={handleInputChange}
+                className="w-full p-2 border border-gray-300 rounded"
+              />
+              <div className="mt-6 flex justify-end space-x-4">
+                <button
+                  onClick={handleCloseEditModal}
+                  className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                >
+                  Save Changes
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
       {/* Modal for confirmation */}
       {modalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -259,6 +372,14 @@ const ArticleAdmin = () => {
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
                   {article.content}
+                </td>
+                <td className="border border-gray-300 px-4 py-2">
+                  <button
+                    onClick={() => handleOpenEditModal(article)}
+                    className="px-2 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 mr-2"
+                  >
+                    Edit
+                  </button>
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
                   <button
