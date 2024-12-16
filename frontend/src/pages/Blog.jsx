@@ -54,7 +54,7 @@ const Blog = () => {
             className="w-full rounded-lg mt-4"
           />
         )}
-        <p className="text-gray-500 text-xs mt-2">{article.author}</p>
+        <p className="text-gray-500 text-xs mt-2">Photo by {article.author}</p>
         <p className="text-justify leading-relaxed mt-4">{article.content}</p>
       </section>
     </div>

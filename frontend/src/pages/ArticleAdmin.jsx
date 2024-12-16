@@ -3,6 +3,10 @@ import { useEffect, useRef, useState } from "react";
 
 const ArticleAdmin = () => {
   const [articles, setArticles] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [articleToDelete, setArticleToDelete] = useState(null);
+  const [editModalOpen, setEditModalOpen] = useState(false); // Manage edit modal
+  const [articleToEdit, setArticleToEdit] = useState(null); // Store article being edited
   const [formData, setFormData] = useState({
     title: "",
     desc: "",
@@ -68,29 +72,180 @@ const ArticleAdmin = () => {
     }
   };
 
+  const handleOpenEditModal = (article) => {
+    setArticleToEdit(article); // Set artikel yang akan diedit
+    setFormData({
+      title: article.title,
+      desc: article.desc,
+      imageUrl: article.imageUrl,
+      altText: article.altText,
+      author: article.author,
+      content: article.content,
+    }); // Isi form dengan data artikel
+    setEditModalOpen(true); // Tampilkan modal edit
+  };
+
+  const handleCloseEditModal = () => {
+    setArticleToEdit(null); // Reset artikel yang sedang diedit
+    setEditModalOpen(false); // Sembunyikan modal edit
+  };
+
+  const handleEditConfirmed = async (e) => {
+    e.preventDefault();
+    if (!articleToEdit) return;
+
+    try {
+      await axios.patch(
+        `http://localhost:5000/articles/${articleToEdit.id}`,
+        formData
+      );
+      setArticles((prev) =>
+        prev.map((article) =>
+          article.id === articleToEdit.id
+            ? { ...article, ...formData }
+            : article
+        )
+      ); // Update daftar artikel
+      handleCloseEditModal(); // Tutup modal setelah sukses
+    } catch (error) {
+      console.error("Error editing article:", error);
+    }
+  };
+
+  const handleOpenModal = (id) => {
+    setArticleToDelete(id);
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setArticleToDelete(null);
+    setModalOpen(false);
+  };
+
   // Scroll to the bottom of the table
   const scrollToBottom = () => {
     tableEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   // Delete article with animation
-  const handleDeleteArticle = async (id) => {
-    setDeleting((prev) => [...prev, id]); // Mark article as being deleted
+  const handleDeleteConfirmed = async () => {
+    if (!articleToDelete) return;
+
+    setDeleting((prev) => [...prev, articleToDelete]); // Mark article as being deleted
     setTimeout(async () => {
       try {
-        await axios.delete(`http://localhost:5000/articles/${id}`);
-        setArticles((prev) => prev.filter((article) => article.id !== id));
+        await axios.delete(`http://localhost:5000/articles/${articleToDelete}`);
+        setArticles((prev) =>
+          prev.filter((article) => article.id !== articleToDelete)
+        );
         console.log("Article deleted successfully");
       } catch (error) {
         console.error("Error deleting article:", error);
       } finally {
-        setDeleting((prev) => prev.filter((deletingId) => deletingId !== id)); // Remove from deleting list
+        setDeleting((prev) =>
+          prev.filter((deletingId) => deletingId !== articleToDelete)
+        ); // Remove from deleting list
+        handleCloseModal(); // Close modal after animation
       }
-    }, 300); // Wait for animation to finish before deleting
+    }, 300); // Wait for animation to finish
   };
 
   return (
     <div className="pl-72 pt-8 pr-8">
+      {/* Modal Edit */}
+      {editModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded shadow-lg w-1/3">
+            <h2 className="text-lg font-bold mb-4">Edit Article</h2>
+            <form onSubmit={handleEditConfirmed} className="space-y-4">
+              <input
+                type="text"
+                name="title"
+                placeholder="Title"
+                value={formData.title}
+                onChange={handleInputChange}
+                className="w-full p-2 border border-gray-300 rounded"
+              />
+              <textarea
+                name="desc"
+                placeholder="Description"
+                value={formData.desc}
+                onChange={handleInputChange}
+                className="w-full p-2 border border-gray-300 rounded"
+              />
+              <input
+                type="file"
+                name="image"
+                onChange={(e) =>
+                  setFormData((prev) => ({ ...prev, image: e.target.files[0] }))
+                }
+                className="w-full p-2 border border-gray-300 rounded"
+              />
+              <input
+                type="text"
+                name="altText"
+                placeholder="Alt Text"
+                value={formData.altText}
+                onChange={handleInputChange}
+                className="w-full p-2 border border-gray-300 rounded"
+              />
+              <input
+                type="text"
+                name="author"
+                placeholder="Author"
+                value={formData.author}
+                onChange={handleInputChange}
+                className="w-full p-2 border border-gray-300 rounded"
+              />
+              <textarea
+                name="content"
+                placeholder="Content"
+                value={formData.content}
+                onChange={handleInputChange}
+                className="w-full p-2 border border-gray-300 rounded"
+              />
+              <div className="mt-6 flex justify-end space-x-4">
+                <button
+                  onClick={handleCloseEditModal}
+                  className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                >
+                  Save Changes
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Modal for confirmation */}
+      {modalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded shadow-lg w-1/3">
+            <h2 className="text-lg font-bold mb-4">Delete Confirmation</h2>
+            <p>Are you sure you want to delete this article?</p>
+            <div className="mt-6 flex justify-end space-x-4">
+              <button
+                onClick={handleCloseModal}
+                className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleDeleteConfirmed}
+                className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       {/* Section for the form and the heading */}
       <div className="flex flex-col space-y-6">
         <h2 className="text-2xl font-bold">Manage Articles</h2>
@@ -220,8 +375,17 @@ const ArticleAdmin = () => {
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
                   <button
-                    onClick={() => handleDeleteArticle(article.id)}
-                    className="px-2 py-1 bg-red-500 text-white rounded"
+                    onClick={() => handleOpenEditModal(article)}
+                    className="px-2 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 mr-2"
+                  >
+                    Edit
+                  </button>
+                </td>
+                <td className="border border-gray-300 px-4 py-2">
+                  <button
+                    onClick={() => handleOpenModal(article.id)}
+                    className="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+                    disabled={deleting.includes(article.id)}
                   >
                     Delete
                   </button>
