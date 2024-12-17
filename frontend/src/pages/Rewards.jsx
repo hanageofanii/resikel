@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Rewards = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -42,7 +42,7 @@ const Rewards = () => {
 
       if (response.status === 201) {
         // Increment points based on the weight of the trash (e.g., 10 points per kg)
-        const newPoints = totalPoints + parseInt(formData.berat) * 10;
+        const newPoints = totalPoints + parseInt(formData.berat) * 5000;
         setTotalPoints(newPoints);
 
         // Save updated points to localStorage
@@ -84,7 +84,8 @@ const Rewards = () => {
             </h2>
             <a
               href="/Tracklocation"
-              className="text-sm text-gray-500 hover:underline">
+              className="text-sm text-gray-500 hover:underline"
+            >
               Lacak Lokasi
             </a>
           </div>
@@ -95,7 +96,8 @@ const Rewards = () => {
               <p className="text-xl font-bold text-green-500">{totalPoints}</p>
               <a
                 href="/claimreward"
-                className="text-sm text-gray-500 hover:underline">
+                className="text-sm text-gray-500 hover:underline"
+              >
                 Klaim hadiah
               </a>
             </div>
@@ -127,7 +129,8 @@ const Rewards = () => {
                 value={formData.jenis}
                 onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-                required>
+                required
+              >
                 <option>Pilih jenis sampah</option>
                 <option value="plastik">Plastik</option>
                 <option value="kertas">Kertas</option>
@@ -159,7 +162,8 @@ const Rewards = () => {
             <div className="text-center">
               <button
                 type="submit"
-                className="bg-orange-500 text-white font-bold py-2 px-4 rounded-md hover:bg-orange-600">
+                className="bg-orange-500 text-white font-bold py-2 px-4 rounded-md hover:bg-orange-600"
+              >
                 Kirim
               </button>
             </div>

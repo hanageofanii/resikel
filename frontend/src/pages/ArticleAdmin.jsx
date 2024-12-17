@@ -7,7 +7,16 @@ const ArticleAdmin = () => {
   const [articleToDelete, setArticleToDelete] = useState(null);
   const [editModalOpen, setEditModalOpen] = useState(false); // Manage edit modal
   const [articleToEdit, setArticleToEdit] = useState(null); // Store article being edited
+  const [notification, setNotification] = useState(""); // State untuk notifikasi
   const [formData, setFormData] = useState({
+    title: "",
+    desc: "",
+    imageUrl: "",
+    altText: "",
+    author: "",
+    content: "",
+  });
+  const [editFormData, setEditFormData] = useState({
     title: "",
     desc: "",
     imageUrl: "",
@@ -31,12 +40,6 @@ const ArticleAdmin = () => {
     } catch (error) {
       console.error("Error fetching articles:", error);
     }
-  };
-
-  // Handle form input changes
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   // Add new article
@@ -67,14 +70,25 @@ const ArticleAdmin = () => {
         content: "",
       });
       scrollToBottom();
+      fetchArticles();
+      setTimeout(() => {
+        setNotification("Artikel berhasil ditambahkan!"); // Atur notifikasi sukses
+        setTimeout(() => setNotification(""), 3000);
+      }, 300);
     } catch (error) {
       console.error("Error adding article:", error);
     }
   };
 
+  // Handle form input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
   const handleOpenEditModal = (article) => {
     setArticleToEdit(article); // Set artikel yang akan diedit
-    setFormData({
+    setEditFormData({
       title: article.title,
       desc: article.desc,
       imageUrl: article.imageUrl,
@@ -94,22 +108,38 @@ const ArticleAdmin = () => {
     e.preventDefault();
     if (!articleToEdit) return;
 
+    const data = new FormData();
+    Object.entries(editFormData).forEach(([key, value]) => {
+      data.append(key, value);
+    });
+
     try {
       await axios.patch(
         `http://localhost:5000/articles/${articleToEdit.id}`,
-        formData
+        data,
+        { headers: { "Content-Type": "multipart/form-data" } }
       );
       setArticles((prev) =>
         prev.map((article) =>
           article.id === articleToEdit.id
-            ? { ...article, ...formData }
+            ? { ...article, ...editFormData }
             : article
         )
       ); // Update daftar artikel
+      fetchArticles();
       handleCloseEditModal(); // Tutup modal setelah sukses
+      setTimeout(() => {
+        setNotification("Perubahan berhasil disimpan!"); // Atur notifikasi sukses
+        setTimeout(() => setNotification(""), 3000);
+      }, 300);
     } catch (error) {
       console.error("Error editing article:", error);
     }
+  };
+
+  const handleEditInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleOpenModal = (id) => {
@@ -146,6 +176,10 @@ const ArticleAdmin = () => {
           prev.filter((deletingId) => deletingId !== articleToDelete)
         ); // Remove from deleting list
         handleCloseModal(); // Close modal after animation
+        setTimeout(() => {
+          setNotification("Artikel berhasil dihapus!"); // Atur notifikasi sukses
+          setTimeout(() => setNotification(""), 3000);
+        }, 300);
       }
     }, 300); // Wait for animation to finish
   };
@@ -162,22 +196,25 @@ const ArticleAdmin = () => {
                 type="text"
                 name="title"
                 placeholder="Title"
-                value={formData.title}
-                onChange={handleInputChange}
+                value={editFormData.title}
+                onChange={handleEditInputChange}
                 className="w-full p-2 border border-gray-300 rounded"
               />
               <textarea
                 name="desc"
                 placeholder="Description"
-                value={formData.desc}
-                onChange={handleInputChange}
+                value={editFormData.desc}
+                onChange={handleEditInputChange}
                 className="w-full p-2 border border-gray-300 rounded"
               />
               <input
                 type="file"
                 name="image"
                 onChange={(e) =>
-                  setFormData((prev) => ({ ...prev, image: e.target.files[0] }))
+                  setEditFormData((prev) => ({
+                    ...prev,
+                    image: e.target.files[0],
+                  }))
                 }
                 className="w-full p-2 border border-gray-300 rounded"
               />
@@ -185,23 +222,23 @@ const ArticleAdmin = () => {
                 type="text"
                 name="altText"
                 placeholder="Alt Text"
-                value={formData.altText}
-                onChange={handleInputChange}
+                value={editFormData.altText}
+                onChange={handleEditInputChange}
                 className="w-full p-2 border border-gray-300 rounded"
               />
               <input
                 type="text"
                 name="author"
                 placeholder="Author"
-                value={formData.author}
-                onChange={handleInputChange}
+                value={editFormData.author}
+                onChange={handleEditInputChange}
                 className="w-full p-2 border border-gray-300 rounded"
               />
               <textarea
                 name="content"
                 placeholder="Content"
-                value={formData.content}
-                onChange={handleInputChange}
+                value={editFormData.content}
+                onChange={handleEditInputChange}
                 className="w-full p-2 border border-gray-300 rounded"
               />
               <div className="mt-6 flex justify-end space-x-4">
@@ -220,6 +257,12 @@ const ArticleAdmin = () => {
               </div>
             </form>
           </div>
+        </div>
+      )}
+
+      {notification && (
+        <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white text-lg font-semibold px-8 py-3 rounded shadow-md z-50">
+          {notification}
         </div>
       )}
 
@@ -316,26 +359,31 @@ const ArticleAdmin = () => {
         <table className="w-full border-collapse border border-gray-300">
           <thead>
             <tr className="bg-green-200">
-              <th className="border border-gray-300 px-4 py-2 text-left">ID</th>
-              <th className="border border-gray-300 px-4 py-2 text-left">
+              <th className="border border-gray-300 px-4 py-2 text-center">
+                ID
+              </th>
+              <th className="border border-gray-300 px-4 py-2 text-center">
                 Title
               </th>
-              <th className="border border-gray-300 px-4 py-2 text-left">
+              <th className="border border-gray-300 px-4 py-2 text-center">
                 Description
               </th>
-              <th className="border border-gray-300 px-4 py-2 text-left">
+              <th className="border border-gray-300 px-4 py-2 text-center">
                 Image
               </th>
-              <th className="border border-gray-300 px-4 py-2 text-left">
+              <th className="border border-gray-300 px-4 py-2 text-center">
                 Alt Text
               </th>
-              <th className="border border-gray-300 px-4 py-2 text-left">
+              <th className="border border-gray-300 px-4 py-2 text-center">
                 Author
               </th>
-              <th className="border border-gray-300 px-4 py-2 text-left">
+              <th className="border border-gray-300 px-4 py-2 text-center">
                 Content
               </th>
-              <th className="border border-gray-300 px-4 py-2 text-left">
+              <th
+                className="border border-gray-300 px-4 py-2 text-center"
+                colSpan="2"
+              >
                 Actions
               </th>
             </tr>

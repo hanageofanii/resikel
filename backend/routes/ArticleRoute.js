@@ -13,7 +13,7 @@ const router = express.Router();
 router.get("/articles", getArticles);
 router.get("/articles/:id", getArticlesById);
 router.post("/articles", upload.single("image"), createArticles);
-router.patch("/articles/:id", updateArticles);
+router.patch("/articles/:id", upload.single("image"), updateArticles);
 router.delete("/articles/:id", deleteArticles);
 
 export default router;
