@@ -32,20 +32,17 @@ const Footer = () => {
             <p className="text-lg font-bold mb-2">Informasi</p>
             <a
               href="/About"
-              className="text-black-600 hover:text-green-800 mb-2"
-            >
+              className="text-black-600 hover:text-green-800 mb-2">
               Tentang Kami
             </a>
             <a
               href="/Education"
-              className="text-black-600 hover:text-green-800 mb-2"
-            >
+              className="text-black-600 hover:text-green-800 mb-2">
               Edukasi
             </a>
             <a
               href="/Rewards"
-              className="text-black-600 hover:text-green-800 mb-2"
-            >
+              className="text-black-600 hover:text-green-800 mb-2">
               Hadiah
             </a>
             <a href="/Contact" className="text-black-600 hover:text-green-800">
@@ -59,16 +56,14 @@ const Footer = () => {
             <p>
               <a
                 href="mailto:resikel@gmail.com"
-                className="text-black-600 hover:text-green-800"
-              >
+                className="text-black-600 hover:text-green-800">
                 pejantara@gmail.com
               </a>
             </p>
             <p>
               <a
                 href="tel:+62123456789"
-                className="text-black-600 hover:text-green-800"
-              >
+                className="text-black-600 hover:text-green-800">
                 +6282169607908
               </a>
             </p>
@@ -85,32 +80,28 @@ const Footer = () => {
                 href="https://www.facebook.com/pejantara"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-green-600 text-2xl"
-              >
+                className="text-green-600 text-2xl">
                 <i className="fab fa-facebook"></i>
               </a>
               <a
                 href="https://twitter.com/pejantara"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-green-600 text-2xl"
-              >
+                className="text-green-600 text-2xl">
                 <i className="fab fa-twitter"></i>
               </a>
               <a
                 href="https://www.instagram.com/pejantara/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-green-600 text-2xl"
-              >
+                className="text-green-600 text-2xl">
                 <i className="fab fa-instagram"></i>
               </a>
               <a
                 href="https://www.linkedin.com/company/pejantara"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-green-600 text-2xl"
-              >
+                className="text-green-600 text-2xl">
                 <i className="fab fa-linkedin"></i>
               </a>
             </div>
