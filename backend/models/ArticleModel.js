@@ -6,12 +6,13 @@ const { DataTypes } = Sequelize;
 const Article = db.define(
   "articles",
   {
-    title: DataTypes.STRING,
-    desc: DataTypes.TEXT,
+    ctg: DataTypes.STRING,
+    title: DataTypes.TEXT,
     imageUrl: DataTypes.STRING,
     altText: DataTypes.STRING,
     author: DataTypes.STRING,
     content: DataTypes.TEXT,
+    src: DataTypes.STRING,
   },
   {
     freezeTableName: true,

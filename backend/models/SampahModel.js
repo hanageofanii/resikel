@@ -9,21 +9,6 @@ const Sampah = db.define(
     name: DataTypes.STRING,
     jenis: DataTypes.STRING,
     berat: DataTypes.INTEGER,
-
-    // id: {
-    //   type: Sequelize.INTEGER,
-    //   primaryKey: true,
-    //   autoIncrement: true,
-    // },
-    // nama: {
-    //   type: Sequelize.STRING,
-    // },
-    // jenis: {
-    //   type: Sequelize.STRING,
-    // },
-    // berat: {
-    //   type: Sequelize.INTEGER,
-    // },
   },
   {
     freezeTableName: true,

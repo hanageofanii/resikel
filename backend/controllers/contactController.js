@@ -1,5 +1,14 @@
 import Contact from "../models/contact.js";
 
+export const getContact = async (req, res) => {
+  try {
+    const response = await Contact.findAll();
+    res.status(200).json(response);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 export const createContact = async (req, res) => {
   console.log("Request Body:", req.body); // Log data request
 

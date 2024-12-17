@@ -1,10 +1,27 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Education = () => {
-  const currentDate = new Date();
+  const [organik, setOrganik] = useState(0);
+  const [anorganik, setAnorganik] = useState(0);
 
-  // Memformat tanggal
+  useEffect(() => {
+    // Ambil data statistik sampah dari backend
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/sampah/stats");
+        setOrganik(response.data.organik);
+        setAnorganik(response.data.anorganik);
+      } catch (error) {
+        console.error("Error fetching sampah stats:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const currentDate = new Date();
   const formattedDate = currentDate
     .toLocaleDateString("en-US", {
       day: "2-digit",
@@ -100,7 +117,7 @@ const Education = () => {
               <h3 className="text-2xl font-bold text-black text-justify">
                 Menjaga kebersihan adalah tindakan nyata.
               </h3>
-              <p className="text-black text-justify">
+              <p className="text-black text-justify me-8">
                 Sampah merupakan sisa-sisa kegiatan sehari-hari manusia atau
                 proses alam yang berbentuk padat atau semi padat berupa zat
                 organik bersifat terurai atau anorganik bersifat tidak dapat
@@ -108,11 +125,13 @@ const Education = () => {
               </p>
 
               {/* Trash Info Box */}
-              <div className="bg-green-200 p-3 rounded-lg space-y-3">
+              <div className="bg-green-200 p-3 rounded-lg space-y-3 me-8">
                 {/* Organic Trash */}
                 <div className="flex items-center">
                   <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                    <span className="text-black font-bold text-sm">65%</span>
+                    <span className="text-black font-bold text-sm">
+                      {organik}%
+                    </span>
                   </div>
                   <div className="ml-3">
                     <p className="font-bold text-black text-sm">
@@ -124,11 +143,13 @@ const Education = () => {
                 {/* Plastic, Paper, etc */}
                 <div className="flex items-center">
                   <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                    <span className="text-black font-bold text-sm">35%</span>
+                    <span className="text-black font-bold text-sm">
+                      {anorganik}%
+                    </span>
                   </div>
                   <div className="ml-3">
                     <p className="font-bold text-black text-sm">
-                      Sampah Plastik, Kertas Dll
+                      Sampah Anorganik (Plastik, Kertas, dll)
                     </p>
                   </div>
                 </div>
@@ -176,7 +197,8 @@ const Education = () => {
                 <button className="mt-8">
                   <Link
                     to="/ArticlesList"
-                    className="inline-block px-4 py-2 bg-orange-500 text-white rounded-full font-semibold hover:bg-orange-600 transition-colors">
+                    className="inline-block px-4 py-2 bg-orange-500 text-white rounded-full font-semibold hover:bg-orange-600 transition-colors"
+                  >
                     Lihat Artikel →
                   </Link>
                 </button>

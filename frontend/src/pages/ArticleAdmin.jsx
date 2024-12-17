@@ -9,20 +9,22 @@ const ArticleAdmin = () => {
   const [articleToEdit, setArticleToEdit] = useState(null); // Store article being edited
   const [notification, setNotification] = useState(""); // State untuk notifikasi
   const [formData, setFormData] = useState({
+    ctg: "",
     title: "",
-    desc: "",
     imageUrl: "",
     altText: "",
     author: "",
     content: "",
+    src: "",
   });
   const [editFormData, setEditFormData] = useState({
+    ctg: "",
     title: "",
-    desc: "",
     imageUrl: "",
     altText: "",
     author: "",
     content: "",
+    src: "",
   });
   const [deleting, setDeleting] = useState([]); // Track articles being deleted
 
@@ -62,12 +64,13 @@ const ArticleAdmin = () => {
 
       setArticles((prev) => [...prev, response.data]);
       setFormData({
+        ctg: "",
         title: "",
-        desc: "",
         image: null, // Reset image field
         altText: "",
         author: "",
         content: "",
+        src: "",
       });
       scrollToBottom();
       fetchArticles();
@@ -89,12 +92,13 @@ const ArticleAdmin = () => {
   const handleOpenEditModal = (article) => {
     setArticleToEdit(article); // Set artikel yang akan diedit
     setEditFormData({
+      ctg: article.ctg,
       title: article.title,
-      desc: article.desc,
       imageUrl: article.imageUrl,
       altText: article.altText,
       author: article.author,
       content: article.content,
+      src: article.src,
     }); // Isi form dengan data artikel
     setEditModalOpen(true); // Tampilkan modal edit
   };
@@ -192,18 +196,22 @@ const ArticleAdmin = () => {
           <div className="bg-white p-6 rounded shadow-lg w-1/3">
             <h2 className="text-lg font-bold mb-4">Edit Article</h2>
             <form onSubmit={handleEditConfirmed} className="space-y-4">
-              <input
-                type="text"
+              <select
+                name="ctg"
+                value={editFormData.ctg}
+                onChange={handleEditInputChange}
+                className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                required
+              >
+                <option>Pilih Kategori</option>
+                <option value="Pengetahuan Umum">Pengetahuan Umum</option>
+                <option value="Jenis Sampah">Jenis Sampah</option>
+                <option value="Daur Ulang">Daur Ulang</option>
+              </select>
+              <textarea
                 name="title"
                 placeholder="Title"
                 value={editFormData.title}
-                onChange={handleEditInputChange}
-                className="w-full p-2 border border-gray-300 rounded"
-              />
-              <textarea
-                name="desc"
-                placeholder="Description"
-                value={editFormData.desc}
                 onChange={handleEditInputChange}
                 className="w-full p-2 border border-gray-300 rounded"
               />
@@ -218,7 +226,7 @@ const ArticleAdmin = () => {
                 }
                 className="w-full p-2 border border-gray-300 rounded"
               />
-              <input
+              <textarea
                 type="text"
                 name="altText"
                 placeholder="Alt Text"
@@ -226,7 +234,7 @@ const ArticleAdmin = () => {
                 onChange={handleEditInputChange}
                 className="w-full p-2 border border-gray-300 rounded"
               />
-              <input
+              <textarea
                 type="text"
                 name="author"
                 placeholder="Author"
@@ -238,6 +246,13 @@ const ArticleAdmin = () => {
                 name="content"
                 placeholder="Content"
                 value={editFormData.content}
+                onChange={handleEditInputChange}
+                className="w-full p-2 border border-gray-300 rounded"
+              />
+              <textarea
+                name="src"
+                placeholder="Source"
+                value={editFormData.src}
                 onChange={handleEditInputChange}
                 className="w-full p-2 border border-gray-300 rounded"
               />
@@ -299,18 +314,22 @@ const ArticleAdmin = () => {
           className="flex flex-col w-full bg-gray-100 p-6 rounded-lg shadow-md space-y-4"
         >
           <h3 className="text-lg font-semibold mb-2">Add New Article</h3>
-          <input
-            type="text"
+          <select
+            name="ctg"
+            value={formData.ctg}
+            onChange={handleInputChange}
+            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+            required
+          >
+            <option>Pilih Kategori</option>
+            <option value="Pengetahuan Umum">Pengetahuan Umum</option>
+            <option value="Jenis Sampah">Jenis Sampah</option>
+            <option value="Daur Ulang">Daur Ulang</option>
+          </select>
+          <textarea
             name="title"
             placeholder="Title"
             value={formData.title}
-            onChange={handleInputChange}
-            className="w-full p-2 border border-gray-300 rounded"
-          />
-          <textarea
-            name="desc"
-            placeholder="Description"
-            value={formData.desc}
             onChange={handleInputChange}
             className="w-full p-2 border border-gray-300 rounded"
           />
@@ -322,7 +341,7 @@ const ArticleAdmin = () => {
             }
             className="w-full p-2 border border-gray-300 rounded"
           />
-          <input
+          <textarea
             type="text"
             name="altText"
             placeholder="Alt Text"
@@ -330,7 +349,7 @@ const ArticleAdmin = () => {
             onChange={handleInputChange}
             className="w-full p-2 border border-gray-300 rounded"
           />
-          <input
+          <textarea
             type="text"
             name="author"
             placeholder="Author"
@@ -342,6 +361,13 @@ const ArticleAdmin = () => {
             name="content"
             placeholder="Content"
             value={formData.content}
+            onChange={handleInputChange}
+            className="w-full p-2 border border-gray-300 rounded"
+          />
+          <textarea
+            name="src"
+            placeholder="Source"
+            value={formData.src}
             onChange={handleInputChange}
             className="w-full p-2 border border-gray-300 rounded"
           />
@@ -363,10 +389,10 @@ const ArticleAdmin = () => {
                 ID
               </th>
               <th className="border border-gray-300 px-4 py-2 text-center">
-                Title
+                Category
               </th>
               <th className="border border-gray-300 px-4 py-2 text-center">
-                Description
+                Title
               </th>
               <th className="border border-gray-300 px-4 py-2 text-center">
                 Image
@@ -379,6 +405,9 @@ const ArticleAdmin = () => {
               </th>
               <th className="border border-gray-300 px-4 py-2 text-center">
                 Content
+              </th>
+              <th className="border border-gray-300 px-4 py-2 text-center">
+                Source
               </th>
               <th
                 className="border border-gray-300 px-4 py-2 text-center"
@@ -400,10 +429,10 @@ const ArticleAdmin = () => {
                   {article.id}
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
-                  {article.title}
+                  {article.ctg}
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
-                  {article.desc}
+                  {article.title}
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
                   <img
@@ -420,6 +449,9 @@ const ArticleAdmin = () => {
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
                   {article.content}
+                </td>
+                <td className="border border-gray-300 px-4 py-2">
+                  {article.src}
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
                   <button

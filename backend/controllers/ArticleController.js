@@ -24,10 +24,18 @@ export const getArticlesById = async (req, res) => {
 
 export const createArticles = async (req, res) => {
   try {
-    const { title, desc, altText, author, content } = req.body;
+    const { ctg, title, altText, author, content, src } = req.body;
     const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
 
-    await Articles.create({ title, desc, imageUrl, altText, author, content });
+    await Articles.create({
+      ctg,
+      title,
+      imageUrl,
+      altText,
+      author,
+      content,
+      src,
+    });
     res.status(201).json({ msg: "Article Created" });
   } catch (error) {
     console.error(error.message);
@@ -37,7 +45,7 @@ export const createArticles = async (req, res) => {
 
 export const updateArticles = async (req, res) => {
   try {
-    const { title, desc, altText, author, content } = req.body;
+    const { ctg, title, altText, author, content, src } = req.body;
 
     const article = await Articles.findOne({
       where: { id: req.params.id },
@@ -50,7 +58,7 @@ export const updateArticles = async (req, res) => {
       : article.imageUrl;
 
     await Articles.update(
-      { title, desc, imageUrl, altText, author, content },
+      { ctg, title, imageUrl, altText, author, content, src },
       { where: { id: req.params.id } }
     );
 

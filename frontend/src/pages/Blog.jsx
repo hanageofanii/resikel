@@ -39,14 +39,13 @@ const Blog = () => {
         </Link>
       </div>
       <section id={article.id} className="mb-10">
-        <h1 className="text-4xl font-bold mt-4">{article.desc}</h1>
+        <h1 className="text-4xl font-bold mt-4">{article.title}</h1>
         <p className="text-gray-500 text-sm mt-2">
-          {" "}
+          {article.author} |{" "}
           {format(new Date(article.createdAt), "dd MMMM yyyy", {
             locale: localeId,
           })}
         </p>
-
         {article.imageUrl && (
           <img
             src={`http://localhost:5000${article.imageUrl}`}
@@ -57,6 +56,7 @@ const Blog = () => {
         <p className="text-gray-500 text-xs mt-2">Photo by {article.author}</p>
         <p className="text-justify leading-relaxed mt-4">{article.content}</p>
       </section>
+      <p className="text-gray-500 text-xs mt-2">Source : {article.src}</p>
     </div>
   );
 };
