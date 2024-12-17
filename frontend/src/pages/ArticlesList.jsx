@@ -23,13 +23,13 @@ const ArticlesList = () => {
 
       {/* Back to Education button */}
       <div className="mt-4 mb-8">
-        <a
-          href="/Education"
+        <Link
+          to="/Education"
           className="inline-flex items-center text-dark text-lg font-semibold hover:text-gray-500"
         >
           <FaArrowLeft className="mr-2 text-xl" /> {/* Arrow icon */}
           Kembali
-        </a>
+        </Link>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

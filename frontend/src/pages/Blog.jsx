@@ -32,7 +32,7 @@ const Blog = () => {
       <div className="mt-4 mb-8">
         <Link
           to="/ArticlesList"
-          className="inline-flex items-center text-gray-700 hover:text-gray-900 text-lg font-semibold"
+          className="inline-flex items-center text-dark text-lg font-semibold hover:text-gray-500"
         >
           <FaArrowLeft className="mr-2 text-xl" /> {/* Arrow icon */}
           Kembali

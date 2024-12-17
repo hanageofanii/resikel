@@ -1,18 +1,16 @@
 import express from "express";
+import db from "../config/Database.js";
+import { refreshToken } from "../controllers/RefreshToken.js";
 import {
+  Delete,
   // createUser,
   // deleteUser,
   getUsers,
-  Register,
   Login,
   Logout,
-  Delete,
-  // getUsersById,
-  // updateUser,
+  Register,
 } from "../controllers/UserController.js";
 import { verifyToken } from "../middleware/VerifyToken.js";
-import { refreshToken } from "../controllers/RefreshToken.js";
-import db from "../config/Database.js";
 
 const router = express.Router();
 
