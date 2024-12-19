@@ -51,9 +51,6 @@ const SampahAdmin = () => {
                   {sampah.id}
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
-                  {sampah.name}
-                </td>
-                <td className="border border-gray-300 px-4 py-2">
                   {sampah.jenis}
                 </td>
                 <td className="border border-gray-300 px-4 py-2">

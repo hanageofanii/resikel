@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 const ClaimReward = () => {
-  const [points, setPoints] = useState(1405); // Inisialisasi poin awal
+  const [points, setPoints] = useState(0);
   const [claimedPoints, setClaimedPoints] = useState(0);
   const [showNotification, setShowNotification] = useState(false);
   const [showDownloadButton, setShowDownloadButton] = useState(false);
@@ -14,7 +14,7 @@ const ClaimReward = () => {
 
   useEffect(() => {
     const savedPoints = parseInt(localStorage.getItem("totalPoints")) || 0;
-    setPoints(savedPoints); // Set poin dari localStorage
+    setPoints(savedPoints);
   }, []);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -45,10 +45,7 @@ const ClaimReward = () => {
         setShowNotification(true);
         setShowDownloadButton(true);
 
-        // Simpan poin baru ke localStorage
         localStorage.setItem("totalPoints", newPoints);
-
-        drawOnCanvas(cost);
       }, 2000);
     } else {
       setShowInsufficientPointsNotification(true);
@@ -213,23 +210,6 @@ const ClaimReward = () => {
       );
       ctx.globalAlpha = 1.0; // Reset alpha
     };
-
-    // Add logo (if applicable)
-    // const logo = new Image();
-    // logo.src = "./src/assets/images/logo.png"; // Replace with your logo path
-    // logo.onload = () => {
-    //   ctx.globalAlpha = 0.5; // Slightly transparent
-    //   const logoWidth = 100;
-    //   const logoHeight = 100;
-    //   ctx.drawImage(
-    //     logo,
-    //     (canvas.width - logoWidth) / 2,
-    //     canvas.height / 2 - 50,
-    //     logoWidth,
-    //     logoHeight
-    //   );
-    //   ctx.globalAlpha = 1.0; // Reset alpha
-    // };
   };
 
   const downloadRedeemProof = () => {

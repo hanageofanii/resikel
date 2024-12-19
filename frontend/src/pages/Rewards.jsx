@@ -19,8 +19,8 @@ const Rewards = () => {
 
       if (savedUser) {
         setUser(savedUser);
-        const savedPoints = parseInt(localStorage.getItem("totalPoints")) || 0;
-        setTotalPoints(savedPoints); // Ambil poin dari localStorage
+        setTotalPoints(savedUser.points); // Set poin dari backend
+        localStorage.setItem("totalPoints", savedUser.points || 0);
       }
     };
 
@@ -55,14 +55,10 @@ const Rewards = () => {
         const newPoints = totalPoints + parseInt(formData.berat) * 5000;
         setTotalPoints(newPoints);
 
-        // Simpan poin baru ke localStorage
-        localStorage.setItem("totalPoints", newPoints);
-
-        // Update user points di localStorage
         const updatedUser = { ...user, points: newPoints };
         localStorage.setItem("user", JSON.stringify(updatedUser));
+        localStorage.setItem("totalPoints", newPoints);
 
-        // Navigate ke notifikasi
         navigate("/notification", {
           state: {
             message: "Form berhasil disubmit!",
@@ -79,6 +75,8 @@ const Rewards = () => {
       jenis: "",
       berat: "",
     });
+
+    console.log("Form submitted");
   };
 
   return (
