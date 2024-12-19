@@ -11,6 +11,11 @@ const Users = db.define(
     phone: DataTypes.STRING,
     password: DataTypes.STRING,
     refresh_token: DataTypes.TEXT,
+    points: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0, // Inisialisasi poin dengan nilai 0
+      allowNull: false,
+    },
   },
   {
     freezeTableName: true,

@@ -6,7 +6,6 @@ const { DataTypes } = Sequelize;
 const Sampah = db.define(
   "sampah",
   {
-    name: DataTypes.STRING,
     jenis: DataTypes.STRING,
     berat: DataTypes.INTEGER,
   },

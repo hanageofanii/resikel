@@ -6,19 +6,25 @@ const Rewards = () => {
   const [openIndex, setOpenIndex] = useState(null);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    name: "",
     jenis: "",
     berat: "",
   });
-
+  const [user, setUser] = useState(null);
   const [totalPoints, setTotalPoints] = useState(0);
 
-  // Load points from localStorage when the component is mounted
+  // Load user data from localStorage when the component is mounted
   useEffect(() => {
-    const savedPoints = localStorage.getItem("totalPoints");
-    if (savedPoints) {
-      setTotalPoints(parseInt(savedPoints));
-    }
+    const fetchUserData = async () => {
+      const savedUser = JSON.parse(localStorage.getItem("user"));
+
+      if (savedUser) {
+        setUser(savedUser);
+        const savedPoints = parseInt(localStorage.getItem("totalPoints")) || 0;
+        setTotalPoints(savedPoints); // Ambil poin dari localStorage
+      }
+    };
+
+    fetchUserData();
   }, []);
 
   const handleChange = (e) => {
@@ -33,22 +39,30 @@ const Rewards = () => {
     event.preventDefault();
     event.target.reset();
 
+    if (!user || !user.email) {
+      alert("Pengguna tidak ditemukan. Silakan login kembali.");
+      return;
+    }
+
     try {
       const response = await axios.post("http://localhost:5000/sampah", {
-        name: formData.name,
+        email: user.email,
         jenis: formData.jenis,
         berat: formData.berat,
       });
 
       if (response.status === 201) {
-        // Increment points based on the weight of the trash (e.g., 10 points per kg)
         const newPoints = totalPoints + parseInt(formData.berat) * 5000;
         setTotalPoints(newPoints);
 
-        // Save updated points to localStorage
+        // Simpan poin baru ke localStorage
         localStorage.setItem("totalPoints", newPoints);
 
-        // Navigate to notification page
+        // Update user points di localStorage
+        const updatedUser = { ...user, points: newPoints };
+        localStorage.setItem("user", JSON.stringify(updatedUser));
+
+        // Navigate ke notifikasi
         navigate("/notification", {
           state: {
             message: "Form berhasil disubmit!",
@@ -58,23 +72,19 @@ const Rewards = () => {
       }
     } catch (error) {
       console.error("Error submitting the form:", error);
-      alert("Terjadi kesalahan saat mengirim pesan.");
+      alert("Terjadi kesalahan saat mengirim data.");
     }
 
-    // Reset form data
     setFormData({
-      name: "",
       jenis: "",
       berat: "",
     });
-
-    console.log("Form submitted");
   };
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center">
       <header className="w-full bg-green-200 py-16 px-8 lg:px-24 text-center">
-        <h1 className="text-2xl font-bold">Yuk Kurangi Sampah!</h1>
+        <h1 className="text-2xl font-bold">Selamat Datang, {user?.name}</h1>
       </header>
       <main className="w-full max-w-4xl bg-white mt-6 p-6 rounded-lg shadow-md mb-12">
         <div className="flex justify-between items-center mb-6">
@@ -106,20 +116,6 @@ const Rewards = () => {
         <div className="bg-gray-50 p-6 rounded-lg shadow-inner">
           <h3 className="text-center text-xl font-bold mb-4">Formulir</h3>
           <form className="space-y-4" onSubmit={handleSubmit}>
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Nama Anda
-              </label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-                required
-                placeholder="masukkan nama anda"
-              />
-            </div>
             <div>
               <label className="block text-sm font-medium text-gray-700">
                 Jenis Sampah

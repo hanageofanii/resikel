@@ -1,5 +1,6 @@
 import { Op } from "sequelize";
 import Sampah from "../models/SampahModel.js";
+import Users from "../models/UserModel.js";
 
 export const getSampah = async (req, res) => {
   try {
@@ -10,24 +11,47 @@ export const getSampah = async (req, res) => {
   }
 };
 
-export const createSampah = async (req, res) => {
+export const addSampah = async (req, res) => {
   console.log("Request Body:", req.body); // Log data request
 
   try {
-    const { name, jenis, berat } = req.body;
+    const { email, jenis, berat } = req.body;
 
-    // Validasi input
-    if (!name || !jenis || !berat) {
+    if (!email || !jenis || !berat) {
       return res.status(400).json({ error: "Semua kolom harus diisi!" });
     }
 
-    await Sampah.create({ name, jenis, berat });
-    res.status(201).json({});
+    const sampah = await Sampah.create({ email, jenis, berat });
+
+    const user = await Users.findOne({ where: { email } });
+    if (!user) {
+      return res.status(404).json({ message: "Pengguna tidak ditemukan" });
+    }
+
+    const newPoints = user.points + berat * 5000;
+
+    await user.update({ points: newPoints });
+
+    res.status(201).json({
+      message: "Data sampah berhasil disimpan dan poin diperbarui",
+      sampah: {
+        id: sampah.id,
+        email: sampah.email,
+        jenis: sampah.jenis,
+        berat: sampah.berat,
+      },
+      user: {
+        id: user.id,
+        email: user.email,
+        points: newPoints,
+      },
+    });
   } catch (error) {
-    console.error(error.message);
-    res
-      .status(500)
-      .json({ error: "Terjadi kesalahan saat menyimpan data kontak" });
+    console.error("Error:", error.message);
+    res.status(500).json({
+      error: "Terjadi kesalahan pada server",
+      details: error.message,
+    });
   }
 };
 

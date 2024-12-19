@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 const ClaimReward = () => {
@@ -13,11 +13,8 @@ const ClaimReward = () => {
   ] = useState(false);
 
   useEffect(() => {
-    // Mengambil poin yang disimpan di localStorage saat halaman dimuat
-    const savedPoints = localStorage.getItem("totalPoints");
-    if (savedPoints) {
-      setPoints(parseInt(savedPoints)); // Set poin dari localStorage
-    }
+    const savedPoints = parseInt(localStorage.getItem("totalPoints")) || 0;
+    setPoints(savedPoints); // Set poin dari localStorage
   }, []);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -48,7 +45,7 @@ const ClaimReward = () => {
         setShowNotification(true);
         setShowDownloadButton(true);
 
-        // Menyimpan poin yang baru ke localStorage
+        // Simpan poin baru ke localStorage
         localStorage.setItem("totalPoints", newPoints);
 
         drawOnCanvas(cost);
@@ -282,7 +279,8 @@ const ClaimReward = () => {
           {currentRewards.map((reward) => (
             <div
               key={reward.id}
-              className="w-1/3 border rounded-lg p-4 flex flex-col items-center text-center">
+              className="w-1/3 border rounded-lg p-4 flex flex-col items-center text-center"
+            >
               <img
                 src="./src/assets/images/claimreward.png"
                 alt={`Reward ${reward.id}`}
@@ -291,7 +289,8 @@ const ClaimReward = () => {
               <button
                 onClick={() => handleRedeem(reward.cost)}
                 className="bg-gray-200 py-1 px-4 rounded-full text-sm mb-2"
-                disabled={isRedeeming}>
+                disabled={isRedeeming}
+              >
                 Klaim {reward.pointsText}
               </button>
               <p>{reward.pointsText}</p>
@@ -303,13 +302,15 @@ const ClaimReward = () => {
         <div className="flex justify-center items-center mt-8 space-x-2">
           <button
             className="bg-orange-300 text-white w-8 h-8 rounded-full"
-            onClick={handlePreviousPage}>
+            onClick={handlePreviousPage}
+          >
             &lt;
           </button>
           <span className="text-xl">{currentPage}</span>
           <button
             className="bg-orange-300 text-white w-8 h-8 rounded-full"
-            onClick={handleNextPage}>
+            onClick={handleNextPage}
+          >
             &gt;
           </button>
         </div>
@@ -328,7 +329,8 @@ const ClaimReward = () => {
             </div>
             <button
               onClick={handleCloseNotification}
-              className="ml-4 text-red-500 font-bold">
+              className="ml-4 text-red-500 font-bold"
+            >
               X
             </button>
           </div>
@@ -341,7 +343,8 @@ const ClaimReward = () => {
             </div>
             <button
               onClick={handleCloseNotification}
-              className="ml-4 text-red-500 font-bold">
+              className="ml-4 text-red-500 font-bold"
+            >
               X
             </button>
           </div>
@@ -351,7 +354,8 @@ const ClaimReward = () => {
           <div className="mt-6">
             <button
               onClick={downloadRedeemProof}
-              className="bg-blue-500 text-white py-2 px-6 rounded-lg">
+              className="bg-blue-500 text-white py-2 px-6 rounded-lg"
+            >
               Unduh Bukti Klaim Poin.
             </button>
           </div>

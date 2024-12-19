@@ -3,9 +3,10 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import ArticleRoute from "./routes/ArticleRoute.js";
+import ContactRoute from "./routes/contactRoute.js";
+import PointRoute from "./routes/PointRoute.js";
 import SampahRoute from "./routes/SampahRoute.js";
 import UserRoute from "./routes/UserRoute.js";
-import ContactRoute from "./routes/contactRoute.js";
 dotenv.config();
 
 const app = express();
@@ -20,4 +21,5 @@ app.use(UserRoute);
 app.use(SampahRoute);
 app.use(ContactRoute);
 app.use(ArticleRoute);
+app.use(PointRoute);
 app.listen(5000, () => console.log("Server up and running..."));

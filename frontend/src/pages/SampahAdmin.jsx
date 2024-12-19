@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
 
 const SampahAdmin = () => {
   const [sampahData, setSampahData] = useState([]);
@@ -36,9 +36,6 @@ const SampahAdmin = () => {
           <thead>
             <tr className="bg-green-200">
               <th className="border border-gray-300 px-4 py-2 text-left">ID</th>
-              <th className="border border-gray-300 px-4 py-2 text-left">
-                Nama
-              </th>
               <th className="border border-gray-300 px-4 py-2 text-left">
                 Jenis
               </th>

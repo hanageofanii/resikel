@@ -1,12 +1,14 @@
+import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 function App() {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({ email: "", Katasandi: "" });
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
   const [showPopup, setShowPopup] = useState(false);
+  const [popupMessage, setPopupMessage] = useState(""); // Pesan popup
+  const [popupType, setPopupType] = useState(""); // Tipe popup (success/error)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,32 +45,36 @@ function App() {
         }
       );
 
-      console.log(response.data); // Hasil login dari backend
-      setShowPopup(true); // Tampilkan popup berhasil login
+      if (response.data && response.data.user) {
+        const user = response.data.user; // Data user dari backend
+        localStorage.setItem("user", JSON.stringify(user)); // Simpan data user di localStorage
 
-      setTimeout(() => {
-        setShowPopup(false);
-        navigate("/"); // Arahkan ke beranda
-      }, 2000);
-    } catch (error) {
-      // Tampilkan pesan error dari backend
-      if (error.response && error.response.data.msg) {
-        setErrors({ apiError: error.response.data.msg });
-        setShowPopup(true); // Tampilkan popup error
-        // Tunggu 2 detik sebelum refresh halaman
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000);
-      } else {
-        console.error("Login error:", error);
-        setErrors({ apiError: "Terjadi kesalahan. Silakan coba lagi." });
+        // Tampilkan popup sukses
+        setPopupMessage("Mengalihkan ke beranda...");
+        setPopupType("success");
         setShowPopup(true);
 
-        // Tunggu 2 detik sebelum refresh halaman
         setTimeout(() => {
-          window.location.reload();
-        }, 2000);
+          setShowPopup(false);
+          navigate("/"); // Arahkan ke beranda
+        }, 2000); // Popup menghilang setelah 2 detik
       }
+    } catch (error) {
+      // Tampilkan pesan error dari backend
+      const errorMsg =
+        error.response && error.response.data.msg
+          ? error.response.data.msg
+          : "Terjadi kesalahan. Silakan coba lagi.";
+
+      // Tampilkan popup error
+      setPopupMessage(errorMsg);
+      setPopupType("error");
+      setShowPopup(true);
+
+      // Popup error menghilang setelah 5 detik
+      setTimeout(() => {
+        setShowPopup(false);
+      }, 2000);
     }
   };
 
@@ -134,20 +140,16 @@ function App() {
             <div className="bg-white p-8 rounded-lg shadow-lg flex items-center justify-center space-x-4">
               <span
                 className={`text-3xl ${
-                  errors.apiError ? "text-red-500" : "text-green-500"
+                  popupType === "error" ? "text-red-500" : "text-green-500"
                 }`}
               >
-                {errors.apiError ? "❌" : "✅"}
+                {popupType === "error" ? "❌" : "✅"}
               </span>
               <div>
                 <p className="text-xl">
-                  {errors.apiError ? "Login Gagal!" : "Berhasil Masuk!"}
+                  {popupType === "error" ? "Login Gagal!" : "Berhasil Masuk!"}
                 </p>
-                <p className="mt-4">
-                  {errors.apiError
-                    ? errors.apiError
-                    : "Mengalihkan ke beranda..."}
-                </p>
+                <p className="mt-4">{popupMessage}</p>
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 import express from "express";
 import {
-  createSampah,
+  addSampah,
   getSampah,
   getSampahStats,
 } from "../controllers/SampahController.js";
@@ -8,7 +8,7 @@ import {
 const router = express.Router();
 
 router.get("/sampah", getSampah);
-router.post("/sampah", createSampah);
+router.post("/sampah", addSampah);
 router.get("/sampah/stats", getSampahStats);
 
 export default router;

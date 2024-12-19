@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
 
 const UserAdmin = () => {
   const [users, setUsers] = useState([]);
@@ -112,6 +112,9 @@ const UserAdmin = () => {
                 Email
               </th>
               <th className="border border-gray-300 px-4 py-2 text-left">
+                Points
+              </th>
+              <th className="border border-gray-300 px-4 py-2 text-left">
                 Actions
               </th>
             </tr>
@@ -130,6 +133,9 @@ const UserAdmin = () => {
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
                   {user.email}
+                </td>
+                <td className="border border-gray-300 px-4 py-2">
+                  {user.points}
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
                   <button
