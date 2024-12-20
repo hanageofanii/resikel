@@ -68,7 +68,7 @@ const ClaimReward = () => {
     return token;
   };
 
-  const drawOnCanvas = (cost) => {
+  const drawOnCanvas = async (cost) => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
@@ -123,12 +123,18 @@ const ClaimReward = () => {
     ctx.font = "bold 24px Poppins";
     ctx.textAlign = "center";
     ctx.textBaseline = "top";
-    ctx.fillText("RESIKEL", canvas.width / 2, margin + 10);
+    ctx.fillText("RESIKEL", canvas.width / 2, margin + 20);
 
     // Add "Kupon Diskon" text
     ctx.fillStyle = "#FF5733"; // Red
-    ctx.font = "bold 36px Poppins";
-    ctx.fillText("Kupon Diskon", canvas.width / 2, margin + 50);
+    ctx.font = "bold 24px Poppins";
+    ctx.fillText("Kupon Diskon", canvas.width / 2, margin + 60);
+
+    // Generate a unique token and add it to the canvas
+    const token = generateToken(8); // Example token length of 8
+    ctx.fillStyle = "#FF5733"; // Red color for token
+    ctx.font = "bold 10px Poppins";
+    ctx.fillText(`Kode Token: ${token}`, canvas.width / 2, margin + 90);
 
     // Add discount value
     ctx.fillStyle = "#333333"; // Dark text
@@ -174,45 +180,42 @@ const ClaimReward = () => {
       canvas.height - margin - 20
     );
 
-    // Generate a unique token and add it to the canvas
-    const token = generateToken(8); // Example token length of 32
-    ctx.fillStyle = "#FF5733"; // Red color for token
-    ctx.font = "bold 12px Poppins";
-    ctx.fillText(`Kode Token: ${token}`, canvas.width / 2, margin + 100);
-
-    // Add decorative logos
-    const logoLeft = new Image();
-    logoLeft.src = "./src/assets/images/logo.png"; // Replace with your logo path
-    logoLeft.onload = () => {
-      const logoSize = 60; // Adjust size of the logo
-      ctx.globalAlpha = 0.8; // Slightly transparent for better aesthetics
-      ctx.drawImage(
-        logoLeft,
-        margin + 10, // Left margin
-        canvas.height - margin - logoSize - 10, // Bottom position
-        logoSize,
-        logoSize
-      );
-      ctx.globalAlpha = 1.0; // Reset alpha
+    // Load logos and draw them asynchronously
+    const loadImage = (src) => {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.src = src;
+      });
     };
 
-    const logoRight = new Image();
-    logoRight.src = "./src/assets/images/logo.png"; // Replace with your logo path
-    logoRight.onload = () => {
-      const logoSize = 60; // Adjust size of the logo
-      ctx.globalAlpha = 0.8; // Slightly transparent for better aesthetics
-      ctx.drawImage(
-        logoRight,
-        canvas.width - margin - logoSize - 10, // Right margin
-        canvas.height - margin - logoSize - 10, // Bottom position
-        logoSize,
-        logoSize
-      );
-      ctx.globalAlpha = 1.0; // Reset alpha
-    };
+    const logoSrc = "./src/assets/images/logo.png"; // Replace with your logo path
+    const [logoLeft, logoRight] = await Promise.all([
+      loadImage(logoSrc),
+      loadImage(logoSrc),
+    ]);
+
+    const logoSize = 60;
+    ctx.globalAlpha = 0.8;
+    ctx.drawImage(
+      logoLeft,
+      margin + 10,
+      canvas.height - margin - logoSize - 10,
+      logoSize,
+      logoSize
+    );
+    ctx.drawImage(
+      logoRight,
+      canvas.width - margin - logoSize - 10,
+      canvas.height - margin - logoSize - 10,
+      logoSize,
+      logoSize
+    );
+    ctx.globalAlpha = 1.0;
   };
 
-  const downloadRedeemProof = () => {
+  const downloadRedeemProof = async () => {
+    await drawOnCanvas(claimedPoints); // Ensure canvas is drawn
     const canvas = canvasRef.current;
     const imageURL = canvas.toDataURL("image/png");
 
